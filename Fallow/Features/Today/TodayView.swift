@@ -5,6 +5,7 @@ struct TodayView: View {
     @Environment(Vault.self) private var vault
     @State private var planning: MonthPlan?
     @State private var writing: Note?
+    @State private var worrying = false
 
     private var month: MonthID { .current() }
     private var plan: MonthPlan? { vault.contents?.plan(for: month) }
@@ -50,14 +51,36 @@ struct TodayView: View {
 
             RhythmsCard()
 
+            worryCard
+
             notesToday
         }
         .sheet(item: $planning) { plan in
             PlannerView(plan: plan)
         }
+        .sheet(isPresented: $worrying) {
+            WorryListView()
+        }
         .sheet(item: $writing) { note in
             let exists = vault.contents?.notes.contains { $0.id == note.id } ?? false
             NoteEditor(note: note, isNew: !exists)
+        }
+    }
+
+    private var worryCard: some View {
+        let isMonday = Calendar.current.component(.weekday, from: .now) == 2
+        return NotebookCard {
+            SpecimenLabel(text: "Worry list")
+            if isMonday {
+                Text("Monday: sort the week's worries").font(.notebookTitle(.title3))
+            }
+            Text("Write down what weighs on you, then sort it into stone and clay.")
+                .foregroundStyle(Theme.inkMuted)
+            Button {
+                worrying = true
+            } label: {
+                Text("Start the worry list")
+            }
         }
     }
 

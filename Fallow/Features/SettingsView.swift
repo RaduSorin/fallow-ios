@@ -26,6 +26,18 @@ struct SettingsView: View {
             }
 
             Section {
+                reminderToggle("Morning", value: settingBinding(\.morningReminder), fallback: 8 * 60 + 30)
+                reminderToggle("Evening", value: settingBinding(\.eveningReminder), fallback: 21 * 60)
+                Toggle(isOn: settingBinding(\.fridayReminder)) { Text("Friday evening, 20:00") }
+                Toggle(isOn: settingBinding(\.worryReminder)) { Text("Monday worry list, 8:30") }
+                Toggle(isOn: settingBinding(\.reflectionReminder)) { Text("Monthly reflection, first Monday") }
+            } header: {
+                Text("Reminders")
+            } footer: {
+                Text("Reminders are set on this iPhone only and never show what you wrote.")
+            }
+
+            Section {
                 Button {
                     vault.lock()
                 } label: {
@@ -63,6 +75,36 @@ struct SettingsView: View {
         }
         .scrollContentBackground(.hidden)
         .background(Theme.paper)
+    }
+}
+
+extension SettingsView {
+    fileprivate func settingBinding<Value>(_ path: WritableKeyPath<VaultSettings, Value>) -> Binding<Value> {
+        Binding(
+            get: { (vault.contents?.settings ?? VaultSettings())[keyPath: path] },
+            set: { value in try? vault.update { $0.settings[keyPath: path] = value } }
+        )
+    }
+
+    @ViewBuilder
+    fileprivate func reminderToggle(_ title: LocalizedStringResource, value: Binding<Int?>, fallback: Int) -> some View {
+        Toggle(isOn: Binding(
+            get: { value.wrappedValue != nil },
+            set: { value.wrappedValue = $0 ? fallback : nil }
+        )) {
+            Text(title)
+        }
+        if let minutes = value.wrappedValue {
+            DatePicker(
+                selection: Binding(
+                    get: { VaultSettings.date(fromMinutes: minutes) },
+                    set: { value.wrappedValue = VaultSettings.minutes(from: $0) }
+                ),
+                displayedComponents: .hourAndMinute
+            ) {
+                Text("Time")
+            }
+        }
     }
 }
 

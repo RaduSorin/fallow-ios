@@ -64,6 +64,24 @@ struct VaultSettings: Codable, Equatable, Sendable {
     var eveningReminder: Int? = 21 * 60
     /// Encrypted copy in the person's own iCloud. On by default.
     var iCloudBackup = true
+    /// Friday 20:00 on planned Fridays.
+    var fridayReminder = true
+    /// Monday 8:30, the weekly worry list.
+    var worryReminder = true
+    /// First Monday of the month, 8:30, the monthly reflection.
+    var reflectionReminder = true
+
+    init() {}
+
+    init(from decoder: Decoder) throws {
+        let c = try decoder.container(keyedBy: CodingKeys.self)
+        morningReminder = try c.decodeIfPresent(Int.self, forKey: .morningReminder)
+        eveningReminder = try c.decodeIfPresent(Int.self, forKey: .eveningReminder)
+        iCloudBackup = try c.decodeIfPresent(Bool.self, forKey: .iCloudBackup) ?? true
+        fridayReminder = try c.decodeIfPresent(Bool.self, forKey: .fridayReminder) ?? true
+        worryReminder = try c.decodeIfPresent(Bool.self, forKey: .worryReminder) ?? true
+        reflectionReminder = try c.decodeIfPresent(Bool.self, forKey: .reflectionReminder) ?? true
+    }
 
     static func minutes(from date: Date, calendar: Calendar = .current) -> Int {
         let parts = calendar.dateComponents([.hour, .minute], from: date)
