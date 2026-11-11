@@ -8,6 +8,9 @@ struct VaultContents: Codable, Equatable, Sendable {
     var settings: VaultSettings
     var months: [MonthPlan] = []
     var notes: [Note] = []
+    var rhythms: [Rhythm] = []
+    /// Day ("2026-11-13") to the ids of the rhythms kept that day.
+    var rhythmLog: [String: [String]] = [:]
 
     init(createdAt: Date, settings: VaultSettings) {
         self.createdAt = createdAt
@@ -21,6 +24,8 @@ struct VaultContents: Codable, Equatable, Sendable {
         settings = try c.decodeIfPresent(VaultSettings.self, forKey: .settings) ?? VaultSettings()
         months = try c.decodeIfPresent([MonthPlan].self, forKey: .months) ?? []
         notes = try c.decodeIfPresent([Note].self, forKey: .notes) ?? []
+        rhythms = try c.decodeIfPresent([Rhythm].self, forKey: .rhythms) ?? []
+        rhythmLog = try c.decodeIfPresent([String: [String]].self, forKey: .rhythmLog) ?? [:]
     }
 
     func plan(for month: MonthID) -> MonthPlan? {
