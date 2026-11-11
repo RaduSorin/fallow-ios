@@ -3,6 +3,8 @@ import SwiftUI
 struct SettingsView: View {
     @Environment(\.openURL) private var openURL
     @Environment(\.locale) private var locale
+    @Environment(Vault.self) private var vault
+    @State private var confirmErase = false
 
     var body: some View {
         Form {
@@ -24,12 +26,40 @@ struct SettingsView: View {
             }
 
             Section {
+                Button {
+                    vault.lock()
+                } label: {
+                    Label { Text("Lock now") } icon: { Image(systemName: "lock") }
+                }
+                Button(role: .destructive) {
+                    confirmErase = true
+                } label: {
+                    Label { Text("Erase everything") } icon: { Image(systemName: "trash") }
+                }
+            } header: {
+                Text("Privacy")
+            }
+
+            Section {
                 LabeledContent {
                     Text(Bundle.main.appVersion)
                 } label: {
                     Text("Version")
                 }
             }
+        }
+        .confirmationDialog(
+            Text("Erase everything?"),
+            isPresented: $confirmErase,
+            titleVisibility: .visible
+        ) {
+            Button(role: .destructive) {
+                try? vault.eraseEverything()
+            } label: {
+                Text("Erase everything")
+            }
+        } message: {
+            Text("This deletes your journal and its key from this iPhone. It cannot be undone.")
         }
         .scrollContentBackground(.hidden)
         .background(Theme.paper)

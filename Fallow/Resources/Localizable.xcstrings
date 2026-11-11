@@ -2,12 +2,52 @@
   "sourceLanguage": "en",
   "version": "1.0",
   "strings": {
+    "A quiet pause, one month at a time.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "O pauză liniștită, câte o lună pe rând."
+          }
+        }
+      }
+    },
+    "Back": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Înapoi"
+          }
+        }
+      }
+    },
+    "Backup": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Backup"
+          }
+        }
+      }
+    },
     "Change language": {
       "localizations": {
         "ro": {
           "stringUnit": {
             "state": "translated",
             "value": "Schimbă limba"
+          }
+        }
+      }
+    },
+    "Choose an intention for the month, keep a few small rhythms and look back at the end. What you write stays encrypted on this iPhone.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Alege o intenție pentru lună, păstrează câteva ritmuri mici și privește înapoi la final. Ce scrii rămâne criptat pe acest iPhone."
           }
         }
       }
@@ -22,12 +62,112 @@
         }
       }
     },
+    "Continue": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Continuă"
+          }
+        }
+      }
+    },
+    "Encrypted iCloud backup": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Backup criptat în iCloud"
+          }
+        }
+      }
+    },
+    "Erase everything": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Șterge tot"
+          }
+        }
+      }
+    },
+    "Erase everything?": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ștergi tot?"
+          }
+        }
+      }
+    },
+    "Evening": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Seara"
+          }
+        }
+      }
+    },
+    "Face ID did not work. Try again.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Face ID nu a mers. Încearcă din nou."
+          }
+        }
+      }
+    },
+    "Fallow can save an encrypted copy in your own iCloud, so a new iPhone gets everything back. Apple cannot read it, and neither can we.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fallow poate salva o copie criptată în iCloud-ul tău, ca un iPhone nou să primească totul înapoi. Apple nu o poate citi, și nici noi."
+          }
+        }
+      }
+    },
+    "Fallow follows your iPhone language. You can switch between English and Romanian in the app's settings.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fallow folosește limba iPhone-ului. Poți trece între engleză și română din setările aplicației."
+          }
+        }
+      }
+    },
     "Fallow is in English by default. You can switch to Romanian in the app's iOS settings.": {
       "localizations": {
         "ro": {
           "stringUnit": {
             "state": "translated",
             "value": "Fallow este implicit în engleză. Poți trece la română din setările iOS ale aplicației."
+          }
+        }
+      }
+    },
+    "Fallow is locked": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fallow e încuiat"
+          }
+        }
+      }
+    },
+    "Fallow makes a key that never leaves this iPhone. Only your face, or your phone passcode, can open it.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fallow creează o cheie care nu părăsește acest iPhone. Doar fața ta sau codul telefonului îl pot deschide."
           }
         }
       }
@@ -42,12 +182,42 @@
         }
       }
     },
+    "Keep a copy in your iCloud?": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Păstrezi o copie în iCloud?"
+          }
+        }
+      }
+    },
     "Language": {
       "localizations": {
         "ro": {
           "stringUnit": {
             "state": "translated",
             "value": "Limba"
+          }
+        }
+      }
+    },
+    "Lock it with Face ID.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Încuie-l cu Face ID."
+          }
+        }
+      }
+    },
+    "Lock now": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Încuie acum"
           }
         }
       }
@@ -72,6 +242,26 @@
         }
       }
     },
+    "Morning": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dimineața"
+          }
+        }
+      }
+    },
+    "Open your journal": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Deschide jurnalul"
+          }
+        }
+      }
+    },
     "Plan the month, set an intention and reflect at the end.": {
       "localizations": {
         "ro": {
@@ -92,12 +282,102 @@
         }
       }
     },
+    "Privacy": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Confidențialitate"
+          }
+        }
+      }
+    },
+    "Protect with Face ID": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Protejează cu Face ID"
+          }
+        }
+      }
+    },
+    "Reminders": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mementouri"
+          }
+        }
+      }
+    },
+    "Reminders stay on your phone. No server knows when they ring.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mementourile rămân pe telefon. Niciun server nu știe când sună."
+          }
+        }
+      }
+    },
+    "Step %lld of %lld": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pasul %1$lld din %2$lld"
+          }
+        }
+      }
+    },
+    "The key could not be saved. Check that your iPhone has a passcode, then try again.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cheia nu a putut fi salvată. Verifică dacă iPhone-ul are un cod de deblocare, apoi încearcă din nou."
+          }
+        }
+      }
+    },
+    "The key for this journal is missing on this iPhone.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cheia acestui jurnal lipsește de pe acest iPhone."
+          }
+        }
+      }
+    },
+    "This deletes your journal and its key from this iPhone. It cannot be undone.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Asta șterge jurnalul și cheia lui de pe acest iPhone. Nu se poate anula."
+          }
+        }
+      }
+    },
     "This month": {
       "localizations": {
         "ro": {
           "stringUnit": {
             "state": "translated",
             "value": "Luna aceasta"
+          }
+        }
+      }
+    },
+    "Time": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ora"
           }
         }
       }
@@ -112,6 +392,16 @@
         }
       }
     },
+    "Unlock": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Deblochează"
+          }
+        }
+      }
+    },
     "Version": {
       "localizations": {
         "ro": {
@@ -122,12 +412,42 @@
         }
       }
     },
+    "Welcome": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bun venit"
+          }
+        }
+      }
+    },
+    "When should Fallow remind you?": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Când să-ți amintească Fallow?"
+          }
+        }
+      }
+    },
     "Your intention for the month will be written here.": {
       "localizations": {
         "ro": {
           "stringUnit": {
             "state": "translated",
             "value": "Aici va fi scrisă intenția lunii."
+          }
+        }
+      }
+    },
+    "Your journal could not be opened. Your data is still on this iPhone.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jurnalul nu a putut fi deschis. Datele tale sunt încă pe acest iPhone."
           }
         }
       }
