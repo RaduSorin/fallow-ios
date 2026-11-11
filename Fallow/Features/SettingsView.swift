@@ -31,6 +31,8 @@ struct SettingsView: View {
                 }
             }
         }
+        .scrollContentBackground(.hidden)
+        .background(Theme.paper)
     }
 }
 

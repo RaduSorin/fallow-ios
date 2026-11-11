@@ -92,6 +92,16 @@
         }
       }
     },
+    "This month": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Luna aceasta"
+          }
+        }
+      }
+    },
     "Today": {
       "localizations": {
         "ro": {
@@ -112,12 +122,22 @@
         }
       }
     },
-    "Your intention for the month and today's rhythm will live here.": {
+    "Your intention for the month will be written here.": {
       "localizations": {
         "ro": {
           "stringUnit": {
             "state": "translated",
-            "value": "Aici vor sta intenția lunii și ritmul zilei."
+            "value": "Aici va fi scrisă intenția lunii."
+          }
+        }
+      }
+    },
+    "Your small rhythms for the day will live here.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aici vor sta ritmurile mici ale zilei."
           }
         }
       }
