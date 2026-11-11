@@ -1,11 +1,56 @@
 import Foundation
 
 /// Everything private that Fallow keeps. Stored only as one encrypted file.
-/// Later PRs add the month, rhythms, worries, exercises and herbarium here.
+/// Fields added in later versions decode as empty from older files.
 struct VaultContents: Codable, Equatable, Sendable {
     var version = 1
     var createdAt: Date
     var settings: VaultSettings
+    var months: [MonthPlan] = []
+    var notes: [Note] = []
+
+    init(createdAt: Date, settings: VaultSettings) {
+        self.createdAt = createdAt
+        self.settings = settings
+    }
+
+    init(from decoder: Decoder) throws {
+        let c = try decoder.container(keyedBy: CodingKeys.self)
+        version = try c.decodeIfPresent(Int.self, forKey: .version) ?? 1
+        createdAt = try c.decode(Date.self, forKey: .createdAt)
+        settings = try c.decodeIfPresent(VaultSettings.self, forKey: .settings) ?? VaultSettings()
+        months = try c.decodeIfPresent([MonthPlan].self, forKey: .months) ?? []
+        notes = try c.decodeIfPresent([Note].self, forKey: .notes) ?? []
+    }
+
+    func plan(for month: MonthID) -> MonthPlan? {
+        months.first { $0.id == month }
+    }
+
+    mutating func save(_ plan: MonthPlan) {
+        if let index = months.firstIndex(where: { $0.id == plan.id }) {
+            months[index] = plan
+        } else {
+            months.append(plan)
+            months.sort { $0.id < $1.id }
+        }
+    }
+
+    func notes(in month: MonthID) -> [Note] {
+        notes.filter { $0.month == month }.sorted { $0.date > $1.date }
+    }
+
+    func reflection(for month: MonthID) -> Note? {
+        notes.first { $0.month == month && $0.kind == .reflection }
+    }
+
+    mutating func save(_ note: Note) {
+        if let index = notes.firstIndex(where: { $0.id == note.id }) {
+            notes[index] = note
+        } else {
+            notes.append(note)
+        }
+    }
 }
 
 struct VaultSettings: Codable, Equatable, Sendable {
