@@ -11,6 +11,7 @@ struct VaultContents: Codable, Equatable, Sendable {
     var rhythms: [Rhythm] = []
     /// Day ("2026-11-13") to the ids of the rhythms kept that day.
     var rhythmLog: [String: [String]] = [:]
+    var exercises: [Exercise] = []
 
     init(createdAt: Date, settings: VaultSettings) {
         self.createdAt = createdAt
@@ -26,6 +27,7 @@ struct VaultContents: Codable, Equatable, Sendable {
         notes = try c.decodeIfPresent([Note].self, forKey: .notes) ?? []
         rhythms = try c.decodeIfPresent([Rhythm].self, forKey: .rhythms) ?? []
         rhythmLog = try c.decodeIfPresent([String: [String]].self, forKey: .rhythmLog) ?? [:]
+        exercises = try c.decodeIfPresent([Exercise].self, forKey: .exercises) ?? []
     }
 
     func plan(for month: MonthID) -> MonthPlan? {

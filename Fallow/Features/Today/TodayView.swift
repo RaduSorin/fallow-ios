@@ -38,6 +38,13 @@ struct TodayView: View {
                     SpecimenLabel(text: "Tonight")
                     Text(friday.title.isEmpty ? String(localized: "A free Friday") : friday.title)
                         .font(.notebookTitle(.title3))
+                    if let exercise = vault.contents?.exercise(friday.exerciseId) {
+                        NavigationLink {
+                            ExerciseDetail(exerciseID: exercise.id)
+                        } label: {
+                            Text("Open the exercise")
+                        }
+                    }
                     Button {
                         writing = Note(
                             date: todayKey, month: month, kind: .friday,

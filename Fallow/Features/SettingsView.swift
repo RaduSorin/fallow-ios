@@ -26,6 +26,19 @@ struct SettingsView: View {
             }
 
             Section {
+                NavigationLink {
+                    ExercisesView()
+                } label: {
+                    Label { Text("My exercises") } icon: { Image(systemName: "books.vertical") }
+                }
+                NavigationLink {
+                    JournalView()
+                } label: {
+                    Label { Text("Journal") } icon: { Image(systemName: "book.closed") }
+                }
+            }
+
+            Section {
                 reminderToggle("Morning", value: settingBinding(\.morningReminder), fallback: 8 * 60 + 30)
                 reminderToggle("Evening", value: settingBinding(\.eveningReminder), fallback: 21 * 60)
                 Toggle(isOn: settingBinding(\.fridayReminder)) { Text("Friday evening, 20:00") }
