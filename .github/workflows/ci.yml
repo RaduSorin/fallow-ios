@@ -1,9 +1,16 @@
 name: CI
 
+# macOS minutes count 10x on private repos, so CI runs only on pull requests
+# and only when something that affects the build changes.
 on:
   pull_request:
-  push:
-    branches: [main]
+    paths:
+      - "Fallow/**"
+      - "FallowTests/**"
+      - "project.yml"
+      - "scripts/**"
+      - ".github/workflows/ci.yml"
+  workflow_dispatch:
 
 concurrency:
   group: ci-${{ github.ref }}
