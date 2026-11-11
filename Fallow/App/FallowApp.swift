@@ -3,12 +3,15 @@ import SwiftUI
 @main
 struct FallowApp: App {
     @State private var vault: Vault
+    @State private var backup: Backup
     @Environment(\.scenePhase) private var scenePhase
 
     init() {
         Theme.applyBarAppearance()
         let vault = Vault.live()
+        let backup = Backup.live()
         vault.onChange = { contents in
+            Task { @MainActor in backup.schedule(contents) }
             Task.detached {
                 // The permission prompt shows only the first time.
                 await ReminderScheduler.requestPermission()
@@ -16,12 +19,14 @@ struct FallowApp: App {
             }
         }
         _vault = State(initialValue: vault)
+        _backup = State(initialValue: backup)
     }
 
     var body: some Scene {
         WindowGroup {
             RootView()
                 .environment(vault)
+                .environment(backup)
                 .tint(Theme.moss)
                 .foregroundStyle(Theme.ink)
         }
@@ -29,6 +34,7 @@ struct FallowApp: App {
             // Lock as soon as the app leaves the screen.
             if phase == .background {
                 vault.lock()
+                Task { await backup.flush() }
             }
         }
     }

@@ -162,6 +162,16 @@
         }
       }
     },
+    "A .fallow file holds everything, locked with a passphrase you choose. Use it to move to another iPhone, or to bring Răgaz over from Kitchen Tales.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Un fișier .fallow conține tot, încuiat cu o parolă aleasă de tine. Îl poți folosi ca să te muți pe alt iPhone sau ca să aduci Răgaz din Kitchen Tales."
+          }
+        }
+      }
+    },
     "A Friday left free. Rest is an exercise too.": {
       "localizations": {
         "ro": {
@@ -322,12 +332,32 @@
         }
       }
     },
+    "Already used Fallow?": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ai mai folosit Fallow?"
+          }
+        }
+      }
+    },
     "Answer the way a kind, steady parent would answer a child who is worried.": {
       "localizations": {
         "ro": {
           "stringUnit": {
             "state": "translated",
             "value": "Răspunde cum i-ar răspunde un părinte blând și calm unui copil îngrijorat."
+          }
+        }
+      }
+    },
+    "At least 8 characters. A short sentence is easy to remember and hard to guess. There is no way to recover it.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cel puțin 8 caractere. O propoziție scurtă e ușor de ținut minte și greu de ghicit. Nu există nicio cale de a o recupera."
           }
         }
       }
@@ -342,12 +372,32 @@
         }
       }
     },
+    "Back up now": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fă backup acum"
+          }
+        }
+      }
+    },
     "Backup": {
       "localizations": {
         "ro": {
           "stringUnit": {
             "state": "translated",
             "value": "Backup"
+          }
+        }
+      }
+    },
+    "Backup and transfer": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Backup și transfer"
           }
         }
       }
@@ -642,12 +692,42 @@
         }
       }
     },
+    "Erase from this iPhone": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Șterge de pe acest iPhone"
+          }
+        }
+      }
+    },
+    "Erase here and in iCloud": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Șterge aici și din iCloud"
+          }
+        }
+      }
+    },
     "Evening": {
       "localizations": {
         "ro": {
           "stringUnit": {
             "state": "translated",
             "value": "Seara"
+          }
+        }
+      }
+    },
+    "Everything from the file is here now.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Tot ce era în fișier e acum aici."
           }
         }
       }
@@ -728,6 +808,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "Fallow creează o cheie care nu părăsește acest iPhone. Doar fața ta sau codul telefonului îl pot deschide."
+          }
+        }
+      }
+    },
+    "File": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fișier"
           }
         }
       }
@@ -1012,6 +1102,16 @@
         }
       }
     },
+    "Last backup": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ultimul backup"
+          }
+        }
+      }
+    },
     "Later": {
       "localizations": {
         "ro": {
@@ -1262,6 +1362,16 @@
         }
       }
     },
+    "No backup found in this iCloud account.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nu există niciun backup în acest cont iCloud."
+          }
+        }
+      }
+    },
     "No duration": {
       "localizations": {
         "ro": {
@@ -1308,6 +1418,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "Nu pentru mine"
+          }
+        }
+      }
+    },
+    "Not saved, will try again": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nesalvat, încearcă din nou"
           }
         }
       }
@@ -1392,6 +1512,16 @@
         }
       }
     },
+    "Once more": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Încă o dată"
+          }
+        }
+      }
+    },
     "One sentence is enough: what do you want to give yourself this month?": {
       "localizations": {
         "ro": {
@@ -1428,6 +1558,36 @@
           "stringUnit": {
             "state": "translated",
             "value": "Câte un lucru pe rând. Ajung formulări scurte, ca „termenul de la serviciu”."
+          }
+        }
+      }
+    },
+    "Open": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Deschide"
+          }
+        }
+      }
+    },
+    "Open a .fallow file": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Deschide un fișier .fallow"
+          }
+        }
+      }
+    },
+    "Open a file": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Deschide un fișier"
           }
         }
       }
@@ -1478,6 +1638,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "Parțial"
+          }
+        }
+      }
+    },
+    "Passphrase": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Parolă"
           }
         }
       }
@@ -1632,6 +1802,36 @@
         }
       }
     },
+    "Replace": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Înlocuiește"
+          }
+        }
+      }
+    },
+    "Replace what is on this iPhone?": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Înlocuiești ce e pe acest iPhone?"
+          }
+        }
+      }
+    },
+    "Restore from iCloud": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Restaurează din iCloud"
+          }
+        }
+      }
+    },
     "Rhythms": {
       "localizations": {
         "ro": {
@@ -1652,12 +1852,42 @@
         }
       }
     },
+    "Save to a file": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Salvează într-un fișier"
+          }
+        }
+      }
+    },
     "Save to journal": {
       "localizations": {
         "ro": {
           "stringUnit": {
             "state": "translated",
             "value": "Salvează în jurnal"
+          }
+        }
+      }
+    },
+    "Saved. Keep the passphrase somewhere safe: without it the file cannot be opened.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Salvat. Păstrează parola într-un loc sigur: fără ea fișierul nu poate fi deschis."
+          }
+        }
+      }
+    },
+    "Saving…": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Se salvează…"
           }
         }
       }
@@ -1678,6 +1908,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "Pași mici pentru cel mai mare"
+          }
+        }
+      }
+    },
+    "Something went wrong. Try again.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ceva n-a mers. Încearcă din nou."
           }
         }
       }
@@ -1728,6 +1968,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "Începe lista de griji"
+          }
+        }
+      }
+    },
+    "Starting fresh replaces the backup already in your iCloud. To keep it, go back and choose Restore from iCloud.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dacă începi de la zero, backupul din iCloud va fi înlocuit. Ca să-l păstrezi, întoarce-te și alege Restaurează din iCloud."
           }
         }
       }
@@ -1822,6 +2072,26 @@
         }
       }
     },
+    "That file could not be read.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fișierul nu a putut fi citit."
+          }
+        }
+      }
+    },
+    "That passphrase does not open this file.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Parola nu deschide acest fișier."
+          }
+        }
+      }
+    },
     "The 28 days": {
       "localizations": {
         "ro": {
@@ -1842,12 +2112,52 @@
         }
       }
     },
+    "The backup could not be restored.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Backupul nu a putut fi restaurat."
+          }
+        }
+      }
+    },
+    "The backup key has not reached this iPhone. Turn on iCloud Keychain (Passwords), wait a minute and try again.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cheia backupului n-a ajuns încă pe acest iPhone. Pornește Brelocul iCloud (Parole), așteaptă un minut și încearcă din nou."
+          }
+        }
+      }
+    },
+    "The backup key on this iPhone does not open this backup.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cheia de pe acest iPhone nu deschide acest backup."
+          }
+        }
+      }
+    },
     "The clay, biggest first": {
       "localizations": {
         "ro": {
           "stringUnit": {
             "state": "translated",
             "value": "Plastilina, de la mare la mic"
+          }
+        }
+      }
+    },
+    "The copy is sealed with a key kept in your iCloud Keychain, so a new iPhone signed in to your Apple Account can open it. Apple cannot read it, and neither can we.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Copia e criptată cu o cheie păstrată în Brelocul iCloud, ca un iPhone nou conectat la Contul tău Apple să o poată deschide. Apple nu o poate citi, nici noi."
           }
         }
       }
@@ -1952,6 +2262,16 @@
         }
       }
     },
+    "The passphrase chosen when the file was saved.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Parola aleasă când a fost salvat fișierul."
+          }
+        }
+      }
+    },
     "The plan could not be saved.": {
       "localizations": {
         "ro": {
@@ -2012,12 +2332,32 @@
         }
       }
     },
+    "There is a Fallow backup in your iCloud.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ai un backup Fallow în iCloud."
+          }
+        }
+      }
+    },
     "This deletes your journal and its key from this iPhone. It cannot be undone.": {
       "localizations": {
         "ro": {
           "stringUnit": {
             "state": "translated",
             "value": "Asta șterge jurnalul și cheia lui de pe acest iPhone. Nu se poate anula."
+          }
+        }
+      }
+    },
+    "This deletes your journal and its key from this iPhone. With iCloud, the backup and its key go too. It cannot be undone.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Se șterg jurnalul și cheia lui de pe acest iPhone. Cu iCloud, se șterg și backupul și cheia lui. Nu se poate anula."
           }
         }
       }
@@ -2038,6 +2378,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "Fișierul nu e un pachet de exerciții."
+          }
+        }
+      }
+    },
+    "This is not a Fallow file.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Acesta nu e un fișier Fallow."
           }
         }
       }
@@ -2502,6 +2852,16 @@
         }
       }
     },
+    "Your journal, months, exercises and herbarium here are replaced by the ones in the file.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jurnalul, lunile, exercițiile și ierbarul de aici sunt înlocuite cu cele din fișier."
+          }
+        }
+      }
+    },
     "Your reflection on %@ is written.": {
       "localizations": {
         "ro": {
@@ -2658,6 +3018,36 @@
           "stringUnit": {
             "state": "translated",
             "value": "coada-calului"
+          }
+        }
+      }
+    },
+    "iCloud": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iCloud"
+          }
+        }
+      }
+    },
+    "iCloud is off on this iPhone": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iCloud e oprit pe acest iPhone"
+          }
+        }
+      }
+    },
+    "iCloud is off on this iPhone. Sign in to iCloud in Settings, then try again.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "iCloud e oprit pe acest iPhone. Conectează-te la iCloud din Configurări, apoi încearcă din nou."
           }
         }
       }

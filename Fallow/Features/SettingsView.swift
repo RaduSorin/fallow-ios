@@ -4,6 +4,7 @@ struct SettingsView: View {
     @Environment(\.openURL) private var openURL
     @Environment(\.locale) private var locale
     @Environment(Vault.self) private var vault
+    @Environment(Backup.self) private var backup
     @State private var confirmErase = false
 
     var body: some View {
@@ -35,6 +36,11 @@ struct SettingsView: View {
                     JournalView()
                 } label: {
                     Label { Text("Journal") } icon: { Image(systemName: "book.closed") }
+                }
+                NavigationLink {
+                    BackupView()
+                } label: {
+                    Label { Text("Backup and transfer") } icon: { Image(systemName: "icloud") }
                 }
             }
 
@@ -94,10 +100,16 @@ struct SettingsView: View {
             Button(role: .destructive) {
                 try? vault.eraseEverything()
             } label: {
-                Text("Erase everything")
+                Text("Erase from this iPhone")
+            }
+            Button(role: .destructive) {
+                try? vault.eraseEverything()
+                Task { try? await backup.deleteBackup() }
+            } label: {
+                Text("Erase here and in iCloud")
             }
         } message: {
-            Text("This deletes your journal and its key from this iPhone. It cannot be undone.")
+            Text("This deletes your journal and its key from this iPhone. With iCloud, the backup and its key go too. It cannot be undone.")
         }
         .scrollContentBackground(.hidden)
         .background(Theme.paper)
