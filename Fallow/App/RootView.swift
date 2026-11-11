@@ -97,4 +97,5 @@ struct MainTabs: View {
 #Preview {
     RootView()
         .environment(Vault(keyStore: InMemoryKeyStore(), fileURL: URL.temporaryDirectory.appending(path: "preview.fallow")))
+        .environment(Backup(store: FolderBackupStore(url: URL.temporaryDirectory.appending(path: "preview.backup")), keys: InMemoryBackupKey()))
 }

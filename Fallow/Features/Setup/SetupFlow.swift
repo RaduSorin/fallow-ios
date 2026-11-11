@@ -1,13 +1,23 @@
 import SwiftUI
+import UniformTypeIdentifiers
 
 /// First run, one card at a time: welcome, reminders, backup, Face ID.
 struct SetupFlow: View {
     @Environment(Vault.self) private var vault
+    @Environment(Backup.self) private var backup
     @Environment(\.openURL) private var openURL
 
     @State private var step = 0
     @State private var settings = VaultSettings()
     @State private var errorText: LocalizedStringResource?
+    /// A backup found in iCloud, so the first card can offer it.
+    @State private var foundBackup = false
+    @State private var restoring = false
+    @State private var restoreError: LocalizedStringResource?
+    @State private var picking = false
+    @State private var pickedData: Data?
+    @State private var askingPassphrase = false
+    @State private var fromFile: VaultContents?
 
     private let stepCount = 4
 
@@ -38,6 +48,86 @@ struct SetupFlow: View {
         }
         .background(Theme.paper)
         .animation(.easeInOut(duration: 0.25), value: step)
+        .task { foundBackup = await backup.hasBackup() }
+        .fileImporter(isPresented: $picking, allowedContentTypes: [.fallowFile, .data]) { result in
+            guard case .success(let url) = result else { return }
+            do {
+                pickedData = try TransferFile.readPicked(url)
+                Task {
+                    try? await Task.sleep(for: .milliseconds(400))
+                    askingPassphrase = true
+                }
+            } catch {
+                restoreError = "That file could not be read."
+            }
+        }
+        .sheet(isPresented: $askingPassphrase, onDismiss: {
+            guard let fromFile else { return }
+            self.fromFile = nil
+            do {
+                try vault.restore(fromFile)
+            } catch {
+                restoreError = "The key could not be saved. Check that your iPhone has a passcode, then try again."
+            }
+        }) {
+            PassphraseSheet(mode: .open) { passphrase in
+                guard let data = pickedData else { return }
+                fromFile = try await Task.detached { try TransferFile.open(data, passphrase: passphrase) }.value
+                pickedData = nil
+            }
+        }
+    }
+
+    /// Already used Fallow: bring it back from iCloud or from a .fallow file.
+    private var bringBack: some View {
+        NotebookCard {
+            SpecimenLabel(text: "Already used Fallow?")
+            if foundBackup {
+                Text("There is a Fallow backup in your iCloud.")
+                    .foregroundStyle(Theme.inkMuted)
+            }
+            HStack {
+                Button {
+                    restoreFromICloud()
+                } label: {
+                    if restoring { ProgressView() } else { Text("Restore from iCloud") }
+                }
+                .disabled(restoring)
+                Spacer()
+                Button {
+                    picking = true
+                } label: {
+                    Text("Open a .fallow file")
+                }
+            }
+            if let restoreError {
+                Text(restoreError)
+                    .font(.footnote)
+                    .foregroundStyle(.red)
+            }
+        }
+    }
+
+    private func restoreFromICloud() {
+        restoring = true
+        restoreError = nil
+        Task {
+            defer { restoring = false }
+            do {
+                let contents = try await backup.restore()
+                try vault.restore(contents)
+            } catch BackupError.notFound {
+                restoreError = "No backup found in this iCloud account."
+            } catch BackupError.unavailable {
+                restoreError = "iCloud is off on this iPhone. Sign in to iCloud in Settings, then try again."
+            } catch BackupError.noKey {
+                restoreError = "The backup key has not reached this iPhone. Turn on iCloud Keychain (Passwords), wait a minute and try again."
+            } catch BackupError.wrongKey {
+                restoreError = "The backup key on this iPhone does not open this backup."
+            } catch {
+                restoreError = "The backup could not be restored."
+            }
+        }
     }
 
     @ViewBuilder
@@ -45,7 +135,7 @@ struct SetupFlow: View {
         switch step {
         case 0: welcome
         case 1: reminders
-        case 2: backup
+        case 2: backupCard
         default: protection
         }
     }
@@ -67,6 +157,7 @@ struct SetupFlow: View {
                     Text("Change language")
                 }
             }
+            bringBack
         }
     }
 
@@ -107,7 +198,7 @@ struct SetupFlow: View {
         }
     }
 
-    private var backup: some View {
+    private var backupCard: some View {
         VStack(alignment: .leading, spacing: 14) {
             SpecimenLabel(text: "Backup")
             Text("Keep a copy in your iCloud?")
@@ -118,6 +209,11 @@ struct SetupFlow: View {
                 Toggle(isOn: $settings.iCloudBackup) {
                     Text("Encrypted iCloud backup")
                 }
+            }
+            if foundBackup && settings.iCloudBackup {
+                Text("Starting fresh replaces the backup already in your iCloud. To keep it, go back and choose Restore from iCloud.")
+                    .font(.footnote)
+                    .foregroundStyle(.red)
             }
         }
     }
@@ -178,4 +274,5 @@ struct SetupFlow: View {
 #Preview {
     SetupFlow()
         .environment(Vault(keyStore: InMemoryKeyStore(), fileURL: URL.temporaryDirectory.appending(path: "preview.fallow")))
+        .environment(Backup(store: FolderBackupStore(url: URL.temporaryDirectory.appending(path: "preview.backup")), keys: InMemoryBackupKey()))
 }

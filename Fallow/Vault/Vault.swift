@@ -51,6 +51,19 @@ final class Vault {
         onChange?(fresh)
     }
 
+    /// First run on a new iPhone: makes a new key and keeps what came from a backup or a file.
+    func restore(_ restored: VaultContents) throws {
+        let newKey = try keyStore.createKey()
+        var next = restored
+        next.checkHerbarium(visit: true)
+        try write(next, key: newKey)
+        key = newKey
+        contents = next
+        lastError = nil
+        state = .unlocked
+        onChange?(next)
+    }
+
     func unlock(reason: String) async {
         guard state == .locked, !isUnlocking else { return }
         isUnlocking = true
@@ -59,7 +72,7 @@ final class Vault {
             let loaded = try await keyStore.loadKey(reason: reason)
             let sealed = try Data(contentsOf: fileURL)
             let plain = try VaultCrypto.open(sealed, key: loaded)
-            let decoded = try Self.decoder.decode(VaultContents.self, from: plain)
+            let decoded = try VaultCoding.decoder.decode(VaultContents.self, from: plain)
             // Opening counts as a visit; new plants (or a new herbarium) are saved right away.
             var opened = decoded
             opened.checkHerbarium(visit: true)
@@ -103,20 +116,8 @@ final class Vault {
     }
 
     private func write(_ value: VaultContents, key: SymmetricKey) throws {
-        let plain = try Self.encoder.encode(value)
+        let plain = try VaultCoding.encoder.encode(value)
         let sealed = try VaultCrypto.seal(plain, key: key)
         try sealed.write(to: fileURL, options: [.atomic, .completeFileProtection])
     }
-
-    private static let encoder: JSONEncoder = {
-        let encoder = JSONEncoder()
-        encoder.dateEncodingStrategy = .iso8601
-        return encoder
-    }()
-
-    private static let decoder: JSONDecoder = {
-        let decoder = JSONDecoder()
-        decoder.dateDecodingStrategy = .iso8601
-        return decoder
-    }()
 }
