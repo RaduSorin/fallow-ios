@@ -1,0 +1,126 @@
+{
+  "sourceLanguage": "en",
+  "version": "1.0",
+  "strings": {
+    "Change language": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Schimbă limba"
+          }
+        }
+      }
+    },
+    "Coming soon": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "În curând"
+          }
+        }
+      }
+    },
+    "Fallow is in English by default. You can switch to Romanian in the app's iOS settings.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fallow este implicit în engleză. Poți trece la română din setările iOS ale aplicației."
+          }
+        }
+      }
+    },
+    "Herbarium": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ierbar"
+          }
+        }
+      }
+    },
+    "Language": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Limba"
+          }
+        }
+      }
+    },
+    "Me": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Eu"
+          }
+        }
+      }
+    },
+    "Month": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Luna"
+          }
+        }
+      }
+    },
+    "Plan the month, set an intention and reflect at the end.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Plănuiește luna, alege o intenție și reflectează la final."
+          }
+        }
+      }
+    },
+    "Pressed plants you collect along the way.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Plantele presate pe care le aduni pe drum."
+          }
+        }
+      }
+    },
+    "Today": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Azi"
+          }
+        }
+      }
+    },
+    "Version": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Versiune"
+          }
+        }
+      }
+    },
+    "Your intention for the month and today's rhythm will live here.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Aici vor sta intenția lunii și ritmul zilei."
+          }
+        }
+      }
+    }
+  }
+}

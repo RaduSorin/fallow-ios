@@ -1,0 +1,42 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build-and-test:
+    runs-on: macos-15
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install XcodeGen
+        run: brew install xcodegen
+
+      - name: Generate Xcode project
+        run: xcodegen generate
+
+      - name: Build and test on the simulator
+        run: |
+          UDID=$(scripts/pick-simulator.sh)
+          echo "Simulator: $UDID"
+          xcodebuild test \
+            -project Fallow.xcodeproj \
+            -scheme Fallow \
+            -destination "id=$UDID" \
+            CODE_SIGNING_ALLOWED=NO \
+            | tee build.log | grep -E '(error|warning: .*Fallow/|Test (Suite|Case)|passed|failed|\*\* )' || true
+          grep -q '\*\* TEST SUCCEEDED \*\*' build.log
+
+      - name: Upload build log
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-log
+          path: build.log
