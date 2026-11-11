@@ -51,6 +51,19 @@ struct SettingsView: View {
             }
 
             Section {
+                Toggle(isOn: Binding(
+                    get: { vault.contents?.herbarium?.quiet != true },
+                    set: { show in try? vault.update { $0.herbarium?.quiet = show ? nil : true } }
+                )) {
+                    Text("Show when a plant comes")
+                }
+            } header: {
+                Text("Herbarium")
+            } footer: {
+                Text("When off, new plants wait quietly in the herbarium.")
+            }
+
+            Section {
                 Button {
                     vault.lock()
                 } label: {

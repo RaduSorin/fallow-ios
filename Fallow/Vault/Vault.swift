@@ -41,7 +41,8 @@ final class Vault {
     /// First run: makes a new key and an empty vault with these settings.
     func setUp(settings: VaultSettings) throws {
         let newKey = try keyStore.createKey()
-        let fresh = VaultContents(createdAt: .now, settings: settings)
+        var fresh = VaultContents(createdAt: .now, settings: settings)
+        fresh.checkHerbarium(visit: true)
         try write(fresh, key: newKey)
         key = newKey
         contents = fresh
@@ -58,7 +59,12 @@ final class Vault {
             let loaded = try await keyStore.loadKey(reason: reason)
             let sealed = try Data(contentsOf: fileURL)
             let plain = try VaultCrypto.open(sealed, key: loaded)
-            contents = try Self.decoder.decode(VaultContents.self, from: plain)
+            let decoded = try Self.decoder.decode(VaultContents.self, from: plain)
+            // Opening counts as a visit; new plants (or a new herbarium) are saved right away.
+            var opened = decoded
+            opened.checkHerbarium(visit: true)
+            if opened != decoded { try? write(opened, key: loaded) }
+            contents = opened
             key = loaded
             lastError = nil
             state = .unlocked
@@ -81,6 +87,7 @@ final class Vault {
     func update(_ change: (inout VaultContents) -> Void) throws {
         guard let key, var next = contents else { throw VaultError.noKey }
         change(&next)
+        next.checkHerbarium()
         try write(next, key: key)
         contents = next
         onChange?(next)
