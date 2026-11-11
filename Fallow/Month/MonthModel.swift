@@ -171,3 +171,20 @@ struct MonthSummary: Equatable, Sendable {
         self.notes = notes.filter { $0.kind != .reflection }.count
     }
 }
+
+extension MonthID: Identifiable {
+    var id: String { description }
+
+    /// "November", in the app's language.
+    var name: String { firstDay().formatted(.dateTime.month(.wide)) }
+    /// "November 2026", in the app's language.
+    var nameWithYear: String { firstDay().formatted(.dateTime.month(.wide).year()) }
+}
+
+extension FridayPlan {
+    /// "13 November", in the app's language.
+    var dayName: String {
+        guard let day = DayKey.date(date) else { return date }
+        return day.formatted(.dateTime.day().month(.wide))
+    }
+}

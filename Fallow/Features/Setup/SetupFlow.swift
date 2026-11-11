@@ -153,8 +153,14 @@ struct SetupFlow: View {
                     finish()
                 }
             } label: {
-                Text(step < stepCount - 1 ? "Continue" : "Protect with Face ID")
-                    .padding(.horizontal, 8)
+                Group {
+                    if step < stepCount - 1 {
+                        Text("Continue")
+                    } else {
+                        Text("Protect with Face ID")
+                    }
+                }
+                .padding(.horizontal, 8)
             }
             .buttonStyle(.borderedProminent)
         }

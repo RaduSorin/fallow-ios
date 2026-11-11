@@ -78,3 +78,37 @@ struct SpecimenLabel: View {
             .foregroundStyle(Theme.inkMuted)
     }
 }
+
+extension Text {
+    /// The specimen-tag look for text that is not a fixed string (a month name, a date).
+    func specimen() -> some View {
+        self.font(.specimenLabel)
+            .textCase(.uppercase)
+            .tracking(0.8)
+            .foregroundStyle(Theme.inkMuted)
+    }
+}
+
+/// The month intention, set like a handwritten line with a sage rule beside it.
+struct IntentionLine: View {
+    let text: String
+    var sign: String?
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 6) {
+            Text(text)
+                .font(.notebookTitle(.title2).italic())
+                .foregroundStyle(Theme.moss)
+                .fixedSize(horizontal: false, vertical: true)
+            if let sign, !sign.isEmpty {
+                Text("The sign: \(sign)")
+                    .font(.subheadline)
+                    .foregroundStyle(Theme.inkMuted)
+            }
+        }
+        .padding(.leading, 12)
+        .overlay(alignment: .leading) {
+            Rectangle().fill(Theme.sage).frame(width: 2)
+        }
+    }
+}
