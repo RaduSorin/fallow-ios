@@ -135,7 +135,7 @@ struct SetupFlow: View {
         switch step {
         case 0: welcome
         case 1: reminders
-        case 2: backup
+        case 2: backupCard
         default: protection
         }
     }
@@ -198,7 +198,7 @@ struct SetupFlow: View {
         }
     }
 
-    private var backup: some View {
+    private var backupCard: some View {
         VStack(alignment: .leading, spacing: 14) {
             SpecimenLabel(text: "Backup")
             Text("Keep a copy in your iCloud?")
