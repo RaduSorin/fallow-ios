@@ -4,6 +4,7 @@ import SwiftUI
 struct TodayView: View {
     @Environment(Vault.self) private var vault
     @State private var planning: MonthPlan?
+    @State private var writing: Note?
 
     private var month: MonthID { .current() }
     private var plan: MonthPlan? { vault.contents?.plan(for: month) }
@@ -36,17 +37,57 @@ struct TodayView: View {
                     SpecimenLabel(text: "Tonight")
                     Text(friday.title.isEmpty ? String(localized: "A free Friday") : friday.title)
                         .font(.notebookTitle(.title3))
+                    Button {
+                        writing = Note(
+                            date: todayKey, month: month, kind: .friday,
+                            exerciseId: friday.exerciseId, title: friday.title.isEmpty ? nil : friday.title
+                        )
+                    } label: {
+                        Text("Write after the exercise")
+                    }
                 }
             }
 
-            NotebookCard {
-                SpecimenLabel(text: "Today")
-                Text("Your small rhythms for the day will live here.")
-                    .foregroundStyle(Theme.inkMuted)
-            }
+            RhythmsCard()
+
+            notesToday
         }
         .sheet(item: $planning) { plan in
             PlannerView(plan: plan)
+        }
+        .sheet(item: $writing) { note in
+            let exists = vault.contents?.notes.contains { $0.id == note.id } ?? false
+            NoteEditor(note: note, isNew: !exists)
+        }
+    }
+
+    private var notesToday: some View {
+        let notes = vault.contents?.notes(on: todayKey) ?? []
+        return NotebookCard {
+            HStack {
+                SpecimenLabel(text: "Notes")
+                Spacer()
+                NavigationLink {
+                    JournalView()
+                } label: {
+                    Text("Journal")
+                }
+                .font(.subheadline)
+            }
+            ForEach(notes) { note in
+                Button {
+                    writing = note
+                } label: {
+                    NoteRow(note: note)
+                }
+                .buttonStyle(.plain)
+                Divider().overlay(Theme.cardBorder)
+            }
+            Button {
+                writing = Note(date: todayKey, month: month, kind: .free)
+            } label: {
+                Label { Text("Write a note") } icon: { Image(systemName: "square.and.pencil") }
+            }
         }
     }
 }

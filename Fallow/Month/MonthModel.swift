@@ -126,6 +126,7 @@ struct Note: Codable, Equatable, Sendable, Identifiable {
     /// How strong the feeling was before and after, 0 to 10.
     var before: Int?
     var after: Int?
+    var fit: NoteFit?
     var text: String = ""
     /// Reflection answers by question key (see ReflectionQuestion).
     var answers: [String: String]?

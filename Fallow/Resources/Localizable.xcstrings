@@ -12,6 +12,36 @@
         }
       }
     },
+    "%lld → %lld": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$lld → %2$lld"
+          }
+        }
+      }
+    },
+    "0 is calm, 10 is as strong as it gets.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "0 e liniște, 10 e cel mai puternic."
+          }
+        }
+      }
+    },
+    "A few small things you want to do most days, like a walk without the phone. Missing a day costs nothing.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Câteva lucruri mici pe care vrei să le faci în cele mai multe zile, ca o plimbare fără telefon. O zi sărită nu costă nimic."
+          }
+        }
+      }
+    },
     "A free Friday": {
       "localizations": {
         "ro": {
@@ -52,6 +82,26 @@
         }
       }
     },
+    "Add": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Adaugă"
+          }
+        }
+      }
+    },
+    "After": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "După"
+          }
+        }
+      }
+    },
     "Back": {
       "localizations": {
         "ro": {
@@ -68,6 +118,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "Backup"
+          }
+        }
+      }
+    },
+    "Before": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Înainte"
           }
         }
       }
@@ -152,12 +212,62 @@
         }
       }
     },
+    "Delete note": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Șterge nota"
+          }
+        }
+      }
+    },
+    "Did it fit?": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "S-a potrivit?"
+          }
+        }
+      }
+    },
     "Did you see the sign?": {
       "localizations": {
         "ro": {
           "stringUnit": {
             "state": "translated",
             "value": "Ai văzut semnul?"
+          }
+        }
+      }
+    },
+    "Done": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Gata"
+          }
+        }
+      }
+    },
+    "Done today": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Făcut azi"
+          }
+        }
+      }
+    },
+    "Edit": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Editează"
           }
         }
       }
@@ -282,6 +392,16 @@
         }
       }
     },
+    "Friday": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vineri"
+          }
+        }
+      }
+    },
     "Fridays": {
       "localizations": {
         "ro": {
@@ -342,12 +462,42 @@
         }
       }
     },
+    "It fitted": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "S-a potrivit"
+          }
+        }
+      }
+    },
+    "Journal": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Jurnal"
+          }
+        }
+      }
+    },
     "Keep a copy in your iCloud?": {
       "localizations": {
         "ro": {
           "stringUnit": {
             "state": "translated",
             "value": "Păstrezi o copie în iCloud?"
+          }
+        }
+      }
+    },
+    "Keep it to two or three. Swipe left to remove one.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ține-le la două sau trei. Glisează la stânga ca să ștergi unul."
           }
         }
       }
@@ -442,12 +592,32 @@
         }
       }
     },
+    "No notes yet. They appear here after you write one.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Încă nu ai note. Apar aici după ce scrii una."
+          }
+        }
+      }
+    },
     "Not answered": {
       "localizations": {
         "ro": {
           "stringUnit": {
             "state": "translated",
             "value": "Fără răspuns"
+          }
+        }
+      }
+    },
+    "Not for me": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nu pentru mine"
           }
         }
       }
@@ -462,12 +632,52 @@
         }
       }
     },
+    "Not yet today": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Încă nu azi"
+          }
+        }
+      }
+    },
+    "Note": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Notă"
+          }
+        }
+      }
+    },
+    "Note how strong the feeling was": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Notează cât de puternică a fost emoția"
+          }
+        }
+      }
+    },
     "Note written": {
       "localizations": {
         "ro": {
           "stringUnit": {
             "state": "translated",
             "value": "Nota e scrisă"
+          }
+        }
+      }
+    },
+    "Notes": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Note"
           }
         }
       }
@@ -518,6 +728,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "Deschide jurnalul"
+          }
+        }
+      }
+    },
+    "Partly": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Parțial"
           }
         }
       }
@@ -642,6 +862,16 @@
         }
       }
     },
+    "Rhythms": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ritmuri"
+          }
+        }
+      }
+    },
     "Save": {
       "localizations": {
         "ro": {
@@ -698,6 +928,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "Cheia acestui jurnal lipsește de pe acest iPhone."
+          }
+        }
+      }
+    },
+    "The note could not be saved.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nota nu a putut fi salvată."
           }
         }
       }
@@ -782,6 +1022,16 @@
         }
       }
     },
+    "Tonight's exercise": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Exercițiul din seara asta"
+          }
+        }
+      }
+    },
     "Unlock": {
       "localizations": {
         "ro": {
@@ -842,6 +1092,16 @@
         }
       }
     },
+    "What do you want to remember?": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ce vrei să-ți amintești?"
+          }
+        }
+      }
+    },
     "What worked?": {
       "localizations": {
         "ro": {
@@ -858,6 +1118,36 @@
           "stringUnit": {
             "state": "translated",
             "value": "Când să-ți amintească Fallow?"
+          }
+        }
+      }
+    },
+    "Worry list": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lista de griji"
+          }
+        }
+      }
+    },
+    "Write a note": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Scrie o notă"
+          }
+        }
+      }
+    },
+    "Write after the exercise": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Scrie după exercițiu"
           }
         }
       }
@@ -922,16 +1212,6 @@
         }
       }
     },
-    "Your small rhythms for the day will live here.": {
-      "localizations": {
-        "ro": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Aici vor sta ritmurile mici ale zilei."
-          }
-        }
-      }
-    },
     "e.g. I'm in bed before 11": {
       "localizations": {
         "ro": {
@@ -948,6 +1228,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "ex. Îmi fac loc pentru încetineală"
+          }
+        }
+      }
+    },
+    "e.g. Walk without the phone": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ex. Plimbare fără telefon"
           }
         }
       }
