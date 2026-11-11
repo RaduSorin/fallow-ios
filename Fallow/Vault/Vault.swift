@@ -16,6 +16,7 @@ final class Vault {
     private(set) var state: State
     private(set) var contents: VaultContents?
     private(set) var lastError: VaultError?
+    private(set) var isUnlocking = false
 
     @ObservationIgnored private var key: SymmetricKey?
     @ObservationIgnored private let keyStore: any VaultKeyStore
@@ -47,7 +48,9 @@ final class Vault {
     }
 
     func unlock(reason: String) async {
-        guard state == .locked else { return }
+        guard state == .locked, !isUnlocking else { return }
+        isUnlocking = true
+        defer { isUnlocking = false }
         do {
             let loaded = try await keyStore.loadKey(reason: reason)
             let sealed = try Data(contentsOf: fileURL)

@@ -3,6 +3,7 @@ import SwiftUI
 /// Shown whenever the vault is locked. Asks for Face ID straight away.
 struct LockView: View {
     @Environment(Vault.self) private var vault
+    @Environment(\.scenePhase) private var scenePhase
 
     var body: some View {
         VStack(spacing: 18) {
@@ -25,11 +26,15 @@ struct LockView: View {
                     .padding(.horizontal, 8)
             }
             .buttonStyle(.borderedProminent)
+            .disabled(vault.isUnlocking)
             Spacer()
         }
         .frame(maxWidth: .infinity)
         .background(Theme.paper)
-        .task { await unlock() }
+        .task(id: scenePhase) {
+            // Ask for Face ID only once the app is really on screen.
+            if scenePhase == .active { await unlock() }
+        }
     }
 
     private var errorMessage: LocalizedStringResource? {
