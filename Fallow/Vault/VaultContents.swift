@@ -12,6 +12,8 @@ struct VaultContents: Codable, Equatable, Sendable {
     /// Day ("2026-11-13") to the ids of the rhythms kept that day.
     var rhythmLog: [String: [String]] = [:]
     var exercises: [Exercise] = []
+    /// The herbarium (nil until it starts, on the first save or unlock).
+    var herbarium: HerbBook?
 
     init(createdAt: Date, settings: VaultSettings) {
         self.createdAt = createdAt
@@ -28,6 +30,7 @@ struct VaultContents: Codable, Equatable, Sendable {
         rhythms = try c.decodeIfPresent([Rhythm].self, forKey: .rhythms) ?? []
         rhythmLog = try c.decodeIfPresent([String: [String]].self, forKey: .rhythmLog) ?? [:]
         exercises = try c.decodeIfPresent([Exercise].self, forKey: .exercises) ?? []
+        herbarium = try c.decodeIfPresent(HerbBook.self, forKey: .herbarium)
     }
 
     func plan(for month: MonthID) -> MonthPlan? {

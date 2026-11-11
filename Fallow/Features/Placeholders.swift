@@ -1,12 +1,5 @@
 import SwiftUI
 
-/// Temporary screens. Each one is replaced by its own feature PR.
-struct HerbariumView: View {
-    var body: some View {
-        ComingSoon(text: "Pressed plants you collect along the way.")
-    }
-}
-
 /// A scrolling page on notebook paper.
 struct NotebookPage<Content: View>: View {
     @ViewBuilder var content: Content

@@ -2,6 +2,16 @@
   "sourceLanguage": "en",
   "version": "1.0",
   "strings": {
+    "%@, closed with the month's reflection.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%@, încheiat cu reflecția lunii."
+          }
+        }
+      }
+    },
     "%lld min": {
       "localizations": {
         "ro": {
@@ -18,6 +28,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "%1$lld din %2$lld"
+          }
+        }
+      }
+    },
+    "%lld pressed": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld presate"
           }
         }
       }
@@ -42,6 +62,116 @@
         }
       }
     },
+    "12 worry lists, in any weeks.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "12 liste de griji, în orice săptămâni."
+          }
+        }
+      }
+    },
+    "15 evenings for me": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "15 seri pentru mine"
+          }
+        }
+      }
+    },
+    "15 notes after exercises, any time.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "15 note după exerciții, oricând."
+          }
+        }
+      }
+    },
+    "3 months planned, any of them.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "3 luni planificate, oricare."
+          }
+        }
+      }
+    },
+    "30 evenings for me": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "30 de seri pentru mine"
+          }
+        }
+      }
+    },
+    "30 notes after exercises, any time.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "30 de note după exerciții, oricând."
+          }
+        }
+      }
+    },
+    "5 evenings for me": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "5 seri pentru mine"
+          }
+        }
+      }
+    },
+    "5 notes after exercises, any time.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "5 note după exerciții, oricând."
+          }
+        }
+      }
+    },
+    "5 of your own exercises in the bank, written or changed.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "5 exerciții ale tale în bancă, scrise sau schimbate."
+          }
+        }
+      }
+    },
+    "5 worry lists, in any weeks.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "5 liste de griji, în orice săptămâni."
+          }
+        }
+      }
+    },
+    "A Friday left free. Rest is an exercise too.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "O vineri lăsată liberă. Și odihna e un exercițiu."
+          }
+        }
+      }
+    },
     "A few small things you want to do most days, like a walk without the phone. Missing a day costs nothing.": {
       "localizations": {
         "ro": {
@@ -58,6 +188,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "O vineri liberă"
+          }
+        }
+      }
+    },
+    "A free evening": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Seară liberă"
           }
         }
       }
@@ -82,6 +222,36 @@
         }
       }
     },
+    "A note for each exercise of the 28-day program, in any order and at your own pace.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Câte o notă la fiecare exercițiu din programul de 28 de zile, în ce ordine și în cât timp vrei."
+          }
+        }
+      }
+    },
+    "A plant for the herbarium": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "O plantă pentru ierbar"
+          }
+        }
+      }
+    },
+    "A pressed plant for showing up, never for how well it went. Nothing is ever lost.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "O plantă presată pentru că ai venit, niciodată pentru cât de bine a mers. Nimic nu se pierde."
+          }
+        }
+      }
+    },
     "A quiet minute": {
       "localizations": {
         "ro": {
@@ -98,6 +268,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "O pauză liniștită, câte o lună pe rând."
+          }
+        }
+      }
+    },
+    "A small step chosen in the worry list.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Un pas mic ales în lista de griji."
           }
         }
       }
@@ -298,6 +478,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "Plastilină: %@"
+          }
+        }
+      }
+    },
+    "Clear water": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Apă limpede"
           }
         }
       }
@@ -542,12 +732,42 @@
         }
       }
     },
+    "First Friday": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Prima vineri"
+          }
+        }
+      }
+    },
+    "First intention": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Prima intenție"
+          }
+        }
+      }
+    },
     "First step: %@": {
       "localizations": {
         "ro": {
           "stringUnit": {
             "state": "translated",
             "value": "Primul pas: %@"
+          }
+        }
+      }
+    },
+    "First steps": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Primii pași"
           }
         }
       }
@@ -682,6 +902,16 @@
         }
       }
     },
+    "I asked": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Am întrebat"
+          }
+        }
+      }
+    },
     "Import a pack file": {
       "localizations": {
         "ro": {
@@ -718,6 +948,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "Intenția"
+          }
+        }
+      }
+    },
+    "It comes on its own, doing what you usually do in Fallow.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vine de la sine, făcând ce faci de obicei în Fallow."
           }
         }
       }
@@ -772,6 +1012,26 @@
         }
       }
     },
+    "Later": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mai târziu"
+          }
+        }
+      }
+    },
+    "Lighter": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mai ușor"
+          }
+        }
+      }
+    },
     "Lock it with Face ID.": {
       "localizations": {
         "ro": {
@@ -808,6 +1068,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "Privește înapoi la luna trecută și alege intenția următoare."
+          }
+        }
+      }
+    },
+    "Looking back": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Privire înapoi"
           }
         }
       }
@@ -872,6 +1142,16 @@
         }
       }
     },
+    "Months": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Luni"
+          }
+        }
+      }
+    },
     "Morning": {
       "localizations": {
         "ro": {
@@ -912,6 +1192,26 @@
         }
       }
     },
+    "My bank": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Banca mea"
+          }
+        }
+      }
+    },
+    "My exercise": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Exercițiul meu"
+          }
+        }
+      }
+    },
     "My exercises": {
       "localizations": {
         "ro": {
@@ -928,6 +1228,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "Ale mele"
+          }
+        }
+      }
+    },
+    "My own lines": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rândurile mele"
           }
         }
       }
@@ -1152,6 +1462,16 @@
         }
       }
     },
+    "Over time": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cu timpul"
+          }
+        }
+      }
+    },
     "Partly": {
       "localizations": {
         "ro": {
@@ -1202,12 +1522,22 @@
         }
       }
     },
-    "Pressed plants you collect along the way.": {
+    "Press into the herbarium": {
       "localizations": {
         "ro": {
           "stringUnit": {
             "state": "translated",
-            "value": "Plantele presate pe care le aduni pe drum."
+            "value": "Presează în ierbar"
+          }
+        }
+      }
+    },
+    "Pressed on %@": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Presată pe %@"
           }
         }
       }
@@ -1218,6 +1548,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "Confidențialitate"
+          }
+        }
+      }
+    },
+    "Program": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Program"
           }
         }
       }
@@ -1322,6 +1662,16 @@
         }
       }
     },
+    "Show when a plant comes": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Arată când vine o plantă"
+          }
+        }
+      }
+    },
     "Small steps for the biggest one": {
       "localizations": {
         "ro": {
@@ -1348,6 +1698,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "Împarte ce te apasă în piatră și plastilină."
+          }
+        }
+      }
+    },
+    "St John's wort": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "sunătoare"
           }
         }
       }
@@ -1412,6 +1772,16 @@
         }
       }
     },
+    "Stone and clay": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Piatră și plastilină"
+          }
+        }
+      }
+    },
     "Stone or clay?": {
       "localizations": {
         "ro": {
@@ -1428,6 +1798,36 @@
           "stringUnit": {
             "state": "translated",
             "value": "Piatră: %@"
+          }
+        }
+      }
+    },
+    "Surprise": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Surpriză"
+          }
+        }
+      }
+    },
+    "Surprises": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Surprize"
+          }
+        }
+      }
+    },
+    "The 28 days": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cele 28 de zile"
           }
         }
       }
@@ -1472,6 +1872,26 @@
         }
       }
     },
+    "The first exercise you wrote or changed in your bank.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Primul exercițiu scris sau schimbat de tine în bancă."
+          }
+        }
+      }
+    },
+    "The good parent": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Părintele bun"
+          }
+        }
+      }
+    },
     "The intention and the Fridays for the month ahead.": {
       "localizations": {
         "ro": {
@@ -1508,6 +1928,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "Lista nu a putut fi salvată."
+          }
+        }
+      }
+    },
+    "The month's sign": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Semnul lunii"
           }
         }
       }
@@ -1562,6 +1992,26 @@
         }
       }
     },
+    "The small step": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pasul mic"
+          }
+        }
+      }
+    },
+    "The three gentle questions, answered.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cele trei întrebări blânde, completate."
+          }
+        }
+      }
+    },
     "This deletes your journal and its key from this iPhone. It cannot be undone.": {
       "localizations": {
         "ro": {
@@ -1598,6 +2048,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "Pachetul nu are exerciții."
+          }
+        }
+      }
+    },
+    "Three seasons": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Trei anotimpuri"
           }
         }
       }
@@ -1688,6 +2148,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "Bun venit"
+          }
+        }
+      }
+    },
+    "Welcome back": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bine ai revenit"
           }
         }
       }
@@ -1802,6 +2272,16 @@
         }
       }
     },
+    "When off, new plants wait quietly in the herbarium.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Când e oprit, plantele noi așteaptă în liniște în ierbar."
+          }
+        }
+      }
+    },
     "When should Fallow remind you?": {
       "localizations": {
         "ro": {
@@ -1882,6 +2362,26 @@
         }
       }
     },
+    "You came back to Fallow after a pause of more than three weeks.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Te-ai întors în Fallow după o pauză de peste trei săptămâni."
+          }
+        }
+      }
+    },
+    "You made time for yourself.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ți-ai făcut timp pentru tine."
+          }
+        }
+      }
+    },
     "You reached the target you set.": {
       "localizations": {
         "ro": {
@@ -1892,12 +2392,82 @@
         }
       }
     },
+    "You said in the month's reflection that you saw the sign you chose.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ai spus în reflecția lunii că ai văzut semnul pe care ți l-ai ales."
+          }
+        }
+      }
+    },
     "Your bank is empty. Write your own exercises, or import a pack file someone shared with you.": {
       "localizations": {
         "ro": {
           "stringUnit": {
             "state": "translated",
             "value": "Banca ta e goală. Scrie-ți propriile exerciții sau importă un fișier cu un pachet primit de la cineva."
+          }
+        }
+      }
+    },
+    "Your first conversation with Claude.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Prima discuție cu Claude."
+          }
+        }
+      }
+    },
+    "Your first free note in the journal.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Prima notă liberă în jurnal."
+          }
+        }
+      }
+    },
+    "Your first month planned, with its intention.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Prima lună planificată, cu intenția ei."
+          }
+        }
+      }
+    },
+    "Your first month's reflection.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Prima reflecție a lunii."
+          }
+        }
+      }
+    },
+    "Your first note after a Friday exercise.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Prima notă după un exercițiu de vineri."
+          }
+        }
+      }
+    },
+    "Your first worry list taken to the end.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Prima listă de griji dusă până la capăt."
           }
         }
       }
@@ -1942,6 +2512,66 @@
         }
       }
     },
+    "bellflower": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "clopoțel"
+          }
+        }
+      }
+    },
+    "birch": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "mesteacăn"
+          }
+        }
+      }
+    },
+    "chamomile": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "mușețel"
+          }
+        }
+      }
+    },
+    "clover": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "trifoi"
+          }
+        }
+      }
+    },
+    "daisy": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "margaretă"
+          }
+        }
+      }
+    },
+    "dandelion": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "păpădie"
+          }
+        }
+      }
+    },
     "e.g. I'm in bed before 11": {
       "localizations": {
         "ro": {
@@ -1968,6 +2598,226 @@
           "stringUnit": {
             "state": "translated",
             "value": "ex. Plimbare fără telefon"
+          }
+        }
+      }
+    },
+    "fern": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ferigă"
+          }
+        }
+      }
+    },
+    "fir": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "brad"
+          }
+        }
+      }
+    },
+    "forget-me-not": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "nu-mă-uita"
+          }
+        }
+      }
+    },
+    "ginkgo": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ginkgo"
+          }
+        }
+      }
+    },
+    "grapevine": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "viță"
+          }
+        }
+      }
+    },
+    "horsetail": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "coada-calului"
+          }
+        }
+      }
+    },
+    "lavender": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "lavandă"
+          }
+        }
+      }
+    },
+    "lily of the valley": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "lăcrămioară"
+          }
+        }
+      }
+    },
+    "linden": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "tei"
+          }
+        }
+      }
+    },
+    "maple": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "arțar"
+          }
+        }
+      }
+    },
+    "mistletoe": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "vâsc"
+          }
+        }
+      }
+    },
+    "oak": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "stejar"
+          }
+        }
+      }
+    },
+    "poppy": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "mac"
+          }
+        }
+      }
+    },
+    "rosemary": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "rozmarin"
+          }
+        }
+      }
+    },
+    "snowdrop": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "ghiocel"
+          }
+        }
+      }
+    },
+    "squill": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "viorea"
+          }
+        }
+      }
+    },
+    "sunflower": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "floarea-soarelui"
+          }
+        }
+      }
+    },
+    "tulip": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "lalea"
+          }
+        }
+      }
+    },
+    "wheat": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "spic"
+          }
+        }
+      }
+    },
+    "wild rose": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "măceș"
+          }
+        }
+      }
+    },
+    "wild strawberry": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "fragă"
+          }
+        }
+      }
+    },
+    "wreath": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "cunună"
           }
         }
       }

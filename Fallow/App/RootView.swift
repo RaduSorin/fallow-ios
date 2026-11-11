@@ -39,9 +39,38 @@ struct RootView: View {
 }
 
 struct MainTabs: View {
+    @Environment(Vault.self) private var vault
     @State private var selection: AppTab = .today
+    /// The plant chosen in the moment, to land in the herbarium.
+    @State private var landing: String?
+    /// Plants put off with "Later" while the app is open: they wait in the herbarium.
+    @State private var later: Set<String> = []
+
+    /// The plant to show in the moment now, if any.
+    private var coming: Herb? {
+        guard selection != .herbarium, landing == nil,
+              let book = vault.contents?.herbarium, book.quiet != true,
+              let id = book.pending.first(where: { !later.contains($0) }) else { return nil }
+        return Herb.find(id)
+    }
 
     var body: some View {
+        tabs
+            .overlay {
+                if let herb = coming {
+                    HerbMoment(herb: herb) {
+                        landing = herb.id
+                        selection = .herbarium
+                    } onLater: {
+                        withAnimation { _ = later.insert(herb.id) }
+                    }
+                    .id(herb.id)
+                    .transition(.opacity)
+                }
+            }
+    }
+
+    private var tabs: some View {
         TabView(selection: $selection) {
             ForEach(AppTab.allCases) { tab in
                 NavigationStack {
@@ -59,7 +88,7 @@ struct MainTabs: View {
         switch tab {
         case .today: TodayView()
         case .month: MonthView()
-        case .herbarium: HerbariumView()
+        case .herbarium: HerbariumView(landing: $landing)
         case .me: SettingsView()
         }
     }
