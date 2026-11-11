@@ -7,6 +7,8 @@ struct PlannerView: View {
     @State private var draft: MonthPlan
     @State private var failed = false
 
+    private var bank: [Exercise] { vault.contents?.sortedExercises ?? [] }
+
     init(plan: MonthPlan) {
         _draft = State(initialValue: plan)
     }
@@ -55,10 +57,38 @@ struct PlannerView: View {
                     Section {
                         ForEach($draft.fridays) { $friday in
                             LabeledContent {
-                                TextField(text: $friday.title) {
-                                    Text("Free")
+                                HStack {
+                                    TextField(text: Binding(
+                                        get: { friday.title },
+                                        set: { value in
+                                            friday.title = value
+                                            // Typing something else turns it into a free theme.
+                                            if vault.contents?.exercise(friday.exerciseId)?.title != value {
+                                                friday.exerciseId = nil
+                                            }
+                                        }
+                                    )) {
+                                        Text("Free")
+                                    }
+                                    .multilineTextAlignment(.trailing)
+                                    if !bank.isEmpty {
+                                        Menu {
+                                            Button {
+                                                friday.exerciseId = nil
+                                                friday.title = ""
+                                            } label: { Text("Free") }
+                                            ForEach(bank) { exercise in
+                                                Button {
+                                                    friday.exerciseId = exercise.id
+                                                    friday.title = exercise.title
+                                                } label: { Text(exercise.title) }
+                                            }
+                                        } label: {
+                                            Image(systemName: friday.exerciseId == nil ? "books.vertical" : "books.vertical.fill")
+                                        }
+                                        .accessibilityLabel(Text("Choose from your exercises"))
+                                    }
                                 }
-                                .multilineTextAlignment(.trailing)
                             } label: {
                                 Text(friday.dayName)
                             }
@@ -67,6 +97,9 @@ struct PlannerView: View {
                         Text("Fridays")
                     } footer: {
                         Text("A theme or an exercise for each Friday evening. Leave one empty to keep it free.")
+                        if bank.isEmpty {
+                            Text("Add exercises to your bank in Me to pick them here.")
+                        }
                     }
                 }
             }

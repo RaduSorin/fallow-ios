@@ -2,6 +2,16 @@
   "sourceLanguage": "en",
   "version": "1.0",
   "strings": {
+    "%lld min": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld min"
+          }
+        }
+      }
+    },
     "%lld of %lld": {
       "localizations": {
         "ro": {
@@ -112,6 +122,16 @@
         }
       }
     },
+    "Add exercises to your bank in Me to pick them here.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Adaugă exerciții în bancă, din Eu, ca să le alegi aici."
+          }
+        }
+      }
+    },
     "After": {
       "localizations": {
         "ro": {
@@ -172,6 +192,16 @@
         }
       }
     },
+    "Category, e.g. Self-compassion": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Categorie, ex. Compasiune de sine"
+          }
+        }
+      }
+    },
     "Change language": {
       "localizations": {
         "ro": {
@@ -192,12 +222,42 @@
         }
       }
     },
+    "Changed": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Modificat"
+          }
+        }
+      }
+    },
+    "Changed exercises stay as you wrote them when the pack is imported again.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Exercițiile modificate rămân cum le-ai scris când pachetul e importat din nou."
+          }
+        }
+      }
+    },
     "Choose an intention for the month, keep a few small rhythms and look back at the end. What you write stays encrypted on this iPhone.": {
       "localizations": {
         "ro": {
           "stringUnit": {
             "state": "translated",
             "value": "Alege o intenție pentru lună, păstrează câteva ritmuri mici și privește înapoi la final. Ce scrii rămâne criptat pe acest iPhone."
+          }
+        }
+      }
+    },
+    "Choose from your exercises": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Alege din exercițiile tale"
           }
         }
       }
@@ -272,12 +332,32 @@
         }
       }
     },
+    "Delete exercise": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Șterge exercițiul"
+          }
+        }
+      }
+    },
     "Delete note": {
       "localizations": {
         "ro": {
           "stringUnit": {
             "state": "translated",
             "value": "Șterge nota"
+          }
+        }
+      }
+    },
+    "Delete this exercise?": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ștergi exercițiul?"
           }
         }
       }
@@ -332,6 +412,16 @@
         }
       }
     },
+    "Edit exercise": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Editează exercițiul"
+          }
+        }
+      }
+    },
     "Encrypted iCloud backup": {
       "localizations": {
         "ro": {
@@ -378,6 +468,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "Săptămâna asta totul e piatră. E în regulă: întrebările Părintelui Bun tot ajută."
+          }
+        }
+      }
+    },
+    "Exercises": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Exerciții"
           }
         }
       }
@@ -512,12 +612,32 @@
         }
       }
     },
+    "Fridays that used it keep its title.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vinerile care îl foloseau își păstrează titlul."
+          }
+        }
+      }
+    },
     "Fridays with a note": {
       "localizations": {
         "ro": {
           "stringUnit": {
             "state": "translated",
             "value": "Vineri cu notă"
+          }
+        }
+      }
+    },
+    "From %@": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Din %@"
           }
         }
       }
@@ -558,6 +678,26 @@
           "stringUnit": {
             "state": "translated",
             "value": "După ce vei ști că luna a mers bine? Te întreb la final."
+          }
+        }
+      }
+    },
+    "Import a pack file": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Importă un fișier cu pachet"
+          }
+        }
+      }
+    },
+    "Imported %@: %lld new exercises.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Am importat %1$@: %2$lld exerciții noi."
           }
         }
       }
@@ -772,12 +912,52 @@
         }
       }
     },
+    "My exercises": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Exercițiile mele"
+          }
+        }
+      }
+    },
+    "My own": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ale mele"
+          }
+        }
+      }
+    },
+    "New exercise": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Exercițiu nou"
+          }
+        }
+      }
+    },
     "No Friday target": {
       "localizations": {
         "ro": {
           "stringUnit": {
             "state": "translated",
             "value": "Fără țintă de vineri"
+          }
+        }
+      }
+    },
+    "No duration": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fără durată"
           }
         }
       }
@@ -938,6 +1118,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "Câte un lucru pe rând. Ajung formulări scurte, ca „termenul de la serviciu”."
+          }
+        }
+      }
+    },
+    "Open the exercise": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Deschide exercițiul"
           }
         }
       }
@@ -1202,6 +1392,16 @@
         }
       }
     },
+    "Steps": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pași"
+          }
+        }
+      }
+    },
     "Stone": {
       "localizations": {
         "ro": {
@@ -1258,6 +1458,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "Termenul de la serviciu\nProgramarea la dentist\nVremea de weekend"
+          }
+        }
+      }
+    },
+    "The exercise could not be saved.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Exercițiul nu a putut fi salvat."
           }
         }
       }
@@ -1362,12 +1572,52 @@
         }
       }
     },
+    "This exercise is no longer in your bank.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Exercițiul nu mai e în banca ta."
+          }
+        }
+      }
+    },
+    "This file is not an exercise pack.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fișierul nu e un pachet de exerciții."
+          }
+        }
+      }
+    },
+    "This pack has no exercises.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pachetul nu are exerciții."
+          }
+        }
+      }
+    },
     "Time": {
       "localizations": {
         "ro": {
           "stringUnit": {
             "state": "translated",
             "value": "Ora"
+          }
+        }
+      }
+    },
+    "Title": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Titlu"
           }
         }
       }
@@ -1532,6 +1782,16 @@
         }
       }
     },
+    "What to do. Leave an empty line between steps.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ce ai de făcut. Lasă un rând gol între pași."
+          }
+        }
+      }
+    },
     "What worked?": {
       "localizations": {
         "ro": {
@@ -1582,6 +1842,16 @@
         }
       }
     },
+    "Write an exercise": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Scrie un exercițiu"
+          }
+        }
+      }
+    },
     "Write as much or as little as you like": {
       "localizations": {
         "ro": {
@@ -1618,6 +1888,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "Ai ajuns la ținta propusă."
+          }
+        }
+      }
+    },
+    "Your bank is empty. Write your own exercises, or import a pack file someone shared with you.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Banca ta e goală. Scrie-ți propriile exerciții sau importă un fișier cu un pachet primit de la cineva."
           }
         }
       }
