@@ -21,6 +21,8 @@ final class Vault {
     @ObservationIgnored private var key: SymmetricKey?
     @ObservationIgnored private let keyStore: any VaultKeyStore
     @ObservationIgnored let fileURL: URL
+    /// Called with the new contents after setup, unlock and every change (the app reschedules reminders).
+    @ObservationIgnored var onChange: ((VaultContents) -> Void)?
 
     init(keyStore: any VaultKeyStore, fileURL: URL) {
         self.keyStore = keyStore
@@ -45,6 +47,7 @@ final class Vault {
         contents = fresh
         lastError = nil
         state = .unlocked
+        onChange?(fresh)
     }
 
     func unlock(reason: String) async {
@@ -59,6 +62,7 @@ final class Vault {
             key = loaded
             lastError = nil
             state = .unlocked
+            if let contents { onChange?(contents) }
         } catch let error as VaultError {
             lastError = error
         } catch {
@@ -79,6 +83,7 @@ final class Vault {
         change(&next)
         try write(next, key: key)
         contents = next
+        onChange?(next)
     }
 
     /// Deletes the key and the file. Nothing can be recovered afterwards.

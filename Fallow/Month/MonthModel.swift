@@ -130,6 +130,8 @@ struct Note: Codable, Equatable, Sendable, Identifiable {
     var text: String = ""
     /// Reflection answers by question key (see ReflectionQuestion).
     var answers: [String: String]?
+    /// The worry list's parts (kind .worry).
+    var worry: WorryList?
     var createdAt: Date = .now
 }
 

@@ -62,6 +62,26 @@
         }
       }
     },
+    "A new month": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "O lună nouă"
+          }
+        }
+      }
+    },
+    "A quiet minute": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Un minut liniștit"
+          }
+        }
+      }
+    },
     "A quiet pause, one month at a time.": {
       "localizations": {
         "ro": {
@@ -98,6 +118,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "După"
+          }
+        }
+      }
+    },
+    "Answer the way a kind, steady parent would answer a child who is worried.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Răspunde cum i-ar răspunde un părinte blând și calm unui copil îngrijorat."
           }
         }
       }
@@ -178,6 +208,36 @@
           "stringUnit": {
             "state": "translated",
             "value": "Alege o intenție, semnul că a mers bine și ce rost are fiecare vineri."
+          }
+        }
+      }
+    },
+    "Clay": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Plastilină"
+          }
+        }
+      }
+    },
+    "Clay is up to you, stone is not. When unsure, ask: which part of this can I influence?": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Plastilina depinde de tine, piatra nu. Când nu știi, întreabă-te: ce parte din asta pot influența?"
+          }
+        }
+      }
+    },
+    "Clay: %@": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Plastilină: %@"
           }
         }
       }
@@ -312,6 +372,16 @@
         }
       }
     },
+    "Everything is stone this week. That is fine: the Good Parent's questions still help.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Săptămâna asta totul e piatră. E în regulă: întrebările Părintelui Bun tot ajută."
+          }
+        }
+      }
+    },
     "Face ID did not work. Try again.": {
       "localizations": {
         "ro": {
@@ -372,6 +442,16 @@
         }
       }
     },
+    "First step: %@": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Primul pas: %@"
+          }
+        }
+      }
+    },
     "Four questions about what changed and what worked, then the next intention.": {
       "localizations": {
         "ro": {
@@ -402,6 +482,26 @@
         }
       }
     },
+    "Friday evening": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vineri seara"
+          }
+        }
+      }
+    },
+    "Friday evening, 20:00": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vineri seara, 20:00"
+          }
+        }
+      }
+    },
     "Fridays": {
       "localizations": {
         "ro": {
@@ -422,12 +522,32 @@
         }
       }
     },
+    "Good morning": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bună dimineața"
+          }
+        }
+      }
+    },
     "Herbarium": {
       "localizations": {
         "ro": {
           "stringUnit": {
             "state": "translated",
             "value": "Ierbar"
+          }
+        }
+      }
+    },
+    "How did today go? A line is enough.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cum a fost azi? Un rând ajunge."
           }
         }
       }
@@ -542,12 +662,52 @@
         }
       }
     },
+    "Look back on last month and choose the next intention.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Privește înapoi la luna trecută și alege intenția următoare."
+          }
+        }
+      }
+    },
     "Me": {
       "localizations": {
         "ro": {
           "stringUnit": {
             "state": "translated",
             "value": "Eu"
+          }
+        }
+      }
+    },
+    "Monday worry list": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lista de griji de luni"
+          }
+        }
+      }
+    },
+    "Monday worry list, 8:30": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lista de griji, luni 8:30"
+          }
+        }
+      }
+    },
+    "Monday: sort the week's worries": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Luni: sortează grijile săptămânii"
           }
         }
       }
@@ -562,12 +722,52 @@
         }
       }
     },
+    "Monthly reflection, first Monday": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Reflecția lunii, prima zi de luni"
+          }
+        }
+      }
+    },
     "Morning": {
       "localizations": {
         "ro": {
           "stringUnit": {
             "state": "translated",
             "value": "Dimineața"
+          }
+        }
+      }
+    },
+    "Move down": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mută mai jos"
+          }
+        }
+      }
+    },
+    "Move up": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mută mai sus"
+          }
+        }
+      }
+    },
+    "Move what weighs most to the top. Then break the biggest one into small steps.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mută sus ce apasă cel mai tare. Apoi împarte-l pe cel mai mare în pași mici."
           }
         }
       }
@@ -722,12 +922,42 @@
         }
       }
     },
+    "One small step": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Un pas mic"
+          }
+        }
+      }
+    },
+    "One thing per line. Short words are enough, like \"the deadline at work\".": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Câte un lucru pe rând. Ajung formulări scurte, ca „termenul de la serviciu”."
+          }
+        }
+      }
+    },
     "Open your journal": {
       "localizations": {
         "ro": {
           "stringUnit": {
             "state": "translated",
             "value": "Deschide jurnalul"
+          }
+        }
+      }
+    },
+    "Or write your own": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sau scrie-l pe al tău"
           }
         }
       }
@@ -852,6 +1082,16 @@
         }
       }
     },
+    "Reminders are set on this iPhone only and never show what you wrote.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Mementourile sunt doar pe acest iPhone și nu arată niciodată ce ai scris."
+          }
+        }
+      }
+    },
     "Reminders stay on your phone. No server knows when they ring.": {
       "localizations": {
         "ro": {
@@ -882,6 +1122,46 @@
         }
       }
     },
+    "Save to journal": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Salvează în jurnal"
+          }
+        }
+      }
+    },
+    "Small steps for the biggest one": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pași mici pentru cel mai mare"
+          }
+        }
+      }
+    },
+    "Something you can do in ten minutes or less, this week.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ceva ce poți face în cel mult zece minute, săptămâna asta."
+          }
+        }
+      }
+    },
+    "Sort what weighs on you into stone and clay.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Împarte ce te apasă în piatră și plastilină."
+          }
+        }
+      }
+    },
     "Start the reflection": {
       "localizations": {
         "ro": {
@@ -892,12 +1172,92 @@
         }
       }
     },
+    "Start the worry list": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Începe lista de griji"
+          }
+        }
+      }
+    },
+    "Step %lld": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pasul %lld"
+          }
+        }
+      }
+    },
     "Step %lld of %lld": {
       "localizations": {
         "ro": {
           "stringUnit": {
             "state": "translated",
             "value": "Pasul %1$lld din %2$lld"
+          }
+        }
+      }
+    },
+    "Stone": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Piatră"
+          }
+        }
+      }
+    },
+    "Stone or clay?": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Piatră sau plastilină?"
+          }
+        }
+      }
+    },
+    "Stone: %@": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Piatră: %@"
+          }
+        }
+      }
+    },
+    "The Good Parent": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Părintele Bun"
+          }
+        }
+      }
+    },
+    "The clay, biggest first": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Plastilina, de la mare la mic"
+          }
+        }
+      }
+    },
+    "The deadline at work\nThe dentist appointment\nThe weekend weather": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Termenul de la serviciu\nProgramarea la dentist\nVremea de weekend"
           }
         }
       }
@@ -928,6 +1288,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "Cheia acestui jurnal lipsește de pe acest iPhone."
+          }
+        }
+      }
+    },
+    "The list could not be saved.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lista nu a putut fi salvată."
           }
         }
       }
@@ -1032,6 +1402,16 @@
         }
       }
     },
+    "Tonight's exercise is ready when you are.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Exercițiul din seara asta te așteaptă când ești gata."
+          }
+        }
+      }
+    },
     "Unlock": {
       "localizations": {
         "ro": {
@@ -1058,6 +1438,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "Bun venit"
+          }
+        }
+      }
+    },
+    "What I need: %@": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Am nevoie de: %@"
           }
         }
       }
@@ -1092,12 +1482,52 @@
         }
       }
     },
+    "What do I need right now?": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "De ce am nevoie acum?"
+          }
+        }
+      }
+    },
     "What do you want to remember?": {
       "localizations": {
         "ro": {
           "stringUnit": {
             "state": "translated",
             "value": "Ce vrei să-ți amintești?"
+          }
+        }
+      }
+    },
+    "What is happening?": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ce se întâmplă?"
+          }
+        }
+      }
+    },
+    "What is hardest about it?": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ce e cel mai greu?"
+          }
+        }
+      }
+    },
+    "What is on your mind?": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ce îți stă pe creier?"
           }
         }
       }
@@ -1162,6 +1592,16 @@
         }
       }
     },
+    "Write down what weighs on you, then sort it into stone and clay.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Scrie ce te apasă, apoi împarte în piatră și plastilină."
+          }
+        }
+      }
+    },
     "Yes": {
       "localizations": {
         "ro": {
@@ -1188,6 +1628,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "Intenția ta"
+          }
+        }
+      }
+    },
+    "Your intention for the month is waiting.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Intenția lunii te așteaptă."
           }
         }
       }
