@@ -25,7 +25,20 @@ enum AppTab: String, CaseIterable, Identifiable {
     }
 }
 
+/// Decides what to show: first-run setup, the lock screen or the app.
 struct RootView: View {
+    @Environment(Vault.self) private var vault
+
+    var body: some View {
+        switch vault.state {
+        case .notSetUp: SetupFlow()
+        case .locked: LockView()
+        case .unlocked: MainTabs()
+        }
+    }
+}
+
+struct MainTabs: View {
     @State private var selection: AppTab = .today
 
     var body: some View {
@@ -54,4 +67,5 @@ struct RootView: View {
 
 #Preview {
     RootView()
+        .environment(Vault(keyStore: InMemoryKeyStore(), fileURL: URL.temporaryDirectory.appending(path: "preview.fallow")))
 }
