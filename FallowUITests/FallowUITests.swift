@@ -251,15 +251,17 @@ final class FallowUITests: XCTestCase {
         finishSetup()
         planMonth("A first intention")
         tab("Herbarium").tap()
-        // It lands with a short animation, then counts as pressed.
-        // The count is set in capitals ("1 PRESSED").
-        let count = app.descendants(matching: .any)
-            .matching(NSPredicate(format: "label CONTAINS[c] %@", "1 pressed")).firstMatch
+        // Plants land one after another and the page follows them, so it can end lower down
+        // (a free Friday already past brings "A free evening" too). Scroll back up to the first steps.
         let plant = app.descendants(matching: .any)["herb.intentie"]
-        if !count.waitForExistence(timeout: 15) || !plant.waitForExistence(timeout: 5) {
+        let deadline = Date().addingTimeInterval(25)
+        while Date() < deadline, !(plant.exists && plant.value as? String == "Pressed") {
+            if plant.waitForExistence(timeout: 2) { Thread.sleep(forTimeInterval: 0.5) } else { app.swipeDown() }
+        }
+        if !plant.exists {
             // On one line, so it shows in the CI log.
             let tree = app.debugDescription.split(separator: "\n").joined(separator: " | ")
-            XCTFail("the plant was not pressed on the page (count \(count.exists), cell \(plant.exists)). Tree: \(tree)")
+            XCTFail("the plant is not on the page. Tree: \(tree)")
             return
         }
         XCTAssertEqual(plant.label, "First intention")
