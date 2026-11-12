@@ -104,6 +104,9 @@ struct TodayView: View {
         case .worry:
             router.pending = nil
             worrying = true
+        case .note:
+            router.pending = nil
+            writing = Note(date: todayKey, month: month, kind: .free)
         default:
             break
         }

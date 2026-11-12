@@ -27,6 +27,7 @@ targets:
         PRODUCT_BUNDLE_IDENTIFIER: app.fallow.ios
         PRODUCT_NAME: Fallow
         GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_FILE: Fallow/Info.plist
         INFOPLIST_KEY_CFBundleDisplayName: Fallow
         INFOPLIST_KEY_UILaunchScreen_Generation: YES
         INFOPLIST_KEY_UIApplicationSceneManifest_Generation: YES
@@ -54,6 +55,7 @@ targets:
         INFOPLIST_KEY_CFBundleDisplayName: Fallow
         TARGETED_DEVICE_FAMILY: "1"
         CODE_SIGN_STYLE: Automatic
+        CODE_SIGN_ENTITLEMENTS: FallowWidgets/FallowWidgets.entitlements
         SKIP_INSTALL: YES
   FallowTests:
     type: bundle.unit-test

@@ -1,0 +1,306 @@
+{
+  "sourceLanguage": "en",
+  "version": "1.0",
+  "strings": {
+    "%lld of %lld rhythms": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$lld din %2$lld ritmuri"
+          }
+        }
+      }
+    },
+    "A free Friday": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "O vineri liberă"
+          }
+        }
+      }
+    },
+    "A quiet day": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "O zi liniștită"
+          }
+        }
+      }
+    },
+    "Day": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zi"
+          }
+        }
+      }
+    },
+    "Fallow": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Fallow"
+          }
+        }
+      }
+    },
+    "Friday exercise": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Exercițiul de vineri"
+          }
+        }
+      }
+    },
+    "Fridays %lld/%lld": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vineri %1$lld/%2$lld"
+          }
+        }
+      }
+    },
+    "Look back on last month": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Privește înapoi la luna trecută"
+          }
+        }
+      }
+    },
+    "Mark a rhythm": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bifează un ritm"
+          }
+        }
+      }
+    },
+    "Monday": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Luni"
+          }
+        }
+      }
+    },
+    "New month": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lună nouă"
+          }
+        }
+      }
+    },
+    "Next Friday": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vinerea următoare"
+          }
+        }
+      }
+    },
+    "No rhythms yet.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Încă nu ai ritmuri."
+          }
+        }
+      }
+    },
+    "Open Fallow once to fill this widget.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Deschide Fallow o dată ca să apară ceva aici."
+          }
+        }
+      }
+    },
+    "Open the worry list": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Deschide lista de griji"
+          }
+        }
+      }
+    },
+    "Opens Fallow on a new note.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Deschide Fallow la o notă nouă."
+          }
+        }
+      }
+    },
+    "Opens Fallow on the worry list: stone and clay.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Deschide Fallow la lista de griji: piatră și plastilină."
+          }
+        }
+      }
+    },
+    "Opens Fallow on tonight's Friday exercise.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Deschide Fallow la exercițiul de vineri de diseară."
+          }
+        }
+      }
+    },
+    "Rhythm": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ritm"
+          }
+        }
+      }
+    },
+    "Rhythms": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ritmuri"
+          }
+        }
+      }
+    },
+    "Sort the week's worries": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sortează grijile săptămânii"
+          }
+        }
+      }
+    },
+    "Start tonight's exercise": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Începe exercițiul de diseară"
+          }
+        }
+      }
+    },
+    "This month": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Luna aceasta"
+          }
+        }
+      }
+    },
+    "Tick today's small rhythms without opening Fallow.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bifează ritmurile mici de azi fără să deschizi Fallow."
+          }
+        }
+      }
+    },
+    "Today in Fallow": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Azi în Fallow"
+          }
+        }
+      }
+    },
+    "Tonight": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Diseară"
+          }
+        }
+      }
+    },
+    "Turn on “Show and tick rhythms” in Fallow, under Me.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pornește „Arată și bifează ritmurile” în Fallow, la Eu."
+          }
+        }
+      }
+    },
+    "What tonight holds and your rhythms, without anything you wrote.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ce aduce seara și ritmurile tale, fără nimic din ce ai scris."
+          }
+        }
+      }
+    },
+    "Write a note": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Scrie o notă"
+          }
+        }
+      }
+    },
+    "Write in Fallow": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Scrie în Fallow"
+          }
+        }
+      }
+    }
+  }
+}

@@ -432,6 +432,16 @@
         }
       }
     },
+    "By default widgets show only dates and counts. What you turn on here is kept unencrypted outside the vault, so it can show on the Home Screen and the Lock Screen.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Implicit, widgeturile arată doar date și numere. Ce pornești aici e păstrat necriptat în afara seifului, ca să poată apărea pe ecranul principal și pe cel blocat."
+          }
+        }
+      }
+    },
     "Cancel": {
       "localizations": {
         "ro": {
@@ -688,6 +698,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "Continuă"
+          }
+        }
+      }
+    },
+    "Day": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Zi"
           }
         }
       }
@@ -1062,6 +1082,16 @@
         }
       }
     },
+    "Friday exercise": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Exercițiul de vineri"
+          }
+        }
+      }
+    },
     "Fridays": {
       "localizations": {
         "ro": {
@@ -1348,6 +1378,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "Privire înapoi"
+          }
+        }
+      }
+    },
+    "Mark a rhythm": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bifează un ritm"
           }
         }
       }
@@ -1672,6 +1712,16 @@
         }
       }
     },
+    "Note in Fallow": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Notează în Fallow"
+          }
+        }
+      }
+    },
     "Note written": {
       "localizations": {
         "ro": {
@@ -1708,6 +1758,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "Nimic nou de adăugat în notiță."
+          }
+        }
+      }
+    },
+    "Nothing to save.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nu e nimic de salvat."
           }
         }
       }
@@ -1802,6 +1862,16 @@
         }
       }
     },
+    "Open Fallow once with Face ID, then try again.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Deschide Fallow o dată cu Face ID, apoi încearcă din nou."
+          }
+        }
+      }
+    },
     "Open a .fallow file": {
       "localizations": {
         "ro": {
@@ -1832,12 +1902,52 @@
         }
       }
     },
+    "Open the worry list": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Deschide lista de griji"
+          }
+        }
+      }
+    },
     "Open your journal": {
       "localizations": {
         "ro": {
           "stringUnit": {
             "state": "translated",
             "value": "Deschide jurnalul"
+          }
+        }
+      }
+    },
+    "Opens Fallow on a new note.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Deschide Fallow la o notă nouă."
+          }
+        }
+      }
+    },
+    "Opens Fallow on the worry list: stone and clay.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Deschide Fallow la lista de griji: piatră și plastilină."
+          }
+        }
+      }
+    },
+    "Opens Fallow on tonight's Friday exercise.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Deschide Fallow la exercițiul de vineri de diseară."
           }
         }
       }
@@ -2012,6 +2122,16 @@
         }
       }
     },
+    "Quick note": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Notă rapidă"
+          }
+        }
+      }
+    },
     "Read it first": {
       "localizations": {
         "ro": {
@@ -2132,6 +2252,16 @@
         }
       }
     },
+    "Rhythm": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ritm"
+          }
+        }
+      }
+    },
     "Rhythms": {
       "localizations": {
         "ro": {
@@ -2172,12 +2302,32 @@
         }
       }
     },
+    "Saved. It will be in your journal the next time you open Fallow.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Salvat. O să fie în jurnal data viitoare când deschizi Fallow."
+          }
+        }
+      }
+    },
     "Saved. Keep the passphrase somewhere safe: without it the file cannot be opened.": {
       "localizations": {
         "ro": {
           "stringUnit": {
             "state": "translated",
             "value": "Salvat. Păstrează parola într-un loc sigur: fără ea fișierul nu poate fi deschis."
+          }
+        }
+      }
+    },
+    "Saves a line in your journal without opening Fallow. It is sealed right away; you see it after Face ID.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Salvează un rând în jurnal fără să deschizi Fallow. E sigilat pe loc; îl vezi după Face ID."
           }
         }
       }
@@ -2198,6 +2348,26 @@
           "stringUnit": {
             "state": "translated",
             "value": "Trimite"
+          }
+        }
+      }
+    },
+    "Show and tick rhythms": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Arată și bifează ritmurile"
+          }
+        }
+      }
+    },
+    "Show the month's intention": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Arată intenția lunii"
           }
         }
       }
@@ -2338,6 +2508,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "Începe lista de griji"
+          }
+        }
+      }
+    },
+    "Start tonight's exercise": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Începe exercițiul de diseară"
           }
         }
       }
@@ -3082,6 +3262,16 @@
         }
       }
     },
+    "What do you want to note?": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ce vrei să notezi?"
+          }
+        }
+      }
+    },
     "What do you want to remember?": {
       "localizations": {
         "ro": {
@@ -3192,6 +3382,16 @@
         }
       }
     },
+    "Widgets": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Widgeturi"
+          }
+        }
+      }
+    },
     "Worry list": {
       "localizations": {
         "ro": {
@@ -3258,6 +3458,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "Scrie cum a fost"
+          }
+        }
+      }
+    },
+    "Write in Fallow": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Scrie în Fallow"
           }
         }
       }

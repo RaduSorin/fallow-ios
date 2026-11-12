@@ -6,7 +6,11 @@ import UIKit
 @main
 struct FallowWidgetsBundle: WidgetBundle {
     var body: some Widget {
+        TodayWidget()
+        RhythmsWidget()
         ExerciseLiveActivity()
+        StartExerciseControl()
+        WriteNoteControl()
     }
 }
 
@@ -103,7 +107,7 @@ private struct TimeLeft: View {
 }
 
 /// The app's "field notebook" colours (the extension has no asset catalog of its own).
-private enum Palette {
+enum Palette {
     static let paper = Color(light: (0xEE, 0xF0, 0xE6), dark: (0x15, 0x19, 0x12))
     static let ink = Color(light: (0x23, 0x30, 0x1F), dark: (0xE3, 0xE8, 0xDA))
     static let inkMuted = ink.opacity(0.65)
