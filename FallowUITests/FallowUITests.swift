@@ -251,12 +251,15 @@ final class FallowUITests: XCTestCase {
         finishSetup()
         planMonth("A first intention")
         tab("Herbarium").tap()
-        XCTAssertTrue(anyText(containing: "pressed").waitForExistence(timeout: 5))
+        // It lands with a short animation, then counts as pressed.
+        XCTAssertTrue(anyText(containing: "1 pressed").waitForExistence(timeout: 15), "the plant was not pressed")
         let plant = app.descendants(matching: .any)["herb.intentie"]
-        XCTAssertTrue(plant.waitForExistence(timeout: 5), "the plant is not on the page")
+        if !plant.waitForExistence(timeout: 5) {
+            print("HERBARIUM TREE\n\(app.debugDescription)")
+            XCTFail("the plant is not on the page")
+            return
+        }
         XCTAssertEqual(plant.label, "First intention")
-        // It lands with a short animation.
-        let pressed = NSPredicate(format: "value == %@", "Pressed")
-        wait(for: [XCTNSPredicateExpectation(predicate: pressed, object: plant)], timeout: 10)
+        XCTAssertEqual(plant.value as? String, "Pressed")
     }
 }
