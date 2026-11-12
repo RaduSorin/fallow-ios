@@ -2332,6 +2332,16 @@
         }
       }
     },
+    "Pressed": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Presată"
+          }
+        }
+      }
+    },
     "Pressed on %@": {
       "localizations": {
         "ro": {

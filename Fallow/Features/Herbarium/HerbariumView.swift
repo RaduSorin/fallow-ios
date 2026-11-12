@@ -116,6 +116,12 @@ struct HerbariumView: View {
             .frame(maxWidth: .infinity)
         }
         .buttonStyle(.plain)
+        // VoiceOver reads the plant's name and whether it came, not the drawing's file name.
+        .accessibilityElement(children: .ignore)
+        .accessibilityLabel(herb.secret && !earned ? Text("Surprise") : Text(herb.name))
+        .accessibilityValue(earned ? Text("Pressed") : Text("Not yet"))
+        .accessibilityAddTraits(.isButton)
+        .accessibilityIdentifier("herb.\(herb.id)")
         .id(herb.id)
     }
 
