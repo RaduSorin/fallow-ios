@@ -71,12 +71,26 @@ targets:
       base:
         GENERATE_INFOPLIST_FILE: YES
         PRODUCT_BUNDLE_IDENTIFIER: app.fallow.ios.tests
+  FallowUITests:
+    type: bundle.ui-testing
+    platform: iOS
+    sources:
+      - FallowUITests
+    dependencies:
+      - target: Fallow
+    settings:
+      base:
+        GENERATE_INFOPLIST_FILE: YES
+        PRODUCT_BUNDLE_IDENTIFIER: app.fallow.ios.uitests
+        TEST_TARGET_NAME: Fallow
 schemes:
   Fallow:
     build:
       targets:
         Fallow: all
         FallowTests: [test]
+        FallowUITests: [test]
     test:
       targets:
         - FallowTests
+        - FallowUITests

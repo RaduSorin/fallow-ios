@@ -24,6 +24,8 @@ final class Vault {
     @ObservationIgnored let photos: PhotoStore
     /// Called with the new contents after setup, unlock and every change (the app reschedules reminders).
     @ObservationIgnored var onChange: ((VaultContents) -> Void)?
+    /// Called after "Erase everything" (the app removes reminders, widgets and the Claude sign-in).
+    @ObservationIgnored var onErase: (() -> Void)?
 
     init(keyStore: any VaultKeyStore, fileURL: URL, photos: PhotoStore? = nil) {
         self.keyStore = keyStore
@@ -117,6 +119,7 @@ final class Vault {
         key = nil
         contents = nil
         state = .notSetUp
+        onErase?()
     }
 
     // MARK: Photos

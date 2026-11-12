@@ -122,7 +122,7 @@ struct BackupView: View {
             titleVisibility: .visible
         ) {
             Button(role: .destructive) {
-                if let replacement { try? vault.update { $0 = replacement } }
+                if let replacement { try? vault.update { $0 = TransferFile.replacing($0, with: replacement) } }
                 replacement = nil
                 message = "Everything from the file is here now."
             } label: {

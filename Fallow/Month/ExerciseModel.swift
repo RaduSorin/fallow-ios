@@ -106,10 +106,15 @@ extension VaultContents {
     @discardableResult
     mutating func importPack(_ pack: ExercisePack) -> Int {
         var added = 0
+        // Each exercise in the bank answers one item only, so two items with the same title
+        // (the same exercise on two days of a program) stay two exercises.
+        var claimed = Set<Int>()
         for (order, item) in pack.exercises.enumerated() {
-            let existing = exercises.firstIndex {
-                $0.packId == pack.id && $0.title.lowercased() == item.title.lowercased()
+            let existing = exercises.indices.first {
+                !claimed.contains($0) && exercises[$0].packId == pack.id
+                    && exercises[$0].title.lowercased() == item.title.lowercased()
             }
+            if let existing { claimed.insert(existing) }
             if let existing, exercises[existing].edited == true { continue }
             let exercise = Exercise(
                 id: existing.map { exercises[$0].id } ?? UUID().uuidString,
@@ -126,6 +131,7 @@ extension VaultContents {
                 exercises[existing] = exercise
             } else {
                 exercises.append(exercise)
+                claimed.insert(exercises.count - 1)
                 added += 1
             }
         }

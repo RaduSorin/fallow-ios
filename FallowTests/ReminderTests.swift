@@ -35,13 +35,13 @@ struct ReminderPlanTests {
 
     @Test func onlyFridaysStillAheadAreScheduled() {
         let reminders = ReminderPlan.reminders(for: contents(planned: true), now: date("2026-11-13 21:00"), calendar: calendar)
-        let fridays = reminders.filter { $0.kind == .friday }.map(\.id)
+        let fridays = reminders.filter { $0.id.hasPrefix("friday-") }.map(\.id)
         #expect(fridays == ["friday-2026-11-20", "friday-2026-11-27"])
     }
 
     @Test func todaysFridayCountsUntilEightInTheEvening() {
         let reminders = ReminderPlan.reminders(for: contents(planned: true), now: date("2026-11-13 19:00"), calendar: calendar)
-        let first = reminders.first { $0.kind == .friday }
+        let first = reminders.first { $0.id.hasPrefix("friday-") }
         #expect(first?.id == "friday-2026-11-13")
         #expect(first?.components.hour == 20)
         #expect(first?.repeats == false)

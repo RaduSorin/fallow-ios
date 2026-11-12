@@ -151,8 +151,11 @@ struct SettingsView: View {
                 Text("Erase from this iPhone")
             }
             Button(role: .destructive) {
-                try? vault.eraseEverything()
-                Task { try? await backup.deleteBackup() }
+                // The backup goes first, so the first-run screen does not still find it.
+                Task {
+                    try? await backup.deleteBackup()
+                    try? vault.eraseEverything()
+                }
             } label: {
                 Text("Erase here and in iCloud")
             }

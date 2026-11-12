@@ -7,6 +7,7 @@ on:
     paths:
       - "Fallow/**"
       - "FallowTests/**"
+      - "FallowUITests/**"
       - "FallowWidgets/**"
       - "Shared/**"
       - "project.yml"
@@ -21,7 +22,7 @@ concurrency:
 jobs:
   build-and-test:
     runs-on: macos-15
-    timeout-minutes: 30
+    timeout-minutes: 45
     steps:
       - uses: actions/checkout@v4
 
@@ -47,6 +48,7 @@ jobs:
             -project Fallow.xcodeproj \
             -scheme Fallow \
             -destination "id=$UDID" \
+            -resultBundlePath TestResults.xcresult \
             CODE_SIGNING_ALLOWED=NO \
             | tee build.log | grep -E '(error|warning: .*Fallow/|Test (Suite|Case)|passed|failed|\*\* )' || true
           grep -q '\*\* TEST SUCCEEDED \*\*' build.log
@@ -70,3 +72,4 @@ jobs:
           path: |
             build.log
             device.log
+            TestResults.xcresult

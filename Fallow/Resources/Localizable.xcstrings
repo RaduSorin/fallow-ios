@@ -3442,6 +3442,16 @@
         }
       }
     },
+    "Tonight is free. Rest counts too.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Seara asta e liberă. Și odihna contează."
+          }
+        }
+      }
+    },
     "Tonight's exercise": {
       "localizations": {
         "ro": {

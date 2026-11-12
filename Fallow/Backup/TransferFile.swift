@@ -94,6 +94,15 @@ enum TransferFile {
         return SymmetricKey(data: derived)
     }
 
+    /// What the vault holds after "Replace" with a file's contents. The inbox key stays this
+    /// iPhone's own: widgets and Siri seal with its public half, so entries waiting in the inbox
+    /// (and ones written before the next Face ID) can still be opened.
+    static func replacing(_ current: VaultContents, with file: VaultContents) -> VaultContents {
+        var next = file
+        next.inboxKey = current.inboxKey ?? file.inboxKey
+        return next
+    }
+
     /// "Fallow 2026-11-11.fallow"
     static func suggestedName(now: Date = .now) -> String {
         "Fallow \(DayKey.string(now))"

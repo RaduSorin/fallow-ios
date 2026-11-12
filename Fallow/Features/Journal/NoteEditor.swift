@@ -60,6 +60,7 @@ struct NoteEditor: View {
                         Text("What do you want to remember?")
                     }
                     .lineLimit(5...20)
+                    .accessibilityIdentifier("note.text")
                 } header: {
                     Text("Note")
                 }

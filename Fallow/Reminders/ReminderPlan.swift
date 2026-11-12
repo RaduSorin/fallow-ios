@@ -4,7 +4,8 @@ import Foundation
 /// because notifications show on the lock screen.
 struct PlannedReminder: Equatable, Sendable {
     enum Kind: String, Sendable {
-        case morning, evening, friday, worry, reflection
+        /// `freeFriday`: a planned month's Friday left free (no exercise, no theme).
+        case morning, evening, friday, freeFriday, worry, reflection
     }
 
     var id: String
@@ -47,7 +48,8 @@ enum ReminderPlan {
                     var components = parts
                     components.hour = fridayMinutes / 60
                     components.minute = fridayMinutes % 60
-                    out.append(.init(id: "friday-\(friday.date)", kind: .friday, components: components, repeats: false))
+                    let free = friday.exerciseId == nil && friday.title.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+                    out.append(.init(id: "friday-\(friday.date)", kind: free ? .freeFriday : .friday, components: components, repeats: false))
                 }
             }
         }

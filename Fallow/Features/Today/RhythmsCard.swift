@@ -61,6 +61,7 @@ struct RhythmsCard: View {
         .buttonStyle(.plain)
         .sensoryFeedback(.impact(weight: .light), trigger: done) { _, isDone in isDone }
         .accessibilityValue(done ? Text("Done today") : Text("Not yet today"))
+        .accessibilityIdentifier("rhythm.\(rhythm.title)")
     }
 }
 
@@ -84,6 +85,7 @@ struct RhythmsEditor: View {
                     HStack {
                         TextField(text: $newTitle) { Text("e.g. Walk without the phone") }
                             .onSubmit(add)
+                            .accessibilityIdentifier("rhythm.new")
                         Button(action: add) {
                             Image(systemName: "plus.circle.fill")
                         }
