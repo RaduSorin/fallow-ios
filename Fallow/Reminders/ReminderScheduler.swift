@@ -24,6 +24,7 @@ enum ReminderScheduler {
             content.body = String(localized: body(for: reminder.kind))
             content.sound = .default
             content.threadIdentifier = "fallow"
+            content.userInfo = [AppRoute.key: AppRoute(reminder: reminder.kind).rawValue]
             let trigger = UNCalendarNotificationTrigger(dateMatching: reminder.components, repeats: reminder.repeats)
             let request = UNNotificationRequest(identifier: prefix + reminder.id, content: content, trigger: trigger)
             try? await center.add(request)

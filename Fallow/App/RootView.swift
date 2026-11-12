@@ -40,6 +40,8 @@ struct RootView: View {
 
 struct MainTabs: View {
     @Environment(Vault.self) private var vault
+    @Environment(ExerciseRun.self) private var run
+    @Environment(Router.self) private var router
     @State private var selection: AppTab = .today
     /// The plant chosen in the moment, to land in the herbarium.
     @State private var landing: String?
@@ -48,7 +50,7 @@ struct MainTabs: View {
 
     /// The plant to show in the moment now, if any.
     private var coming: Herb? {
-        guard selection != .herbarium, landing == nil,
+        guard selection != .herbarium, landing == nil, run.session == nil,
               let book = vault.contents?.herbarium, book.quiet != true,
               let id = book.pending.first(where: { !later.contains($0) }) else { return nil }
         return Herb.find(id)
@@ -67,6 +69,15 @@ struct MainTabs: View {
                     .id(herb.id)
                     .transition(.opacity)
                 }
+            }
+            // A guided exercise covers everything; it comes back after the vault opens again.
+            .fullScreenCover(item: Binding(get: { run.session }, set: { _ in })) { _ in
+                ExerciseSessionView()
+            }
+            .onChange(of: router.pending, initial: true) { _, route in
+                guard let route else { return }
+                selection = route.tab
+                if route == .today || route == .exercise { router.pending = nil }
             }
     }
 
@@ -97,5 +108,7 @@ struct MainTabs: View {
 #Preview {
     RootView()
         .environment(Vault(keyStore: InMemoryKeyStore(), fileURL: URL.temporaryDirectory.appending(path: "preview.fallow")))
+        .environment(ExerciseRun())
+        .environment(Router.shared)
         .environment(Backup(store: FolderBackupStore(url: URL.temporaryDirectory.appending(path: "preview.backup")), keys: InMemoryBackupKey()))
 }
