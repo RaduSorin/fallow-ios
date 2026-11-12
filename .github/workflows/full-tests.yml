@@ -4,6 +4,9 @@ name: Full tests
 # Started by hand from the Actions tab; pull requests only run the normal CI.
 on:
   workflow_dispatch:
+  # TEMPORARY: lets this branch run the new workflow once before it reaches main.
+  push:
+    branches: [claude/project-thread-yz039b]
 
 concurrency:
   group: full-tests-${{ github.ref }}
