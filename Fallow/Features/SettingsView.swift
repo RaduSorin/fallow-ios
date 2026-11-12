@@ -6,6 +6,7 @@ struct SettingsView: View {
     @Environment(Vault.self) private var vault
     @Environment(Backup.self) private var backup
     @State private var confirmErase = false
+    @AppStorage(SeasonalIcon.key) private var seasonalIcon = false
 
     var body: some View {
         Form {
@@ -96,6 +97,15 @@ struct SettingsView: View {
                 } footer: {
                     Text("After a guided exercise with a timer, its length goes to Health as mindful minutes. Nothing you wrote goes there.")
                 }
+            }
+
+            Section {
+                Toggle(isOn: $seasonalIcon) { Text("Change with the seasons") }
+                    .onChange(of: seasonalIcon) { SeasonalIcon.apply() }
+            } header: {
+                Text("App icon")
+            } footer: {
+                Text("The icon becomes the month's plant from the herbarium. It changes the first time you open Fallow in a new month, and iOS shows a short note when it does.")
             }
 
             Section {

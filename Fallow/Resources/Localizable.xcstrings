@@ -452,6 +452,16 @@
         }
       }
     },
+    "App icon": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pictograma aplicației"
+          }
+        }
+      }
+    },
     "Apple Health": {
       "localizations": {
         "ro": {
@@ -618,6 +628,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "Schimbă planul"
+          }
+        }
+      }
+    },
+    "Change with the seasons": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Se schimbă după anotimp"
           }
         }
       }
@@ -3098,6 +3118,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "Părintele bun"
+          }
+        }
+      }
+    },
+    "The icon becomes the month's plant from the herbarium. It changes the first time you open Fallow in a new month, and iOS shows a short note when it does.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pictograma devine planta lunii din ierbar. Se schimbă prima oară când deschizi Fallow într-o lună nouă, iar iOS arată atunci un mesaj scurt."
           }
         }
       }

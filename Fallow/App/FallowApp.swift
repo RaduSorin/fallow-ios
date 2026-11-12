@@ -47,6 +47,7 @@ struct FallowApp: App {
                 vault.lock()
                 Task { await backup.flush() }
             }
+            if phase == .active { SeasonalIcon.apply() }
         }
     }
 }
