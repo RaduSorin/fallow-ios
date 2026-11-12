@@ -34,12 +34,14 @@ enum OnDeviceAI {
     static let maxCharacters = 6000
 
     /// The month in plain text: the intention, the sign, and the notes oldest first.
+    /// A long month keeps the intention and the latest notes.
     static func digest(plan: MonthPlan?, notes: [Note]) -> String {
-        var lines: [String] = []
+        var header: [String] = []
         if let plan, !plan.intention.isEmpty {
-            lines.append("Intention: \(plan.intention)")
-            if let sign = plan.success, !sign.isEmpty { lines.append("Sign it went well: \(sign)") }
+            header.append("Intention: \(String(plan.intention.prefix(500)))")
+            if let sign = plan.success, !sign.isEmpty { header.append("Sign it went well: \(String(sign.prefix(500)))") }
         }
+        var lines: [String] = []
         let sorted = notes.sorted { ($0.date, $0.createdAt) < ($1.date, $1.createdAt) }
         for note in sorted {
             var head = "\(note.date) \(note.kind.rawValue)"
@@ -49,8 +51,12 @@ enum OnDeviceAI {
             let body = note.text.trimmingCharacters(in: .whitespacesAndNewlines)
             lines.append(body.isEmpty ? head : "\(head): \(body)")
         }
-        let text = lines.joined(separator: "\n")
-        return text.count > maxCharacters ? String(text.suffix(maxCharacters)) : text
+        let top = header.joined(separator: "\n")
+        let body = lines.joined(separator: "\n")
+        guard !top.isEmpty else { return String(body.suffix(maxCharacters)) }
+        guard !body.isEmpty else { return top }
+        let room = max(0, maxCharacters - top.count - 1)
+        return top + "\n" + String(body.suffix(room))
     }
 
     private static var languageName: String {

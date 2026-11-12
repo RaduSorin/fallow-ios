@@ -70,6 +70,7 @@ struct WorryListView: View {
                 Text("The deadline at work\nThe dentist appointment\nThe weekend weather")
             }
             .lineLimit(6...14)
+            .accessibilityIdentifier("worry.text")
             .padding(12)
             .background(Theme.card, in: RoundedRectangle(cornerRadius: 6))
             .overlay(RoundedRectangle(cornerRadius: 6).strokeBorder(Theme.cardBorder))

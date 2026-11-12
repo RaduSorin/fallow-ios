@@ -11,7 +11,7 @@ struct WidgetSnapshot: Codable, Equatable, Sendable {
     var writtenAt: Date
     /// Planned Fridays of this month and the next ("2026-11-13").
     var fridays: [String] = []
-    /// The planned Fridays that have an exercise.
+    /// The planned Fridays that have an exercise or a theme (the rest are free Fridays).
     var fridaysWithExercise: [String] = []
     /// This month: Fridays planned and Fridays with a note.
     var monthFridays: Int = 0

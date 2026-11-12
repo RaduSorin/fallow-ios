@@ -225,6 +225,9 @@ struct SetupFlow: View {
                 .font(.notebookTitle())
             Text("Fallow makes a key that never leaves this iPhone. Only your face, or your phone passcode, can open it.")
                 .foregroundStyle(Theme.inkMuted)
+            Text("If you turn off the iPhone passcode, iOS removes this key and the journal on this iPhone can no longer be opened. The iCloud backup can bring it back.")
+                .font(.footnote)
+                .foregroundStyle(Theme.inkMuted)
             if let errorText {
                 Text(errorText)
                     .foregroundStyle(.red)

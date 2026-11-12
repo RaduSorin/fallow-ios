@@ -16,13 +16,14 @@ struct WorryList: Codable, Equatable, Sendable {
         var need: String?
     }
 
-    /// Splits pasted or typed lines into separate worries, without bullets or duplicates.
+    /// Splits pasted or typed lines into separate worries, without bullets, list numbers or
+    /// duplicates. Numbers that belong to the worry stay ("3 bills to pay", "2026 taxes").
     static func items(from text: String) -> [String] {
         var seen = Set<String>()
         return text.split(whereSeparator: \.isNewline).compactMap { line in
             let clean = line
                 .trimmingCharacters(in: .whitespaces)
-                .replacing(/^[-•*\d.)\s]+/, with: "")
+                .replacing(/^(?:[-•*–]+\s*|\d{1,3}[.)]\s+)+/, with: "")
                 .trimmingCharacters(in: .whitespaces)
             guard !clean.isEmpty, seen.insert(clean).inserted else { return nil }
             return clean

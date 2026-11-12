@@ -1,4 +1,6 @@
 import SwiftUI
+import UIKit
+import WidgetKit
 
 @main
 struct FallowApp: App {
@@ -11,18 +13,27 @@ struct FallowApp: App {
     init() {
         Theme.applyBarAppearance()
         ExerciseRun.endLeftovers()
-        let vault = Vault.live()
-        let backup = Backup.live()
+        let testing = UITesting.isOn
+        let vault = testing ? UITesting.vault() : Vault.live()
+        let backup = testing ? UITesting.backup() : Backup.live()
         vault.onChange = { contents in
             Task { @MainActor in
                 backup.schedule(contents)
                 SharedBridge.publish(contents)
             }
+            guard !testing else { return }
             Task.detached {
                 // The permission prompt shows only the first time.
                 await ReminderScheduler.requestPermission()
                 await ReminderScheduler.reschedule(contents)
             }
+        }
+        vault.onErase = {
+            // Nothing of the old journal may keep showing: reminders, widgets, the Claude sign-in.
+            guard !testing else { return }
+            CoachClient.live().signOut()
+            WidgetCenter.shared.reloadAllTimelines()
+            Task.detached { await ReminderScheduler.removeAll() }
         }
         _vault = State(initialValue: vault)
         _backup = State(initialValue: backup)
@@ -45,9 +56,35 @@ struct FallowApp: App {
             // Lock as soon as the app leaves the screen.
             if phase == .background {
                 vault.lock()
-                Task { await backup.flush() }
+                // Ask iOS for a few seconds, so the last change still reaches iCloud
+                // before the app is suspended.
+                let work = BackgroundWork.begin("Fallow backup")
+                Task {
+                    await backup.flush()
+                    work.end()
+                }
             }
             if phase == .active { SeasonalIcon.apply() }
         }
+    }
+}
+
+/// A little time in the background (iOS ends it on its own after about 30 seconds).
+@MainActor
+final class BackgroundWork {
+    private var id: UIBackgroundTaskIdentifier = .invalid
+
+    static func begin(_ name: String) -> BackgroundWork {
+        let work = BackgroundWork()
+        work.id = UIApplication.shared.beginBackgroundTask(withName: name) { [weak work] in
+            MainActor.assumeIsolated { work?.end() }
+        }
+        return work
+    }
+
+    func end() {
+        guard id != .invalid else { return }
+        UIApplication.shared.endBackgroundTask(id)
+        id = .invalid
     }
 }

@@ -9,6 +9,7 @@ Fallow started as the "Răgaz" feature inside Kitchen Tales and is now its own a
 The Xcode project is generated from `project.yml` with [XcodeGen](https://github.com/yonaskolb/XcodeGen), so only text files live in git.
 
 - Every pull request is built and tested on a macOS runner in GitHub Actions (`.github/workflows/ci.yml`).
+- The QA unit tests (`FallowQATests`) and the UI tests on the Simulator (`FallowUITests`) run only when started by hand: Actions › Full tests (`.github/workflows/full-tests.yml`, scheme `FallowFullTests`).
 - TestFlight uploads come in a later PR, once the Apple Developer account is approved.
 
 On a Mac, run `brew install xcodegen && xcodegen generate` and open `Fallow.xcodeproj`.

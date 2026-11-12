@@ -89,6 +89,7 @@ struct ReflectionView: View {
                             Text("Write as much or as little as you like")
                         }
                         .lineLimit(3...10)
+                        .accessibilityIdentifier("reflection.\(question.rawValue)")
                     } header: {
                         Text(question.prompt)
                     }
@@ -104,6 +105,7 @@ struct ReflectionView: View {
                 }
                 ToolbarItem(placement: .confirmationAction) {
                     Button { save() } label: { Text("Save") }
+                        .disabled(!canSave)
                 }
             }
             .alert(Text("The reflection could not be saved."), isPresented: $failed) {
@@ -115,6 +117,13 @@ struct ReflectionView: View {
                 answers = vault.contents?.reflection(for: month)?.answers ?? [:]
             }
         }
+    }
+
+    /// An empty reflection is not saved (it would close the month and bring its plant).
+    /// One already written can always be saved, even emptied.
+    private var canSave: Bool {
+        vault.contents?.reflection(for: month) != nil
+            || answers.values.contains { !$0.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty }
     }
 
     private func binding(_ key: String) -> Binding<String> {

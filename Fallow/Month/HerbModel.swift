@@ -183,7 +183,7 @@ enum Herbarium {
         !(text ?? "").trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
     }
 
-    static func tally(_ book: HerbBook, _ contents: VaultContents, today: String) -> HerbTally {
+    static func tally(_ book: HerbBook, _ contents: VaultContents, today: String, calendar: Calendar = .current) -> HerbTally {
         let notes = contents.notes.filter { $0.createdAt >= book.since }
         let months = contents.months.filter { !book.oldMonths.contains($0.id.description) && $0.savedAt >= book.since }
         let own = contents.exercises.filter { !book.oldExercises.contains($0.id) && ($0.packId == nil || $0.edited == true) }
@@ -201,7 +201,14 @@ enum Herbarium {
         t.own = own.count
         t.months = months.count
         t.sign = reflections.contains { ["yes", "da"].contains($0.answers?[ReflectionQuestion.signKey] ?? "") }
-        t.rest = months.contains { $0.fridays.contains { $0.exerciseId == nil && !filled($0.title) && $0.date <= today } }
+        // A Friday chosen free: left free when the month was planned, and only Fridays after
+        // that day (planning on the 20th does not make the past Fridays "chosen").
+        t.rest = months.contains { month in
+            let planned = DayKey.string(month.plannedAt ?? month.savedAt, calendar: calendar)
+            return month.fridays.contains {
+                $0.exerciseId == nil && !filled($0.title) && $0.date > planned && $0.date <= today
+            }
+        }
         t.step = worries.contains { filled($0.worry?.step) }
         t.parent = worries.contains {
             let p = $0.worry?.parent
@@ -242,8 +249,8 @@ enum Herbarium {
 
     /// Gives every plant now due. Returns the plants just earned.
     @discardableResult
-    static func earn(_ book: inout HerbBook, _ contents: VaultContents, facts: HerbFacts, now: Date) -> [String] {
-        let t = tally(book, contents, today: facts.today)
+    static func earn(_ book: inout HerbBook, _ contents: VaultContents, facts: HerbFacts, now: Date, calendar: Calendar = .current) -> [String] {
+        let t = tally(book, contents, today: facts.today, calendar: calendar)
         var fresh: [String] = []
         for herb in Herb.catalogue where book.earned[herb.id] == nil {
             let (have, need) = progress(herb.id, t, facts)
@@ -272,7 +279,7 @@ extension VaultContents {
         var book = herbarium ?? HerbBook.starting(self, now: now, calendar: calendar)
         let today = DayKey.string(now, calendar: calendar)
         let returned = visit && book.lastVisit.map { Herbarium.daysBetween($0, today, calendar: calendar) > Herbarium.awayDays } == true
-        let fresh = Herbarium.earn(&book, self, facts: HerbFacts(asked: askedClaude, returned: returned, today: today), now: now)
+        let fresh = Herbarium.earn(&book, self, facts: HerbFacts(asked: askedClaude, returned: returned, today: today), now: now, calendar: calendar)
         if visit { book.lastVisit = today }
         if book != herbarium { herbarium = book }
         return fresh

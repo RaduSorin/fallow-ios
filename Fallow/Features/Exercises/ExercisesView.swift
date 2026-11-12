@@ -187,6 +187,7 @@ struct ExerciseEditor: View {
             Form {
                 Section {
                     TextField(text: $draft.title) { Text("Title") }
+                        .accessibilityIdentifier("exercise.title")
                     TextField(text: Binding(
                         get: { draft.category ?? "" },
                         set: { draft.category = $0.isEmpty ? nil : $0 }

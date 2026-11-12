@@ -4,7 +4,8 @@ import Foundation
 /// because notifications show on the lock screen.
 struct PlannedReminder: Equatable, Sendable {
     enum Kind: String, Sendable {
-        case morning, evening, friday, worry, reflection
+        /// `freeFriday`: a planned month's Friday left free (no exercise, no theme).
+        case morning, evening, friday, freeFriday, worry, reflection
     }
 
     var id: String
@@ -17,6 +18,9 @@ struct PlannedReminder: Equatable, Sendable {
 enum ReminderPlan {
     static let fridayMinutes = 20 * 60
     static let mondayMinutes = 8 * 60 + 30
+    /// The month's reflection: the evening of the first Monday, so it does not arrive together
+    /// with the worry list at 8:30.
+    static let reflectionMinutes = 20 * 60
 
     static func reminders(for contents: VaultContents, now: Date, calendar: Calendar = .current) -> [PlannedReminder] {
         let settings = contents.settings
@@ -47,7 +51,8 @@ enum ReminderPlan {
                     var components = parts
                     components.hour = fridayMinutes / 60
                     components.minute = fridayMinutes % 60
-                    out.append(.init(id: "friday-\(friday.date)", kind: .friday, components: components, repeats: false))
+                    let free = friday.exerciseId == nil && friday.title.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+                    out.append(.init(id: "friday-\(friday.date)", kind: free ? .freeFriday : .friday, components: components, repeats: false))
                 }
             }
         }
@@ -57,10 +62,10 @@ enum ReminderPlan {
             for month in [thisMonth, thisMonth.next, thisMonth.next.next] {
                 guard let monday = firstMonday(of: month, calendar: calendar) else { continue }
                 let key = DayKey.string(monday, calendar: calendar)
-                guard key > todayKey || (key == todayKey && nowMinutes < mondayMinutes),
+                guard key > todayKey || (key == todayKey && nowMinutes < reflectionMinutes),
                       var components = dayParts(key) else { continue }
-                components.hour = mondayMinutes / 60
-                components.minute = mondayMinutes % 60
+                components.hour = reflectionMinutes / 60
+                components.minute = reflectionMinutes % 60
                 out.append(.init(id: "reflection-\(month)", kind: .reflection, components: components, repeats: false))
             }
         }

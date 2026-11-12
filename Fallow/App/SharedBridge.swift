@@ -14,7 +14,10 @@ enum SharedBridge {
 
         let fridays = [month, month.next].flatMap { contents.plan(for: $0)?.fridays ?? [] }
         snapshot.fridays = fridays.map(\.date)
-        snapshot.fridaysWithExercise = fridays.filter { contents.exercise($0.exerciseId) != nil }.map(\.date)
+        // A Friday with a theme of its own (no exercise from the bank) is planned too, not free.
+        snapshot.fridaysWithExercise = fridays.filter {
+            contents.exercise($0.exerciseId) != nil || !$0.title.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+        }.map(\.date)
 
         let summary = MonthSummary(plan: contents.plan(for: month), notes: contents.notes(in: month))
         snapshot.monthFridays = summary.fridays

@@ -31,11 +31,21 @@ enum ReminderScheduler {
         }
     }
 
+    /// "Erase everything": no reminder, waiting or already shown, is left behind.
+    static func removeAll() async {
+        let center = UNUserNotificationCenter.current()
+        let pending = await center.pendingNotificationRequests().map(\.identifier)
+        let shown = await center.deliveredNotifications().map(\.request.identifier)
+        let ours = (pending + shown).filter { $0.hasPrefix(prefix) || $0 == ExerciseBell.identifier }
+        center.removePendingNotificationRequests(withIdentifiers: ours)
+        center.removeDeliveredNotifications(withIdentifiers: ours)
+    }
+
     static func title(for kind: PlannedReminder.Kind) -> LocalizedStringResource {
         switch kind {
         case .morning: "Good morning"
         case .evening: "A quiet minute"
-        case .friday: "Friday evening"
+        case .friday, .freeFriday: "Friday evening"
         case .worry: "Monday worry list"
         case .reflection: "A new month"
         }
@@ -46,6 +56,7 @@ enum ReminderScheduler {
         case .morning: "Your intention for the month is waiting."
         case .evening: "How did today go? A line is enough."
         case .friday: "Tonight's exercise is ready when you are."
+        case .freeFriday: "Tonight is free. Rest counts too."
         case .worry: "Sort what weighs on you into stone and clay."
         case .reflection: "Look back on last month and choose the next intention."
         }

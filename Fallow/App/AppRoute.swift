@@ -24,7 +24,7 @@ enum AppRoute: String, Sendable, CaseIterable {
     init(reminder kind: PlannedReminder.Kind) {
         switch kind {
         case .morning, .evening: self = .today
-        case .friday: self = .friday
+        case .friday, .freeFriday: self = .friday
         case .worry: self = .worry
         case .reflection: self = .reflection
         }

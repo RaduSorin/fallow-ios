@@ -22,6 +22,7 @@ struct PlannerView: View {
                     }
                     .font(.notebookTitle(.title3))
                     .lineLimit(2...5)
+                    .accessibilityIdentifier("planner.intention")
                     if OnDeviceAI.isAvailable, let contents = vault.contents {
                         // Ideas from the month before the one being planned.
                         let before = draft.id.previous
@@ -133,6 +134,7 @@ struct PlannerView: View {
         var plan = draft
         plan.intention = plan.intention.trimmingCharacters(in: .whitespacesAndNewlines)
         plan.savedAt = .now
+        if plan.plannedAt == nil { plan.plannedAt = plan.savedAt }
         do {
             try vault.update { $0.save(plan) }
             dismiss()

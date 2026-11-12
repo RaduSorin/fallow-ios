@@ -5,6 +5,7 @@ import SwiftUI
 struct NoteEditor: View {
     @Environment(Vault.self) private var vault
     @Environment(\.dismiss) private var dismiss
+    @Environment(\.scenePhase) private var scenePhase
 
     @State private var draft: Note
     @State private var rated: Bool
@@ -60,6 +61,7 @@ struct NoteEditor: View {
                         Text("What do you want to remember?")
                     }
                     .lineLimit(5...20)
+                    .accessibilityIdentifier("note.text")
                 } header: {
                     Text("Note")
                 }
@@ -100,6 +102,35 @@ struct NoteEditor: View {
                 Button { } label: { Text("OK") }
             }
         }
+        // Fallow locks as soon as it leaves the screen. What is written so far is kept in the
+        // vault (encrypted) and opens again after Face ID.
+        .onChange(of: scenePhase) { _, phase in
+            if phase != .active { keepDraft() }
+        }
+        .onDisappear {
+            // Closed by hand (saved, cancelled, swiped away), not by the lock: nothing to keep.
+            if vault.state == .unlocked, vault.contents?.draft != nil {
+                try? vault.update { $0.draft = nil }
+            }
+        }
+    }
+
+    /// The note as it would be saved now.
+    private var current: Note {
+        var note = draft
+        if !rated {
+            note.before = nil
+            note.after = nil
+        }
+        return note
+    }
+
+    private func keepDraft() {
+        guard vault.state == .unlocked, canSave else { return }
+        let note = current
+        let stored = vault.contents?.notes.first { $0.id == note.id }
+        guard note != stored, note != vault.contents?.draft else { return }
+        try? vault.update { $0.draft = note }
     }
 
     private var canSave: Bool {
@@ -135,14 +166,13 @@ struct NoteEditor: View {
     }
 
     private func save() {
-        var note = draft
+        var note = current
         note.text = note.text.trimmingCharacters(in: .whitespacesAndNewlines)
-        if !rated {
-            note.before = nil
-            note.after = nil
-        }
         do {
-            try vault.update { $0.save(note) }
+            try vault.update {
+                $0.save(note)
+                $0.draft = nil
+            }
             dismiss()
         } catch {
             failed = true
@@ -151,7 +181,10 @@ struct NoteEditor: View {
 
     private func delete() {
         do {
-            try vault.update { $0.deleteNote(draft.id) }
+            try vault.update {
+                $0.deleteNote(draft.id)
+                $0.draft = nil
+            }
             dismiss()
         } catch {
             failed = true

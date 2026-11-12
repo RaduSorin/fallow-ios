@@ -20,6 +20,8 @@ struct VaultContents: Codable, Equatable, Sendable {
     var inboxKey: Data?
     /// The key that seals photo files (256-bit), made with the first photo.
     var photoKey: Data?
+    /// A note that was being written when Fallow locked. It opens again after Face ID.
+    var draft: Note?
 
     init(createdAt: Date, settings: VaultSettings) {
         self.createdAt = createdAt
@@ -40,6 +42,7 @@ struct VaultContents: Codable, Equatable, Sendable {
         coach = try c.decodeIfPresent(CoachState.self, forKey: .coach)
         inboxKey = try c.decodeIfPresent(Data.self, forKey: .inboxKey)
         photoKey = try c.decodeIfPresent(Data.self, forKey: .photoKey)
+        draft = try c.decodeIfPresent(Note.self, forKey: .draft)
     }
 
     func plan(for month: MonthID) -> MonthPlan? {
@@ -82,7 +85,7 @@ struct VaultSettings: Codable, Equatable, Sendable {
     var fridayReminder = true
     /// Monday 8:30, the weekly worry list.
     var worryReminder = true
-    /// First Monday of the month, 8:30, the monthly reflection.
+    /// First Monday of the month, 20:00, the monthly reflection.
     var reflectionReminder = true
     /// Show the month's intention on widgets (kept unencrypted outside the vault). Off by default.
     var widgetIntention = false
