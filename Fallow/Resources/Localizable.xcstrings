@@ -32,6 +32,16 @@
         }
       }
     },
+    "%lld photos": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld poze"
+          }
+        }
+      }
+    },
     "%lld pressed": {
       "localizations": {
         "ro": {
@@ -262,6 +272,16 @@
         }
       }
     },
+    "A photo could not be added.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "O poză nu a putut fi adăugată."
+          }
+        }
+      }
+    },
     "A plant for the herbarium": {
       "localizations": {
         "ro": {
@@ -342,6 +362,26 @@
         }
       }
     },
+    "Add photos": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Adaugă poze"
+          }
+        }
+      }
+    },
+    "Add to “What changed?”": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Adaugă la „Ce s-a schimbat?”"
+          }
+        }
+      }
+    },
     "After": {
       "localizations": {
         "ro": {
@@ -418,6 +458,26 @@
           "stringUnit": {
             "state": "translated",
             "value": "Apple Health"
+          }
+        }
+      }
+    },
+    "Apple Intelligence": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Apple Intelligence"
+          }
+        }
+      }
+    },
+    "Apple Intelligence could not help this time.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Apple Intelligence nu a putut ajuta de data asta."
           }
         }
       }
@@ -1392,6 +1452,16 @@
         }
       }
     },
+    "Kept encrypted with your journal, without location or camera details.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Păstrate criptat cu jurnalul tău, fără locație sau detalii despre cameră."
+          }
+        }
+      }
+    },
     "Language": {
       "localizations": {
         "ro": {
@@ -1478,6 +1548,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "Privire înapoi"
+          }
+        }
+      }
+    },
+    "Made on this iPhone from your notes. Nothing leaves it.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Făcut pe acest iPhone, din notele tale. Nimic nu pleacă de pe el."
           }
         }
       }
@@ -2162,6 +2242,26 @@
         }
       }
     },
+    "Photo": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Poză"
+          }
+        }
+      }
+    },
+    "Photos": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Poze"
+          }
+        }
+      }
+    },
     "Plan %@": {
       "localizations": {
         "ro": {
@@ -2338,6 +2438,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "Mementourile rămân pe telefon. Niciun server nu știe când sună."
+          }
+        }
+      }
+    },
+    "Remove photo": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Șterge poza"
           }
         }
       }
@@ -2768,6 +2878,26 @@
           "stringUnit": {
             "state": "translated",
             "value": "Oprești exercițiul?"
+          }
+        }
+      }
+    },
+    "Suggest intentions": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sugerează intenții"
+          }
+        }
+      }
+    },
+    "Summarize my month": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Rezumă-mi luna"
           }
         }
       }
@@ -3298,6 +3428,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "Exercițiul din seara asta te așteaptă când ești gata."
+          }
+        }
+      }
+    },
+    "Try again": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Încearcă din nou"
           }
         }
       }

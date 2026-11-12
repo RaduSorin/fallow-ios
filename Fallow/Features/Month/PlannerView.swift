@@ -22,6 +22,13 @@ struct PlannerView: View {
                     }
                     .font(.notebookTitle(.title3))
                     .lineLimit(2...5)
+                    if OnDeviceAI.isAvailable, let contents = vault.contents {
+                        // Ideas from the month before the one being planned.
+                        let before = draft.id.previous
+                        IntentionIdeasRow(plan: contents.plan(for: before), notes: contents.notes(in: before)) { idea in
+                            draft.intention = idea
+                        }
+                    }
                 } header: {
                     Text("Intention")
                 } footer: {

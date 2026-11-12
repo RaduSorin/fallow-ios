@@ -79,6 +79,12 @@ protocol BackupStore: Sendable {
     /// The backup, or nil when there is none.
     func read() async throws -> Data?
     func delete() async throws
+
+    /// Sealed photo files, next to the backup (the same bytes as on the phone).
+    func photoIDs() async throws -> Set<String>
+    func writePhoto(_ data: Data, id: String) async throws
+    func readPhoto(_ id: String) async throws -> Data?
+    func deletePhoto(_ id: String) async throws
 }
 
 /// The backup as one file in the app's own iCloud Drive container (not shown in the Files app).
@@ -130,6 +136,67 @@ struct ICloudBackupStore: BackupStore {
         }.value
     }
 
+    private static func photoFolder() throws -> URL {
+        let folder = try fileURL().deletingLastPathComponent().appending(path: "Photos", directoryHint: .isDirectory)
+        try FileManager.default.createDirectory(at: folder, withIntermediateDirectories: true)
+        return folder
+    }
+
+    private static func photoURL(_ id: String) throws -> URL {
+        try photoFolder().appending(path: "\(id).\(PhotoStore.fileExtension)")
+    }
+
+    func photoIDs() async throws -> Set<String> {
+        try await Task.detached {
+            let folder = try Self.photoFolder()
+            let files = (try? FileManager.default.contentsOfDirectory(at: folder, includingPropertiesForKeys: nil)) ?? []
+            // Files not downloaded yet show as ".name.fphoto.icloud".
+            return Set(files.compactMap { url -> String? in
+                var name = url.lastPathComponent
+                if name.hasPrefix("."), name.hasSuffix(".icloud") {
+                    name = String(name.dropFirst().dropLast(".icloud".count))
+                }
+                let suffix = ".\(PhotoStore.fileExtension)"
+                guard name.hasSuffix(suffix) else { return nil }
+                return String(name.dropLast(suffix.count))
+            })
+        }.value
+    }
+
+    func writePhoto(_ data: Data, id: String) async throws {
+        try await Task.detached {
+            let url = try Self.photoURL(id)
+            try Self.coordinate(writing: url) { try data.write(to: $0, options: .atomic) }
+        }.value
+    }
+
+    func readPhoto(_ id: String) async throws -> Data? {
+        try await Task.detached { () async throws -> Data? in
+            let url = try Self.photoURL(id)
+            do {
+                try FileManager.default.startDownloadingUbiquitousItem(at: url)
+            } catch {
+                return nil
+            }
+            for _ in 0..<60 {
+                let values = try? url.resourceValues(forKeys: [.ubiquitousItemDownloadingStatusKey])
+                if values?.ubiquitousItemDownloadingStatus == .current { break }
+                try await Task.sleep(for: .milliseconds(500))
+            }
+            var result: Data?
+            try Self.coordinate(reading: url) { result = try Data(contentsOf: $0) }
+            return result
+        }.value
+    }
+
+    func deletePhoto(_ id: String) async throws {
+        try await Task.detached {
+            let url = try Self.photoURL(id)
+            guard FileManager.default.fileExists(atPath: url.path) else { return }
+            try Self.coordinate(writing: url, options: .forDeleting) { try FileManager.default.removeItem(at: $0) }
+        }.value
+    }
+
     private static func coordinate(writing url: URL, options: NSFileCoordinator.WritingOptions = .forReplacing, _ body: (URL) throws -> Void) throws {
         var coordinationError: NSError?
         var bodyError: Error?
@@ -160,6 +227,15 @@ struct FolderBackupStore: BackupStore {
     }
 
     func delete() async throws { try? FileManager.default.removeItem(at: url) }
+
+    private var photos: PhotoStore {
+        PhotoStore(folder: url.deletingLastPathComponent().appending(path: "BackupPhotos", directoryHint: .isDirectory))
+    }
+
+    func photoIDs() async throws -> Set<String> { photos.ids() }
+    func writePhoto(_ data: Data, id: String) async throws { try photos.write(data, id: id) }
+    func readPhoto(_ id: String) async throws -> Data? { photos.read(id) }
+    func deletePhoto(_ id: String) async throws { photos.delete(id) }
 }
 
 final class InMemoryBackupKey: BackupKeyStore, @unchecked Sendable {
