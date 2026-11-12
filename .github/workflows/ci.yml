@@ -43,9 +43,22 @@ jobs:
             | tee build.log | grep -E '(error|warning: .*Fallow/|Test (Suite|Case)|passed|failed|\*\* )' || true
           grep -q '\*\* TEST SUCCEEDED \*\*' build.log
 
+      - name: Build for a real iPhone
+        # Some frameworks (Journaling Suggestions) exist only on devices, not in the Simulator.
+        run: |
+          xcodebuild build \
+            -project Fallow.xcodeproj \
+            -scheme Fallow \
+            -destination 'generic/platform=iOS' \
+            CODE_SIGNING_ALLOWED=NO \
+            | tee device.log | grep -E '(error|warning: .*Fallow/|\*\* )' || true
+          grep -q '\*\* BUILD SUCCEEDED \*\*' device.log
+
       - name: Upload build log
         if: failure()
         uses: actions/upload-artifact@v4
         with:
           name: build-log
-          path: build.log
+          path: |
+            build.log
+            device.log

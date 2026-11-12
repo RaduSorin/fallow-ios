@@ -64,6 +64,13 @@ struct NoteEditor: View {
                     Text("Note")
                 }
 
+                if draft.kind == .free {
+                    MomentsPicker { line in
+                        let trimmed = draft.text.trimmingCharacters(in: .whitespacesAndNewlines)
+                        draft.text = trimmed.isEmpty ? line : trimmed + "\n\n" + line
+                    }
+                }
+
                 if !isNew {
                     Section {
                         Button(role: .destructive) {

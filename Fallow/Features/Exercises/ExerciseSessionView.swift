@@ -36,6 +36,12 @@ struct ExerciseSessionView: View {
         .task(id: session?.clock) { await waitForTheEnd() }
         .sensoryFeedback(.selection, trigger: session?.step)
         .sensoryFeedback(.success, trigger: session?.finished == true) { _, isDone in isDone }
+        .onChange(of: session?.finished == true) { _, isDone in
+            guard isDone, vault.contents?.settings.healthMindful == true,
+                  let clock = session?.clock,
+                  let interval = MindfulHealth.interval(for: clock, finishedAt: .now) else { return }
+            Task { await MindfulHealth.save(interval) }
+        }
         .sheet(item: $writing, onDismiss: { run.close() }) { note in
             NoteEditor(note: note, isNew: true)
         }

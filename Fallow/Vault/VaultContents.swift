@@ -85,6 +85,8 @@ struct VaultSettings: Codable, Equatable, Sendable {
     var widgetIntention = false
     /// Show rhythm titles on widgets and tick them there (titles kept unencrypted). Off by default.
     var widgetRhythms = false
+    /// Save each guided exercise's length to Apple Health as mindful minutes. Off by default.
+    var healthMindful = false
 
     init() {}
 
@@ -98,6 +100,7 @@ struct VaultSettings: Codable, Equatable, Sendable {
         reflectionReminder = try c.decodeIfPresent(Bool.self, forKey: .reflectionReminder) ?? true
         widgetIntention = try c.decodeIfPresent(Bool.self, forKey: .widgetIntention) ?? false
         widgetRhythms = try c.decodeIfPresent(Bool.self, forKey: .widgetRhythms) ?? false
+        healthMindful = try c.decodeIfPresent(Bool.self, forKey: .healthMindful) ?? false
     }
 
     static func minutes(from date: Date, calendar: Calendar = .current) -> Int {

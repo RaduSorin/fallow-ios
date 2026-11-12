@@ -4,6 +4,7 @@ import SwiftUI
 struct JournalView: View {
     @Environment(Vault.self) private var vault
     @State private var editing: Note?
+    @State private var query = ""
 
     private struct MonthGroup: Identifiable {
         let month: MonthID
@@ -12,7 +13,7 @@ struct JournalView: View {
     }
 
     private var groups: [MonthGroup] {
-        let notes = vault.contents?.notes ?? []
+        let notes = (vault.contents?.notes ?? []).filter { $0.matches(query) }
         let byMonth = Dictionary(grouping: notes, by: \.month)
         return byMonth.keys.sorted(by: >).map { month in
             MonthGroup(
@@ -25,9 +26,15 @@ struct JournalView: View {
     var body: some View {
         List {
             if groups.isEmpty {
-                Text("No notes yet. They appear here after you write one.")
-                    .foregroundStyle(Theme.inkMuted)
-                    .listRowBackground(Theme.card)
+                Group {
+                    if query.trimmingCharacters(in: .whitespaces).isEmpty {
+                        Text("No notes yet. They appear here after you write one.")
+                    } else {
+                        Text("Nothing found for “\(query)”.")
+                    }
+                }
+                .foregroundStyle(Theme.inkMuted)
+                .listRowBackground(Theme.card)
             }
             ForEach(groups) { group in
                 Section {
@@ -48,6 +55,7 @@ struct JournalView: View {
         .scrollContentBackground(.hidden)
         .background(Theme.paper)
         .navigationTitle(Text("Journal"))
+        .searchable(text: $query, prompt: Text("Search your notes"))
         .sheet(item: $editing) { note in
             if note.kind == .reflection {
                 ReflectionView(month: note.month)
