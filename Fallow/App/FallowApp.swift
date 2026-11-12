@@ -4,10 +4,13 @@ import SwiftUI
 struct FallowApp: App {
     @State private var vault: Vault
     @State private var backup: Backup
+    @State private var run = ExerciseRun()
+    @UIApplicationDelegateAdaptor(AppDelegate.self) private var appDelegate
     @Environment(\.scenePhase) private var scenePhase
 
     init() {
         Theme.applyBarAppearance()
+        ExerciseRun.endLeftovers()
         let vault = Vault.live()
         let backup = Backup.live()
         vault.onChange = { contents in
@@ -27,6 +30,8 @@ struct FallowApp: App {
             RootView()
                 .environment(vault)
                 .environment(backup)
+                .environment(run)
+                .environment(Router.shared)
                 .tint(Theme.moss)
                 .foregroundStyle(Theme.ink)
         }

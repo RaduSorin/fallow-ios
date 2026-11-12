@@ -44,6 +44,8 @@ struct HerbariumView: View {
             }
             .onAppear { visits += 1 }
             .task(id: "\(landing ?? "")#\(visits)") { await press(proxy) }
+            // A soft tap as each plant settles on its place.
+            .sensoryFeedback(.impact(flexibility: .soft), trigger: settled) { _, id in id != nil }
         }
         .sheet(item: $open) { herb in
             PlantDetail(herb: herb, earned: book?.earned[herb.id], progress: vault.contents?.herbProgress(herb.id) ?? (0, 1))

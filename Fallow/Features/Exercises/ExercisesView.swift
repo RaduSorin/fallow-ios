@@ -118,6 +118,7 @@ struct ExerciseRow: View {
 /// Reads one exercise. The steps are shown as written, one paragraph at a time.
 struct ExerciseDetail: View {
     @Environment(Vault.self) private var vault
+    @Environment(ExerciseRun.self) private var run
     @Environment(\.dismiss) private var dismiss
     let exerciseID: String
     @State private var editing = false
@@ -132,7 +133,15 @@ struct ExerciseDetail: View {
                     if let minutes = exercise.minutes { Text("\(minutes) min").specimen() }
                 }
                 Text(exercise.title).font(.notebookTitle())
-                ForEach(Array(paragraphs(exercise.steps).enumerated()), id: \.offset) { _, paragraph in
+                if !exercise.stepList.isEmpty {
+                    Button {
+                        run.start(exercise)
+                    } label: {
+                        Label { Text("Start the exercise") } icon: { Image(systemName: "play.fill") }
+                    }
+                    .buttonStyle(.borderedProminent)
+                }
+                ForEach(Array(exercise.stepList.enumerated()), id: \.offset) { _, paragraph in
                     Text(paragraph)
                         .fixedSize(horizontal: false, vertical: true)
                 }
@@ -156,12 +165,6 @@ struct ExerciseDetail: View {
                 ExerciseEditor(exercise: exercise, isNew: false)
             }
         }
-    }
-
-    private func paragraphs(_ text: String) -> [String] {
-        text.components(separatedBy: "\n\n")
-            .map { $0.trimmingCharacters(in: .whitespacesAndNewlines) }
-            .filter { !$0.isEmpty }
     }
 }
 

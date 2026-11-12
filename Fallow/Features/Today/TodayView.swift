@@ -3,6 +3,8 @@ import SwiftUI
 /// Today: the month intention on top, then what today holds.
 struct TodayView: View {
     @Environment(Vault.self) private var vault
+    @Environment(ExerciseRun.self) private var run
+    @Environment(Router.self) private var router
     @State private var planning: MonthPlan?
     @State private var writing: Note?
     @State private var worrying = false
@@ -39,17 +41,20 @@ struct TodayView: View {
                     Text(friday.title.isEmpty ? String(localized: "A free Friday") : friday.title)
                         .font(.notebookTitle(.title3))
                     if let exercise = vault.contents?.exercise(friday.exerciseId) {
+                        Button {
+                            run.start(exercise)
+                        } label: {
+                            Label { Text("Start the exercise") } icon: { Image(systemName: "play.fill") }
+                        }
+                        .buttonStyle(.borderedProminent)
                         NavigationLink {
                             ExerciseDetail(exerciseID: exercise.id)
                         } label: {
-                            Text("Open the exercise")
+                            Text("Read it first")
                         }
                     }
                     Button {
-                        writing = Note(
-                            date: todayKey, month: month, kind: .friday,
-                            exerciseId: friday.exerciseId, title: friday.title.isEmpty ? nil : friday.title
-                        )
+                        writeFridayNote(friday)
                     } label: {
                         Text("Write after the exercise")
                     }
@@ -71,6 +76,36 @@ struct TodayView: View {
         .sheet(item: $writing) { note in
             let exists = vault.contents?.notes.contains { $0.id == note.id } ?? false
             NoteEditor(note: note, isNew: !exists)
+        }
+        .onChange(of: router.pending, initial: true) { _, route in
+            follow(route)
+        }
+    }
+
+    private func writeFridayNote(_ friday: FridayPlan) {
+        writing = Note(
+            date: todayKey, month: month, kind: .friday,
+            exerciseId: friday.exerciseId, title: friday.title.isEmpty ? nil : friday.title
+        )
+    }
+
+    /// Answers a tapped notification: Friday opens tonight's exercise (or the note when there is
+    /// no exercise), Monday opens the worry list.
+    private func follow(_ route: AppRoute?) {
+        switch route {
+        case .friday:
+            router.pending = nil
+            guard let friday = todaysFriday else { return }
+            if let exercise = vault.contents?.exercise(friday.exerciseId) {
+                if run.session == nil { run.start(exercise) }
+            } else {
+                writeFridayNote(friday)
+            }
+        case .worry:
+            router.pending = nil
+            worrying = true
+        default:
+            break
         }
     }
 

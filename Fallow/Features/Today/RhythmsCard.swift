@@ -59,6 +59,7 @@ struct RhythmsCard: View {
             .contentShape(Rectangle())
         }
         .buttonStyle(.plain)
+        .sensoryFeedback(.impact(weight: .light), trigger: done) { _, isDone in isDone }
         .accessibilityValue(done ? Text("Done today") : Text("Not yet today"))
     }
 }

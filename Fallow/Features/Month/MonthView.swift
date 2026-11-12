@@ -3,6 +3,7 @@ import SwiftUI
 /// The month: its intention, its Fridays, the reflection, and the next month when it is near.
 struct MonthView: View {
     @Environment(Vault.self) private var vault
+    @Environment(Router.self) private var router
     @State private var planning: MonthPlan?
     @State private var reflecting: MonthID?
 
@@ -43,6 +44,12 @@ struct MonthView: View {
         }
         .sheet(item: $reflecting) { month in
             ReflectionView(month: month)
+        }
+        .onChange(of: router.pending, initial: true) { _, route in
+            // The first Monday of a month: its notification opens the reflection.
+            guard route == .reflection else { return }
+            router.pending = nil
+            reflecting = reflectionMonth
         }
     }
 

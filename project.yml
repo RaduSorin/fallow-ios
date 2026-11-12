@@ -19,6 +19,9 @@ targets:
     platform: iOS
     sources:
       - Fallow
+      - Shared
+    dependencies:
+      - target: FallowWidgets
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: app.fallow.ios
@@ -30,11 +33,28 @@ targets:
         INFOPLIST_KEY_UISupportedInterfaceOrientations: UIInterfaceOrientationPortrait
         INFOPLIST_KEY_ITSAppUsesNonExemptEncryption: NO
         INFOPLIST_KEY_NSFaceIDUsageDescription: Fallow uses Face ID to open your private journal.
+        INFOPLIST_KEY_NSSupportsLiveActivities: YES
         TARGETED_DEVICE_FAMILY: "1"
         ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
         ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
         CODE_SIGN_STYLE: Automatic
         CODE_SIGN_ENTITLEMENTS: Fallow/Fallow.entitlements
+  FallowWidgets:
+    type: app-extension
+    platform: iOS
+    sources:
+      - FallowWidgets
+      - Shared
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: app.fallow.ios.widgets
+        PRODUCT_NAME: FallowWidgets
+        GENERATE_INFOPLIST_FILE: YES
+        INFOPLIST_FILE: FallowWidgets/Info.plist
+        INFOPLIST_KEY_CFBundleDisplayName: Fallow
+        TARGETED_DEVICE_FAMILY: "1"
+        CODE_SIGN_STYLE: Automatic
+        SKIP_INSTALL: YES
   FallowTests:
     type: bundle.unit-test
     platform: iOS
