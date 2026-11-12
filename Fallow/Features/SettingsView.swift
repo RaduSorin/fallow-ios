@@ -38,6 +38,11 @@ struct SettingsView: View {
                     Label { Text("Journal") } icon: { Image(systemName: "book.closed") }
                 }
                 NavigationLink {
+                    CoachView()
+                } label: {
+                    Label { Text(verbatim: "Claude") } icon: { Image(systemName: "bubble.left.and.text.bubble.right") }
+                }
+                NavigationLink {
                     BackupView()
                 } label: {
                     Label { Text("Backup and transfer") } icon: { Image(systemName: "icloud") }

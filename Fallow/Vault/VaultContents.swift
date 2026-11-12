@@ -14,6 +14,8 @@ struct VaultContents: Codable, Equatable, Sendable {
     var exercises: [Exercise] = []
     /// The herbarium (nil until it starts, on the first save or unlock).
     var herbarium: HerbBook?
+    /// Claude: the conversation, the note and the settings (nil until first used).
+    var coach: CoachState?
 
     init(createdAt: Date, settings: VaultSettings) {
         self.createdAt = createdAt
@@ -31,6 +33,7 @@ struct VaultContents: Codable, Equatable, Sendable {
         rhythmLog = try c.decodeIfPresent([String: [String]].self, forKey: .rhythmLog) ?? [:]
         exercises = try c.decodeIfPresent([Exercise].self, forKey: .exercises) ?? []
         herbarium = try c.decodeIfPresent(HerbBook.self, forKey: .herbarium)
+        coach = try c.decodeIfPresent(CoachState.self, forKey: .coach)
     }
 
     func plan(for month: MonthID) -> MonthPlan? {

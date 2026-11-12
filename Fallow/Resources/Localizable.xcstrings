@@ -412,6 +412,16 @@
         }
       }
     },
+    "Before you start": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Înainte să începi"
+          }
+        }
+      }
+    },
     "Cancel": {
       "localizations": {
         "ro": {
@@ -502,6 +512,66 @@
         }
       }
     },
+    "Claude also sees": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Claude mai vede"
+          }
+        }
+      }
+    },
+    "Claude answers like a gentle coach: short, practical, without judging. It is not therapy and not a doctor.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Claude răspunde ca un coach blând: scurt, practic, fără să judece. Nu e terapie și nu e medic."
+          }
+        }
+      }
+    },
+    "Claude cannot answer right now. Try again in a moment.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Claude nu poate răspunde acum. Încearcă din nou peste puțin."
+          }
+        }
+      }
+    },
+    "Claude proposed the last lines. Change or delete anything before saving.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ultimele rânduri le-a propus Claude. Schimbă sau șterge orice înainte să salvezi."
+          }
+        }
+      }
+    },
+    "Claude reads this with every message. Keep only what you are happy to share.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Claude citește asta la fiecare mesaj. Păstrează doar ce vrei să împarți."
+          }
+        }
+      }
+    },
+    "Claude will be here once the connection to Kitchen Tales is set up.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Claude va fi aici după ce e gata legătura cu Kitchen Tales."
+          }
+        }
+      }
+    },
     "Clay": {
       "localizations": {
         "ro": {
@@ -528,6 +598,36 @@
           "stringUnit": {
             "state": "translated",
             "value": "Plastilină: %@"
+          }
+        }
+      }
+    },
+    "Clear": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Șterge"
+          }
+        }
+      }
+    },
+    "Clear the conversation": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Șterge conversația"
+          }
+        }
+      }
+    },
+    "Clear the conversation?": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ștergi conversația?"
           }
         }
       }
@@ -658,6 +758,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "Editează exercițiul"
+          }
+        }
+      }
+    },
+    "Email": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Email"
           }
         }
       }
@@ -858,6 +968,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "Primii pași"
+          }
+        }
+      }
+    },
+    "For now, Claude in Fallow runs through Kitchen Tales. Sign in once; only a sign-in token stays on this iPhone, in the Keychain.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Deocamdată, Claude din Fallow merge prin Kitchen Tales. Te conectezi o singură dată; pe iPhone rămâne doar un token de conectare, în Breloc."
           }
         }
       }
@@ -1372,6 +1492,26 @@
         }
       }
     },
+    "No connection. Try again when you are online.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nu e conexiune. Încearcă din nou când ești online."
+          }
+        }
+      }
+    },
+    "No connection. Your message is saved; send another when you are online.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nu e conexiune. Mesajul tău e salvat; trimite altul când ești online."
+          }
+        }
+      }
+    },
     "No duration": {
       "localizations": {
         "ro": {
@@ -1502,6 +1642,16 @@
         }
       }
     },
+    "Nothing new to add to the note.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nimic nou de adăugat în notiță."
+          }
+        }
+      }
+    },
     "OK": {
       "localizations": {
         "ro": {
@@ -1558,6 +1708,26 @@
           "stringUnit": {
             "state": "translated",
             "value": "Câte un lucru pe rând. Ajung formulări scurte, ca „termenul de la serviciu”."
+          }
+        }
+      }
+    },
+    "Only the conversation": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Doar conversația"
+          }
+        }
+      }
+    },
+    "Only what you write here, the recent messages, your note \"What Claude knows about me\" and what you allow below. Never your journal. Nothing is kept on the server; the conversation stays encrypted on this iPhone.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Doar ce scrii aici, mesajele recente, notița „Ce știe Claude despre mine” și ce permiți mai jos. Niciodată jurnalul. Pe server nu rămâne nimic; conversația rămâne criptată pe acest iPhone."
           }
         }
       }
@@ -1643,6 +1813,16 @@
       }
     },
     "Passphrase": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Parolă"
+          }
+        }
+      }
+    },
+    "Password": {
       "localizations": {
         "ro": {
           "stringUnit": {
@@ -1772,6 +1952,16 @@
         }
       }
     },
+    "Remember from this conversation": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ține minte din conversația asta"
+          }
+        }
+      }
+    },
     "Reminders": {
       "localizations": {
         "ro": {
@@ -1892,12 +2082,52 @@
         }
       }
     },
+    "Send": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Trimite"
+          }
+        }
+      }
+    },
     "Show when a plant comes": {
       "localizations": {
         "ro": {
           "stringUnit": {
             "state": "translated",
             "value": "Arată când vine o plantă"
+          }
+        }
+      }
+    },
+    "Sign in": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Conectează-te"
+          }
+        }
+      }
+    },
+    "Sign out of Kitchen Tales": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Deconectează-te de la Kitchen Tales"
+          }
+        }
+      }
+    },
+    "Signing in did not work. Try again in a moment.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Conectarea n-a mers. Încearcă din nou peste puțin."
           }
         }
       }
@@ -1948,6 +2178,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "sunătoare"
+          }
+        }
+      }
+    },
+    "Start": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Începe"
           }
         }
       }
@@ -2068,6 +2308,26 @@
           "stringUnit": {
             "state": "translated",
             "value": "Surprize"
+          }
+        }
+      }
+    },
+    "Talk with Claude": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vorbește cu Claude"
+          }
+        }
+      }
+    },
+    "That email and password do not match a Kitchen Tales account.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Emailul și parola nu se potrivesc cu un cont Kitchen Tales."
           }
         }
       }
@@ -2212,6 +2472,16 @@
         }
       }
     },
+    "The intention and the month's Fridays": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Intenția și vinerile lunii"
+          }
+        }
+      }
+    },
     "The key could not be saved. Check that your iPhone has a passcode, then try again.": {
       "localizations": {
         "ro": {
@@ -2242,6 +2512,16 @@
         }
       }
     },
+    "The month's intention": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Intenția lunii"
+          }
+        }
+      }
+    },
     "The month's sign": {
       "localizations": {
         "ro": {
@@ -2258,6 +2538,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "Nota nu a putut fi salvată."
+          }
+        }
+      }
+    },
+    "The note stays. Only the messages on this iPhone are deleted.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Notița rămâne. Se șterg doar mesajele de pe acest iPhone."
           }
         }
       }
@@ -2338,6 +2628,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "Ai un backup Fallow în iCloud."
+          }
+        }
+      }
+    },
+    "This account still has its temporary password. Sign in to Kitchen Tales once to choose your own, then come back.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Contul are încă parola temporară. Intră o dată în Kitchen Tales ca să-ți alegi parola, apoi revino."
           }
         }
       }
@@ -2512,6 +2812,26 @@
         }
       }
     },
+    "What Claude knows about me": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ce știe Claude despre mine"
+          }
+        }
+      }
+    },
+    "What Claude sees": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ce vede Claude"
+          }
+        }
+      }
+    },
     "What I need: %@": {
       "localizations": {
         "ro": {
@@ -2572,6 +2892,16 @@
         }
       }
     },
+    "What helps you, what you avoid, where you left off…": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ce te ajută, ce eviți, unde ai rămas…"
+          }
+        }
+      }
+    },
     "What is happening?": {
       "localizations": {
         "ro": {
@@ -2592,12 +2922,32 @@
         }
       }
     },
+    "What is on your mind today?": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ce ai pe suflet azi?"
+          }
+        }
+      }
+    },
     "What is on your mind?": {
       "localizations": {
         "ro": {
           "stringUnit": {
             "state": "translated",
             "value": "Ce îți stă pe creier?"
+          }
+        }
+      }
+    },
+    "What is sent": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ce se trimite"
           }
         }
       }
@@ -2702,6 +3052,16 @@
         }
       }
     },
+    "Write to Claude": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Scrie-i lui Claude"
+          }
+        }
+      }
+    },
     "Yes": {
       "localizations": {
         "ro": {
@@ -2748,6 +3108,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "Ai spus în reflecția lunii că ai văzut semnul pe care ți l-ai ales."
+          }
+        }
+      }
+    },
+    "Your Kitchen Tales account": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Contul tău Kitchen Tales"
           }
         }
       }
