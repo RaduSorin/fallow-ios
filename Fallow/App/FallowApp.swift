@@ -14,7 +14,10 @@ struct FallowApp: App {
         let vault = Vault.live()
         let backup = Backup.live()
         vault.onChange = { contents in
-            Task { @MainActor in backup.schedule(contents) }
+            Task { @MainActor in
+                backup.schedule(contents)
+                SharedBridge.publish(contents)
+            }
             Task.detached {
                 // The permission prompt shows only the first time.
                 await ReminderScheduler.requestPermission()
@@ -32,6 +35,9 @@ struct FallowApp: App {
                 .environment(backup)
                 .environment(run)
                 .environment(Router.shared)
+                .onOpenURL { url in
+                    if let route = AppRoute(url: url) { Router.shared.pending = route }
+                }
                 .tint(Theme.moss)
                 .foregroundStyle(Theme.ink)
         }

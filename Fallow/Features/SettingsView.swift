@@ -75,6 +75,15 @@ struct SettingsView: View {
             }
 
             Section {
+                Toggle(isOn: settingBinding(\.widgetIntention)) { Text("Show the month's intention") }
+                Toggle(isOn: settingBinding(\.widgetRhythms)) { Text("Show and tick rhythms") }
+            } header: {
+                Text("Widgets")
+            } footer: {
+                Text("By default widgets show only dates and counts. What you turn on here is kept unencrypted outside the vault, so it can show on the Home Screen and the Lock Screen.")
+            }
+
+            Section {
                 Button {
                     vault.lock()
                 } label: {

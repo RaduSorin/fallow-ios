@@ -5,13 +5,19 @@ import UserNotifications
 
 /// Where a tapped notification should take the person, once Face ID has opened the vault.
 enum AppRoute: String, Sendable, CaseIterable {
-    case today, friday, worry, reflection, exercise
+    case today, friday, worry, reflection, exercise, note
 
     /// The key in a notification's userInfo.
     static let key = "route"
 
     init?(userInfo: [AnyHashable: Any]) {
         guard let raw = userInfo[Self.key] as? String, let route = AppRoute(rawValue: raw) else { return nil }
+        self = route
+    }
+
+    /// "fallow://friday", from a widget, a control or Siri.
+    init?(url: URL) {
+        guard url.scheme == FallowLink.scheme, let host = url.host(), let route = AppRoute(rawValue: host) else { return nil }
         self = route
     }
 
@@ -28,7 +34,7 @@ enum AppRoute: String, Sendable, CaseIterable {
     var tab: AppTab {
         switch self {
         case .reflection: .month
-        case .today, .friday, .worry, .exercise: .today
+        case .today, .friday, .worry, .exercise, .note: .today
         }
     }
 }

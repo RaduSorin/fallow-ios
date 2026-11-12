@@ -74,6 +74,8 @@ struct MainTabs: View {
             .fullScreenCover(item: Binding(get: { run.session }, set: { _ in })) { _ in
                 ExerciseSessionView()
             }
+            // Takes in what widgets and Siri left in the sealed inbox while Fallow was locked.
+            .task { SharedBridge.drain(into: vault) }
             .onChange(of: router.pending, initial: true) { _, route in
                 guard let route else { return }
                 selection = route.tab

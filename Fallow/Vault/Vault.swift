@@ -110,6 +110,7 @@ final class Vault {
     func eraseEverything() throws {
         try keyStore.deleteKey()
         try? FileManager.default.removeItem(at: fileURL)
+        SharedStore.eraseAll()
         key = nil
         contents = nil
         state = .notSetUp

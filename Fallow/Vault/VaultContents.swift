@@ -16,6 +16,8 @@ struct VaultContents: Codable, Equatable, Sendable {
     var herbarium: HerbBook?
     /// Claude: the conversation, the note and the settings (nil until first used).
     var coach: CoachState?
+    /// The private half of the inbox key (X25519). Widgets and Siri seal entries with the public half.
+    var inboxKey: Data?
 
     init(createdAt: Date, settings: VaultSettings) {
         self.createdAt = createdAt
@@ -34,6 +36,7 @@ struct VaultContents: Codable, Equatable, Sendable {
         exercises = try c.decodeIfPresent([Exercise].self, forKey: .exercises) ?? []
         herbarium = try c.decodeIfPresent(HerbBook.self, forKey: .herbarium)
         coach = try c.decodeIfPresent(CoachState.self, forKey: .coach)
+        inboxKey = try c.decodeIfPresent(Data.self, forKey: .inboxKey)
     }
 
     func plan(for month: MonthID) -> MonthPlan? {
@@ -78,6 +81,10 @@ struct VaultSettings: Codable, Equatable, Sendable {
     var worryReminder = true
     /// First Monday of the month, 8:30, the monthly reflection.
     var reflectionReminder = true
+    /// Show the month's intention on widgets (kept unencrypted outside the vault). Off by default.
+    var widgetIntention = false
+    /// Show rhythm titles on widgets and tick them there (titles kept unencrypted). Off by default.
+    var widgetRhythms = false
 
     init() {}
 
@@ -89,6 +96,8 @@ struct VaultSettings: Codable, Equatable, Sendable {
         fridayReminder = try c.decodeIfPresent(Bool.self, forKey: .fridayReminder) ?? true
         worryReminder = try c.decodeIfPresent(Bool.self, forKey: .worryReminder) ?? true
         reflectionReminder = try c.decodeIfPresent(Bool.self, forKey: .reflectionReminder) ?? true
+        widgetIntention = try c.decodeIfPresent(Bool.self, forKey: .widgetIntention) ?? false
+        widgetRhythms = try c.decodeIfPresent(Bool.self, forKey: .widgetRhythms) ?? false
     }
 
     static func minutes(from date: Date, calendar: Calendar = .current) -> Int {
