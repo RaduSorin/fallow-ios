@@ -118,6 +118,8 @@ struct Note: Codable, Equatable, Sendable, Identifiable {
     var answers: [String: String]?
     /// The worry list's parts (kind .worry).
     var worry: WorryList?
+    /// Photos kept with the note, by id (sealed files, see PhotoStore).
+    var photos: [String]?
     var createdAt: Date = .now
 }
 

@@ -18,6 +18,8 @@ struct VaultContents: Codable, Equatable, Sendable {
     var coach: CoachState?
     /// The private half of the inbox key (X25519). Widgets and Siri seal entries with the public half.
     var inboxKey: Data?
+    /// The key that seals photo files (256-bit), made with the first photo.
+    var photoKey: Data?
 
     init(createdAt: Date, settings: VaultSettings) {
         self.createdAt = createdAt
@@ -37,6 +39,7 @@ struct VaultContents: Codable, Equatable, Sendable {
         herbarium = try c.decodeIfPresent(HerbBook.self, forKey: .herbarium)
         coach = try c.decodeIfPresent(CoachState.self, forKey: .coach)
         inboxKey = try c.decodeIfPresent(Data.self, forKey: .inboxKey)
+        photoKey = try c.decodeIfPresent(Data.self, forKey: .photoKey)
     }
 
     func plan(for month: MonthID) -> MonthPlan? {

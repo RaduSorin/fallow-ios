@@ -23,14 +23,16 @@ final class Backup {
     @ObservationIgnored private let store: any BackupStore
     @ObservationIgnored private let keys: any BackupKeyStore
     @ObservationIgnored private let defaults: UserDefaults
+    @ObservationIgnored private let photos: PhotoStore
     @ObservationIgnored private var pending: (contents: VaultContents, task: Task<Void, Never>)?
 
     private static let lastBackupKey = "lastICloudBackup"
 
-    init(store: any BackupStore, keys: any BackupKeyStore, defaults: UserDefaults = .standard) {
+    init(store: any BackupStore, keys: any BackupKeyStore, defaults: UserDefaults = .standard, photos: PhotoStore = .live) {
         self.store = store
         self.keys = keys
         self.defaults = defaults
+        self.photos = photos
         if let last = defaults.object(forKey: Self.lastBackupKey) as? Date {
             status = .saved(last)
         } else {
@@ -79,6 +81,7 @@ final class Backup {
             let key = try keys.keyCreatingIfMissing()
             let sealed = try VaultCrypto.seal(VaultCoding.encoder.encode(contents), key: key)
             try await store.write(sealed)
+            try await syncPhotos(used: contents.photoIDs)
             let now = Date.now
             defaults.set(now, forKey: Self.lastBackupKey)
             status = .saved(now)
@@ -86,6 +89,19 @@ final class Backup {
             status = .unavailable
         } catch {
             status = .failed
+        }
+    }
+
+    /// Copies new photos up and removes ones no note uses. Photos never change once made,
+    /// so a photo already in iCloud is not sent again.
+    private func syncPhotos(used: Set<String>) async throws {
+        let there = try await store.photoIDs()
+        for id in used.subtracting(there) {
+            guard let sealed = photos.read(id) else { continue }
+            try await store.writePhoto(sealed, id: id)
+        }
+        for id in there.subtracting(used) {
+            try? await store.deletePhoto(id)
         }
     }
 
@@ -106,11 +122,19 @@ final class Backup {
         } catch {
             throw BackupError.unreadable
         }
+        let contents: VaultContents
         do {
-            return try VaultCoding.decoder.decode(VaultContents.self, from: plain)
+            contents = try VaultCoding.decoder.decode(VaultContents.self, from: plain)
         } catch {
             throw BackupError.unreadable
         }
+        // The photos come back as they are: they open with the photo key inside the vault.
+        for id in contents.photoIDs where photos.read(id) == nil {
+            if let sealed = try? await store.readPhoto(id) {
+                try? photos.write(sealed, id: id)
+            }
+        }
+        return contents
     }
 
     /// Erase everything: the backup and its key go too.
@@ -118,6 +142,9 @@ final class Backup {
         pending?.task.cancel()
         pending = nil
         try await store.delete()
+        for id in (try? await store.photoIDs()) ?? [] {
+            try? await store.deletePhoto(id)
+        }
         try keys.deleteKey()
         defaults.removeObject(forKey: Self.lastBackupKey)
         status = .waiting

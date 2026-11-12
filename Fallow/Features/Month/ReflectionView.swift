@@ -58,6 +58,13 @@ struct ReflectionView: View {
                     }
                 }
 
+                if OnDeviceAI.isAvailable {
+                    MonthSummarySection(plan: plan, notes: vault.contents?.notes(in: month) ?? []) { summary in
+                        let current = answers[ReflectionQuestion.changed.rawValue] ?? ""
+                        answers[ReflectionQuestion.changed.rawValue] = current.isEmpty ? summary : current + "\n\n" + summary
+                    }
+                }
+
                 if let sign = plan?.success, !sign.isEmpty {
                     Section {
                         Picker(selection: binding(ReflectionQuestion.signKey)) {

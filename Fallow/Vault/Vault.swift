@@ -21,12 +21,14 @@ final class Vault {
     @ObservationIgnored private var key: SymmetricKey?
     @ObservationIgnored private let keyStore: any VaultKeyStore
     @ObservationIgnored let fileURL: URL
+    @ObservationIgnored let photos: PhotoStore
     /// Called with the new contents after setup, unlock and every change (the app reschedules reminders).
     @ObservationIgnored var onChange: ((VaultContents) -> Void)?
 
-    init(keyStore: any VaultKeyStore, fileURL: URL) {
+    init(keyStore: any VaultKeyStore, fileURL: URL, photos: PhotoStore? = nil) {
         self.keyStore = keyStore
         self.fileURL = fileURL
+        self.photos = photos ?? PhotoStore(folder: fileURL.deletingLastPathComponent().appending(path: "Photos", directoryHint: .isDirectory))
         let hasFile = FileManager.default.fileExists(atPath: fileURL.path)
         state = hasFile && keyStore.hasKey() ? .locked : .notSetUp
     }
@@ -111,9 +113,37 @@ final class Vault {
         try keyStore.deleteKey()
         try? FileManager.default.removeItem(at: fileURL)
         SharedStore.eraseAll()
+        photos.deleteAll()
         key = nil
         contents = nil
         state = .notSetUp
+    }
+
+    // MARK: Photos
+
+    /// Seals a prepared JPEG with the photo key (made on first use) and returns its id.
+    func addPhoto(_ jpeg: Data) throws -> String {
+        guard contents != nil else { throw VaultError.noKey }
+        if contents?.photoKey == nil {
+            let fresh = SymmetricKey(size: .bits256).withUnsafeBytes { Data($0) }
+            try update { $0.photoKey = fresh }
+        }
+        guard let raw = contents?.photoKey else { throw VaultError.noKey }
+        let id = UUID().uuidString
+        try photos.write(VaultCrypto.seal(jpeg, key: SymmetricKey(data: raw)), id: id)
+        return id
+    }
+
+    /// The photo's JPEG, or nil when the vault is locked or the photo is not on this iPhone.
+    func photo(_ id: String) -> Data? {
+        guard let raw = contents?.photoKey, let sealed = photos.read(id) else { return nil }
+        return try? VaultCrypto.open(sealed, key: SymmetricKey(data: raw))
+    }
+
+    /// After Face ID: drops photo files no note uses any more.
+    func removeUnusedPhotos() {
+        guard let contents else { return }
+        photos.removeUnused(keeping: contents.photoIDs)
     }
 
     private func write(_ value: VaultContents, key: SymmetricKey) throws {

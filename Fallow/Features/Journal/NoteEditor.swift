@@ -64,6 +64,8 @@ struct NoteEditor: View {
                     Text("Note")
                 }
 
+                NotePhotosSection(photos: $draft.photos)
+
                 if draft.kind == .free {
                     MomentsPicker { line in
                         let trimmed = draft.text.trimmingCharacters(in: .whitespacesAndNewlines)
@@ -102,6 +104,7 @@ struct NoteEditor: View {
 
     private var canSave: Bool {
         !draft.text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
+            || !(draft.photos ?? []).isEmpty
             || (draft.kind == .friday && (rated || draft.fit != nil))
     }
 
@@ -174,6 +177,12 @@ struct NoteRow: View {
                 .font(.specimenLabel)
                 .textCase(.uppercase)
                 .foregroundStyle(Theme.inkMuted)
+                if let count = note.photos?.count, count > 0 {
+                    Label { Text("\(count)") } icon: { Image(systemName: "photo") }
+                        .font(.specimenLabel)
+                        .foregroundStyle(Theme.inkMuted)
+                        .accessibilityLabel(Text("\(count) photos"))
+                }
                 if let before = note.before, let after = note.after {
                     Text("\(before) → \(after)")
                         .font(.specimenLabel)
