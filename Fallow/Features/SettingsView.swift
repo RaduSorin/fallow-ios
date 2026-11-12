@@ -55,7 +55,7 @@ struct SettingsView: View {
                 reminderToggle("Evening", value: settingBinding(\.eveningReminder), fallback: 21 * 60)
                 Toggle(isOn: settingBinding(\.fridayReminder)) { Text("Friday evening, 20:00") }
                 Toggle(isOn: settingBinding(\.worryReminder)) { Text("Monday worry list, 8:30") }
-                Toggle(isOn: settingBinding(\.reflectionReminder)) { Text("Monthly reflection, first Monday") }
+                Toggle(isOn: settingBinding(\.reflectionReminder)) { Text("Monthly reflection, first Monday, 20:00") }
             } header: {
                 Text("Reminders")
             } footer: {
@@ -130,6 +130,8 @@ struct SettingsView: View {
                 }
             } header: {
                 Text("Privacy")
+            } footer: {
+                Text("If you turn off the iPhone passcode, iOS removes this key and the journal on this iPhone can no longer be opened. The iCloud backup can bring it back.")
             }
 
             Section {

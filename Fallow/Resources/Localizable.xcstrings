@@ -1372,6 +1372,16 @@
         }
       }
     },
+    "If you turn off the iPhone passcode, iOS removes this key and the journal on this iPhone can no longer be opened. The iCloud backup can bring it back.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dacă scoți codul iPhone-ului, iOS șterge această cheie și jurnalul de pe acest iPhone nu se mai poate deschide. Backupul din iCloud îl poate aduce înapoi."
+          }
+        }
+      }
+    },
     "Import a pack file": {
       "localizations": {
         "ro": {
@@ -1652,12 +1662,12 @@
         }
       }
     },
-    "Monthly reflection, first Monday": {
+    "Monthly reflection, first Monday, 20:00": {
       "localizations": {
         "ro": {
           "stringUnit": {
             "state": "translated",
-            "value": "Reflecția lunii, prima zi de luni"
+            "value": "Reflecția lunii, prima zi de luni, 20:00"
           }
         }
       }

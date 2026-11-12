@@ -48,9 +48,9 @@ struct PhotoStore: Sendable {
 }
 
 extension VaultContents {
-    /// Every photo id a note still uses.
+    /// Every photo id a note (or the note being written) still uses.
     var photoIDs: Set<String> {
-        Set(notes.flatMap { $0.photos ?? [] })
+        Set(notes.flatMap { $0.photos ?? [] } + (draft?.photos ?? []))
     }
 }
 

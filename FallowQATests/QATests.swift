@@ -498,3 +498,89 @@ struct QAModelTests {
         }
     }
 }
+
+// MARK: Decisions taken after the review (November 2026)
+
+struct QADecisionTests {
+    @Test func theReflectionComesInTheEveningNotWithTheWorryList() throws {
+        let contents = VaultContents(createdAt: .now, settings: VaultSettings())
+        let reminders = ReminderPlan.reminders(for: contents, now: at(2026, 11, 12), calendar: bucharest)
+        let reflection = try #require(reminders.first { $0.id == "reflection-2026-12" })
+        #expect(reflection.components.day == 7)
+        #expect(reflection.components.hour == 20 && reflection.components.minute == 0)
+        let worry = try #require(reminders.first { $0.kind == .worry })
+        #expect(worry.components.hour != reflection.components.hour)
+    }
+
+    @Test func theFirstMondaysReflectionIsStillAheadThatMorning() {
+        let contents = VaultContents(createdAt: .now, settings: VaultSettings())
+        // Monday 7 December 2026 at 9:00: the reflection at 20:00 is still to come.
+        let ids = ReminderPlan.reminders(for: contents, now: at(2026, 12, 7, 9, 0), calendar: bucharest).map(\.id)
+        #expect(ids.contains("reflection-2026-12"))
+    }
+
+    /// The month planned on the 20th: its free Fridays already past were not chosen.
+    @Test func pastFreeFridaysDoNotBringAFreeEvening() {
+        let start = at(2026, 11, 1)
+        var c = VaultContents(createdAt: start, settings: VaultSettings())
+        c.checkHerbarium(visit: true, now: start, calendar: bucharest)
+        var plan = MonthPlan.blank(MonthID(year: 2026, month: 11), calendar: bucharest)
+        plan.intention = "Slower"
+        plan.savedAt = at(2026, 11, 20)
+        plan.plannedAt = plan.savedAt
+        c.save(plan)
+        let earned = c.checkHerbarium(now: at(2026, 11, 22), calendar: bucharest)
+        #expect(earned.contains("intentie"))
+        #expect(!earned.contains("libera"))
+        // The next free Friday, the 27th, is a chosen one.
+        #expect(c.checkHerbarium(now: at(2026, 11, 27, 21), calendar: bucharest).contains("libera"))
+    }
+
+    @Test func editingThePlanLaterKeepsTheFridaysChosenFree() {
+        let start = at(2026, 11, 1)
+        var c = VaultContents(createdAt: start, settings: VaultSettings())
+        c.checkHerbarium(visit: true, now: start, calendar: bucharest)
+        var plan = MonthPlan.blank(MonthID(year: 2026, month: 11), calendar: bucharest)
+        plan.intention = "Slower"
+        plan.plannedAt = at(2026, 11, 2)
+        // Changed on the 10th, before the app was opened after the free Friday on the 6th.
+        plan.savedAt = at(2026, 11, 10)
+        c.save(plan)
+        #expect(c.checkHerbarium(now: at(2026, 11, 10, 13), calendar: bucharest).contains("libera"))
+    }
+
+    @Test func olderPlansWithoutAPlanningDayUseTheirSaveDay() throws {
+        let json = #"{"id":"2026-11","intention":"x","fridays":[],"savedAt":"2026-11-01T10:00:00Z"}"#
+        let plan = try VaultCoding.decoder.decode(MonthPlan.self, from: Data(json.utf8))
+        #expect(plan.plannedAt == nil)
+    }
+
+    @Test func aDraftTravelsEncryptedWithTheVaultAndKeepsItsPhotos() throws {
+        var c = VaultContents(createdAt: at(2026, 11, 1), settings: VaultSettings())
+        // Whole seconds: the vault keeps dates to the second.
+        var note = Note(date: "2026-11-12", month: MonthID(year: 2026, month: 11), kind: .free, createdAt: at(2026, 11, 12))
+        note.text = "Half a thought"
+        note.photos = ["p1"]
+        c.draft = note
+        #expect(c.photoIDs.contains("p1"))
+        let back = try VaultCoding.decoder.decode(VaultContents.self, from: VaultCoding.encoder.encode(c))
+        #expect(back.draft == note)
+        #expect(back.notes.isEmpty)
+    }
+
+    @MainActor
+    @Test func aDraftSurvivesLockingAndUnlocking() async throws {
+        let folder = URL.temporaryDirectory.appending(path: "qa-draft-\(UUID().uuidString)")
+        try FileManager.default.createDirectory(at: folder, withIntermediateDirectories: true)
+        defer { try? FileManager.default.removeItem(at: folder) }
+        let vault = Vault(keyStore: InMemoryKeyStore(), fileURL: folder.appending(path: "vault.fallow"))
+        try vault.setUp(settings: VaultSettings())
+        var note = Note(date: "2026-11-12", month: MonthID(year: 2026, month: 11), kind: .free)
+        note.text = "Written before the lock"
+        try vault.update { $0.draft = note }
+        vault.lock()
+        await vault.unlock(reason: "test")
+        #expect(vault.contents?.draft?.text == "Written before the lock")
+        #expect(vault.contents?.notes.isEmpty == true)
+    }
+}

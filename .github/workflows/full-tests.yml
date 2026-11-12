@@ -1,0 +1,53 @@
+name: Full tests
+
+# Everything, including the QA unit tests and the UI tests on the Simulator (about 15 minutes).
+# Started by hand from the Actions tab; pull requests only run the normal CI.
+on:
+  workflow_dispatch:
+
+concurrency:
+  group: full-tests-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  full-tests:
+    runs-on: macos-15
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Use the newest Xcode
+        # Apple Intelligence (Foundation Models) needs the iOS 26 SDK; TestFlight needs it too.
+        run: |
+          XCODE=$(ls -d /Applications/Xcode_*.app | grep -viE 'beta|_rc|release_candidate' | sort -V | tail -1)
+          echo "Using $XCODE"
+          sudo xcode-select -s "$XCODE"
+          xcodebuild -version
+
+      - name: Install XcodeGen
+        run: brew install xcodegen
+
+      - name: Generate Xcode project
+        run: xcodegen generate
+
+      - name: Build and test on the simulator
+        run: |
+          UDID=$(scripts/pick-simulator.sh)
+          echo "Simulator: $UDID"
+          xcodebuild test \
+            -project Fallow.xcodeproj \
+            -scheme FallowFullTests \
+            -resultBundlePath TestResults.xcresult \
+            -destination "id=$UDID" \
+            CODE_SIGNING_ALLOWED=NO \
+            | tee build.log | grep -E '(error|warning: .*Fallow/|Test (Suite|Case)|passed|failed|\*\* )' || true
+          grep -q '\*\* TEST SUCCEEDED \*\*' build.log
+
+      - name: Upload build log
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-log
+          path: |
+            build.log
+            TestResults.xcresult

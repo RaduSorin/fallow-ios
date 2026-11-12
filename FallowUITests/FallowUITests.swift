@@ -147,6 +147,26 @@ final class FallowUITests: XCTestCase {
     }
 
     @MainActor
+    func testANoteBeingWrittenComesBackAfterLeavingTheApp() {
+        launch()
+        finishSetup()
+        let write = app.buttons["Write a note"]
+        scrollTo(write)
+        write.tap()
+        type("Half a thought", into: "note.text")
+        // Leaving the app locks it; the note is kept encrypted and opens again after Face ID
+        // (immediate here).
+        XCUIDevice.shared.press(.home)
+        app.activate()
+        let restored = app.descendants(matching: .any)["note.text"]
+        XCTAssertTrue(restored.waitForExistence(timeout: 10), "the note did not open again")
+        XCTAssertEqual(restored.value as? String, "Half a thought")
+        app.buttons["Save"].tap()
+        dismissPlantMoments()
+        XCTAssertTrue(anyText(containing: "Half a thought").waitForExistence(timeout: 5))
+    }
+
+    @MainActor
     func testARhythmIsTickedForToday() {
         launch()
         finishSetup()

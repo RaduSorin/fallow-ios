@@ -134,6 +134,7 @@ struct PlannerView: View {
         var plan = draft
         plan.intention = plan.intention.trimmingCharacters(in: .whitespacesAndNewlines)
         plan.savedAt = .now
+        if plan.plannedAt == nil { plan.plannedAt = plan.savedAt }
         do {
             try vault.update { $0.save(plan) }
             dismiss()

@@ -81,6 +81,8 @@ struct MonthPlan: Codable, Equatable, Sendable, Identifiable {
     var target: Int?
     var fridays: [FridayPlan]
     var savedAt: Date
+    /// When the month was first planned; later edits keep it. Older files have none (savedAt then).
+    var plannedAt: Date? = nil
 
     static func blank(_ month: MonthID, calendar: Calendar = .current) -> MonthPlan {
         MonthPlan(

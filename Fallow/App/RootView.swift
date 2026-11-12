@@ -47,6 +47,8 @@ struct MainTabs: View {
     @State private var landing: String?
     /// Plants put off with "Later" while the app is open: they wait in the herbarium.
     @State private var later: Set<String> = []
+    /// A note that was being written when Fallow locked, opened again after Face ID.
+    @State private var resumed: Note?
 
     /// The plant to show in the moment now, if any.
     private var coming: Herb? {
@@ -75,9 +77,13 @@ struct MainTabs: View {
                 ExerciseSessionView()
             }
             // Takes in what widgets and Siri left in the sealed inbox while Fallow was locked.
+            .sheet(item: $resumed) { note in
+                NoteEditor(note: note, isNew: !(vault.contents?.notes.contains(where: { $0.id == note.id }) ?? false))
+            }
             .task {
                 SharedBridge.drain(into: vault)
                 vault.removeUnusedPhotos()
+                if run.session == nil, let draft = vault.contents?.draft { resumed = draft }
             }
             .onChange(of: router.pending, initial: true) { _, route in
                 guard let route else { return }

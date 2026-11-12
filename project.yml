@@ -71,6 +71,18 @@ targets:
       base:
         GENERATE_INFOPLIST_FILE: YES
         PRODUCT_BUNDLE_IDENTIFIER: app.fallow.ios.tests
+  # Tests from the QA review: run by hand with the "Full tests" workflow, not on every pull request.
+  FallowQATests:
+    type: bundle.unit-test
+    platform: iOS
+    sources:
+      - FallowQATests
+    dependencies:
+      - target: Fallow
+    settings:
+      base:
+        GENERATE_INFOPLIST_FILE: YES
+        PRODUCT_BUNDLE_IDENTIFIER: app.fallow.ios.qatests
   FallowUITests:
     type: bundle.ui-testing
     platform: iOS
@@ -89,8 +101,19 @@ schemes:
       targets:
         Fallow: all
         FallowTests: [test]
+    test:
+      targets:
+        - FallowTests
+  # Everything, including the QA and UI tests: the "Full tests" workflow.
+  FallowFullTests:
+    build:
+      targets:
+        Fallow: all
+        FallowTests: [test]
+        FallowQATests: [test]
         FallowUITests: [test]
     test:
       targets:
         - FallowTests
+        - FallowQATests
         - FallowUITests
