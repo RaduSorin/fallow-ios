@@ -22,6 +22,13 @@ struct MonthView: View {
                 fridays(plan)
             }
 
+            if let plan, !plan.fridays.isEmpty {
+                NotebookCard {
+                    SpecimenLabel(text: "Fridays so far")
+                    FeelingChart(notes: contents?.notes(in: month) ?? [])
+                }
+            }
+
             reflectionCard
 
             if showNextMonth {

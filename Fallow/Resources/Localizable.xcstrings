@@ -52,6 +52,16 @@
         }
       }
     },
+    "0 calm · 10 strongest": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "0 liniște · 10 cel mai puternic"
+          }
+        }
+      }
+    },
     "0 is calm, 10 is as strong as it gets.": {
       "localizations": {
         "ro": {
@@ -342,6 +352,46 @@
         }
       }
     },
+    "After a Friday exercise, note how strong the feeling was before and after. The change shows here.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "După un exercițiu de vineri, notează cât de puternică a fost trăirea înainte și după. Schimbarea apare aici."
+          }
+        }
+      }
+    },
+    "After a guided exercise with a timer, its length goes to Health as mindful minutes. Nothing you wrote goes there.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "După un exercițiu ghidat cu cronometru, durata lui ajunge în Sănătate ca minute de mindfulness. Nimic din ce ai scris nu ajunge acolo."
+          }
+        }
+      }
+    },
+    "After the exercise the feeling eased by %@ points on average.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "După exercițiu, trăirea a scăzut în medie cu %@ puncte."
+          }
+        }
+      }
+    },
+    "After the exercise the feeling grew by %@ points on average. That is worth noticing too.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "După exercițiu, trăirea a crescut în medie cu %@ puncte. Și asta merită observat."
+          }
+        }
+      }
+    },
     "Already used Fallow?": {
       "localizations": {
         "ro": {
@@ -358,6 +408,26 @@
           "stringUnit": {
             "state": "translated",
             "value": "Răspunde cum i-ar răspunde un părinte blând și calm unui copil îngrijorat."
+          }
+        }
+      }
+    },
+    "Apple Health": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Apple Health"
+          }
+        }
+      }
+    },
+    "Apple suggests moments from your photos, walks and places. Only the one you pick comes into the note.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Apple îți sugerează momente din poze, plimbări și locuri. În notă intră doar cel pe care îl alegi."
           }
         }
       }
@@ -418,6 +488,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "Înainte"
+          }
+        }
+      }
+    },
+    "Before and after": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Înainte și după"
           }
         }
       }
@@ -1102,6 +1182,16 @@
         }
       }
     },
+    "Fridays so far": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vinerile de până acum"
+          }
+        }
+      }
+    },
     "Fridays that used it keep its title.": {
       "localizations": {
         "ro": {
@@ -1158,6 +1248,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "Cum a fost azi? Un rând ajunge."
+          }
+        }
+      }
+    },
+    "How strong the feeling was before and after each Friday exercise": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cât de puternică a fost trăirea înainte și după fiecare exercițiu de vineri"
           }
         }
       }
@@ -1398,6 +1498,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "Eu"
+          }
+        }
+      }
+    },
+    "Moments from your days": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Momente din zilele tale"
           }
         }
       }
@@ -1752,6 +1862,16 @@
         }
       }
     },
+    "Nothing found for “%@”.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nu am găsit nimic pentru „%@”."
+          }
+        }
+      }
+    },
     "Nothing new to add to the note.": {
       "localizations": {
         "ro": {
@@ -1778,6 +1898,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "OK"
+          }
+        }
+      }
+    },
+    "On average the feeling stayed about the same after the exercise.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "În medie, trăirea a rămas cam la fel după exercițiu."
           }
         }
       }
@@ -2282,6 +2412,16 @@
         }
       }
     },
+    "Save mindful minutes": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Salvează minutele de mindfulness"
+          }
+        }
+      }
+    },
     "Save to a file": {
       "localizations": {
         "ro": {
@@ -2338,6 +2478,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "Se salvează…"
+          }
+        }
+      }
+    },
+    "Search your notes": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Caută în note"
           }
         }
       }

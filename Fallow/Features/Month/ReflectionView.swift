@@ -50,6 +50,14 @@ struct ReflectionView: View {
                     Text("In short")
                 }
 
+                if summary.fridays > 0 {
+                    Section {
+                        FeelingChart(notes: vault.contents?.notes(in: month) ?? [])
+                    } header: {
+                        Text("Before and after")
+                    }
+                }
+
                 if let sign = plan?.success, !sign.isEmpty {
                     Section {
                         Picker(selection: binding(ReflectionQuestion.signKey)) {

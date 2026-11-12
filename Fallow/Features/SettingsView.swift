@@ -74,6 +74,30 @@ struct SettingsView: View {
                 Text("When off, new plants wait quietly in the herbarium.")
             }
 
+            if MindfulHealth.isAvailable {
+                Section {
+                    Toggle(isOn: Binding(
+                        get: { vault.contents?.settings.healthMindful ?? false },
+                        set: { on in
+                            if on {
+                                Task {
+                                    let allowed = await MindfulHealth.requestAccess()
+                                    try? vault.update { $0.settings.healthMindful = allowed }
+                                }
+                            } else {
+                                try? vault.update { $0.settings.healthMindful = false }
+                            }
+                        }
+                    )) {
+                        Text("Save mindful minutes")
+                    }
+                } header: {
+                    Text("Apple Health")
+                } footer: {
+                    Text("After a guided exercise with a timer, its length goes to Health as mindful minutes. Nothing you wrote goes there.")
+                }
+            }
+
             Section {
                 Toggle(isOn: settingBinding(\.widgetIntention)) { Text("Show the month's intention") }
                 Toggle(isOn: settingBinding(\.widgetRhythms)) { Text("Show and tick rhythms") }
