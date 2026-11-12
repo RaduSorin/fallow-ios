@@ -272,7 +272,7 @@ extension VaultContents {
         var book = herbarium ?? HerbBook.starting(self, now: now, calendar: calendar)
         let today = DayKey.string(now, calendar: calendar)
         let returned = visit && book.lastVisit.map { Herbarium.daysBetween($0, today, calendar: calendar) > Herbarium.awayDays } == true
-        let fresh = Herbarium.earn(&book, self, facts: HerbFacts(returned: returned, today: today), now: now)
+        let fresh = Herbarium.earn(&book, self, facts: HerbFacts(asked: askedClaude, returned: returned, today: today), now: now)
         if visit { book.lastVisit = today }
         if book != herbarium { herbarium = book }
         return fresh
@@ -289,6 +289,6 @@ extension VaultContents {
     func herbProgress(_ id: String, now: Date = .now) -> (Int, Int) {
         guard let book = herbarium else { return (0, 1) }
         let today = DayKey.string(now)
-        return Herbarium.progress(id, Herbarium.tally(book, self, today: today), HerbFacts(today: today))
+        return Herbarium.progress(id, Herbarium.tally(book, self, today: today), HerbFacts(asked: askedClaude, today: today))
     }
 }
