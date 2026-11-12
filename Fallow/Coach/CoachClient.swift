@@ -9,14 +9,12 @@ struct CoachConfig: Sendable, Equatable {
     var clientID: String
     var graphQLURL: URL
 
-    /// Filled in once the Kitchen Tales backend values are known. Nil: Claude shows as not ready.
-    static let kitchenTales: CoachConfig? = {
-        let region = ""
-        let clientID = ""
-        let url = ""
-        guard !region.isEmpty, !clientID.isEmpty, let graphQL = URL(string: url) else { return nil }
-        return CoachConfig(region: region, clientID: clientID, graphQLURL: graphQL)
-    }()
+    /// The Kitchen Tales family user pool (eu-central-1_mH3Vk6Rfm), its web app client and the API.
+    static let kitchenTales: CoachConfig? = CoachConfig(
+        region: "eu-central-1",
+        clientID: "4eiiqrg9hfhm54ckehvnr2d86d",
+        graphQLURL: URL(string: "https://vm7rxsikqndzva5cntsnnziqoq.appsync-api.eu-central-1.amazonaws.com/graphql")!
+    )
 
     var cognitoURL: URL { URL(string: "https://cognito-idp.\(region).amazonaws.com/")! }
 }
