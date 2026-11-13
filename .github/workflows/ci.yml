@@ -99,10 +99,9 @@ jobs:
 
       # Built for "any simulator" (arm64 only, like the runner), before any simulator is started:
       # while CoreSimulator boots a device, compiling the asset catalog takes minutes instead of
-      # seconds. The test step at the end picks the simulator and boots it.
+      # seconds.
       - name: Build the app and the unit tests
         run: |
-          set -o pipefail
           mkdir -p build
           xcodebuild build-for-testing \
             -project Fallow.xcodeproj -scheme Fallow \
@@ -112,38 +111,48 @@ jobs:
             ARCHS=arm64 \
             CODE_SIGNING_ALLOWED=NO \
             COMPILER_INDEX_STORE_ENABLE=NO \
-            | tee build/xcodebuild.log | grep -E "error:|warning: .*\.swift|\*\* (TEST |)BUILD" || true
+            > build/xcodebuild.log 2>&1 || true
+          grep -E "error:|warning: .*\.swift|\*\* (TEST |)BUILD" build/xcodebuild.log || true
           # What the build did (a warm run compiles only the changed files) and where the time went.
           grep -oE "^[A-Z][A-Za-z]+ " build/xcodebuild.log | sort | uniq -c | sort -rn | head -12
           sed -n "/Build Timing Summary/,/^\*\*/p" build/xcodebuild.log | head -25
           grep -q "\*\* TEST BUILD SUCCEEDED \*\*" build/xcodebuild.log
 
+      # The simulator boots while the device build below runs. It starts only now, after the
+      # simulator build: while CoreSimulator boots, compiling the simulator's asset catalog takes
+      # minutes instead of seconds. iOS 18, the app's minimum version: the runner boots it in
+      # about a minute, an iOS 26 one takes four to five.
+      - name: Start booting the simulator
+        run: |
+          UDID=$(IOS_MAJOR=18 bash scripts/pick-simulator.sh)
+          echo "UDID=$UDID" >> "$GITHUB_ENV"
+          date +%s > "$RUNNER_TEMP/boot-start"
+          xcrun simctl boot "$UDID"
+
       # Some frameworks (Journaling Suggestions) exist only on devices, not in the Simulator.
-      # Also before the simulator boots, for the same asset catalog reason.
       - name: Build for a real iPhone
         run: |
-          set -o pipefail
           xcodebuild build \
             -project Fallow.xcodeproj -scheme Fallow \
             -destination "generic/platform=iOS" \
             -derivedDataPath build/DerivedData \
+            -showBuildTimingSummary \
             CODE_SIGNING_ALLOWED=NO \
             COMPILER_INDEX_STORE_ENABLE=NO \
-            | tee build/device.log | grep -E "error:|warning: .*\.swift|\*\* BUILD" || true
+            > build/device.log 2>&1 || true
+          grep -E "error:|warning: .*\.swift|\*\* BUILD" build/device.log || true
+          sed -n "/Build Timing Summary/,/^\*\*/p" build/device.log | head -12
           grep -q "\*\* BUILD SUCCEEDED \*\*" build/device.log
 
       - name: Run the unit tests
         run: |
-          # iOS 18, the app's minimum version: the runner boots an iOS 18 simulator in about a
-          # minute, an iOS 26 one takes four to five.
-          UDID=$(IOS_MAJOR=18 bash scripts/pick-simulator.sh)
-          xcrun simctl boot "$UDID"
           xcrun simctl bootstatus "$UDID" -b > /dev/null
-          set -o pipefail
+          echo "simulator ready $(( $(date +%s) - $(cat "$RUNNER_TEMP/boot-start") )) s after the boot started"
           xcodebuild test-without-building \
             -project Fallow.xcodeproj -scheme Fallow \
             -destination "id=$UDID,arch=arm64" \
             -parallel-testing-enabled NO \
             -derivedDataPath build/DerivedData \
-            | tee build/test.log | grep -E "error:|Test (Case|Suite|run)|✔|✘|\*\* TEST" || true
+            > build/test.log 2>&1 || true
+          grep -E "error:|Test (Case|Suite|run)|✔|✘|\*\* TEST" build/test.log || true
           grep -qE "\*\* TEST (EXECUTE )?SUCCEEDED \*\*" build/test.log
