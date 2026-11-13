@@ -122,7 +122,7 @@ jobs:
         run: |
           # iOS 18, the app's minimum version. Starting CoreSimulator and booting the device takes
           # three to four minutes on the runner (an iOS 26 one is slower still), and while it
-          # boots every xcodebuild call stalls, so it is started only after both builds.
+          # boots every xcodebuild call stalls, so it is started only after the build.
           START=$(date +%s)
           UDID=$(IOS_MAJOR=18 bash scripts/pick-simulator.sh)
           xcrun simctl boot "$UDID"
