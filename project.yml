@@ -74,6 +74,7 @@ targets:
       - Shared/Inbox.swift
       - Shared/ReminderActions.swift
       - Shared/SharedStore.swift
+      - Shared/WatchExercise.swift
       - Shared/WatchPayload.swift
       - Shared/WidgetSnapshot.swift
     dependencies:
