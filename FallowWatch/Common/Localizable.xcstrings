@@ -2,6 +2,16 @@
   "sourceLanguage": "en",
   "version": "1.0",
   "strings": {
+    "%lld min": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld min"
+          }
+        }
+      }
+    },
     "%lld of %lld": {
       "localizations": {
         "ro": {
@@ -18,6 +28,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "%1$lld din %2$lld ritmuri"
+          }
+        }
+      }
+    },
+    "%lld sealed today": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%lld sigilate azi"
           }
         }
       }
@@ -52,6 +72,46 @@
         }
       }
     },
+    "Another note": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Altă notă"
+          }
+        }
+      }
+    },
+    "Breathe": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Respiră"
+          }
+        }
+      }
+    },
+    "Breathe in": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Inspiră"
+          }
+        }
+      }
+    },
+    "Breathe out": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Expiră"
+          }
+        }
+      }
+    },
     "Done": {
       "localizations": {
         "ro": {
@@ -75,6 +135,16 @@
         }
       }
     },
+    "How long?": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cât timp?"
+          }
+        }
+      }
+    },
     "In 15 minutes": {
       "localizations": {
         "ro": {
@@ -91,6 +161,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "Peste o oră"
+          }
+        }
+      }
+    },
+    "Last at %@": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ultima la %@"
           }
         }
       }
@@ -145,6 +225,16 @@
         }
       }
     },
+    "Note": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Notă"
+          }
+        }
+      }
+    },
     "Open Fallow on your iPhone": {
       "localizations": {
         "ro": {
@@ -185,6 +275,26 @@
         }
       }
     },
+    "Quick note": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Notă rapidă"
+          }
+        }
+      }
+    },
+    "Read it on your iPhone, after Face ID.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "O citești pe iPhone, după Face ID."
+          }
+        }
+      }
+    },
     "Rhythm %lld": {
       "localizations": {
         "ro": {
@@ -215,6 +325,36 @@
         }
       }
     },
+    "Saved to Health as mindful minutes.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Salvate în Sănătate ca minute de mindfulness."
+          }
+        }
+      }
+    },
+    "Seal and send": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sigilează și trimite"
+          }
+        }
+      }
+    },
+    "Sealed": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sigilată"
+          }
+        }
+      }
+    },
     "Sort the week's worries": {
       "localizations": {
         "ro": {
@@ -225,12 +365,42 @@
         }
       }
     },
+    "They move to the journal the next time you open Fallow on your iPhone.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Se mută în jurnal data viitoare când deschizi Fallow pe iPhone."
+          }
+        }
+      }
+    },
     "This month": {
       "localizations": {
         "ro": {
           "stringUnit": {
             "state": "translated",
             "value": "Luna aceasta"
+          }
+        }
+      }
+    },
+    "This week": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Săptămâna asta"
+          }
+        }
+      }
+    },
+    "Today": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Azi"
           }
         }
       }
@@ -251,6 +421,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "Diseară"
+          }
+        }
+      }
+    },
+    "Well done": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bravo"
           }
         }
       }

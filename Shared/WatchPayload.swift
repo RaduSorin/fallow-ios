@@ -15,6 +15,8 @@ enum WatchPayload {
     static let rhythmIDKey = "rhythmID"
     static let rhythmDoneKey = "rhythmDone"
     static let dayKey = "day"
+    static let mindfulStartKey = "mindfulStart"
+    static let mindfulEndKey = "mindfulEnd"
 
     /// A rhythm tick as the snapshot needs it.
     struct Tick: Equatable, Sendable {
@@ -59,6 +61,16 @@ enum WatchPayload {
             out[dayKey] = entry.day
         }
         return out
+    }
+
+    /// A breathing session from the watch, for Apple Health: only its start and end.
+    static func mindful(_ interval: DateInterval) -> [String: Any] {
+        [mindfulStartKey: interval.start.timeIntervalSince1970, mindfulEndKey: interval.end.timeIntervalSince1970]
+    }
+
+    static func mindful(in info: [String: Any]) -> DateInterval? {
+        guard let start = info[mindfulStartKey] as? Double, let end = info[mindfulEndKey] as? Double, end > start else { return nil }
+        return DateInterval(start: Date(timeIntervalSince1970: start), end: Date(timeIntervalSince1970: end))
     }
 
     static func box(in info: [String: Any]) -> Data? {

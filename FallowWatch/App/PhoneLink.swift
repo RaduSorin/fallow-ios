@@ -22,11 +22,17 @@ final class PhoneLink: NSObject, WCSessionDelegate, @unchecked Sendable {
         WCSession.default.transferUserInfo(WatchPayload.outgoing(entry, box: box))
     }
 
+    /// A breathing session's start and end, for Apple Health on the iPhone.
+    func sendMindful(_ interval: DateInterval) {
+        WCSession.default.transferUserInfo(WatchPayload.mindful(interval))
+    }
+
     /// Stores what the iPhone sent. Kept apart for clarity: the whole context replaces the copy.
     static func take(_ context: [String: Any]) {
         guard !context.isEmpty else { return }
         if WatchPayload.isErased(context) {
             SharedStore.eraseAll()
+            WatchStats.reset()
         } else {
             if let key = WatchPayload.publicKey(in: context) { SharedStore.writePublicKey(key) }
             if let snapshot = WatchPayload.snapshot(in: context) { SharedStore.write(snapshot) }

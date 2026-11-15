@@ -61,6 +61,12 @@ final class WatchBridge: NSObject, WCSessionDelegate, @unchecked Sendable {
     }
 
     func session(_ session: WCSession, didReceiveUserInfo userInfo: [String: Any] = [:]) {
+        if let interval = WatchPayload.mindful(in: userInfo) {
+            // Breathing on the watch: saved only while the person keeps mindful minutes on.
+            guard SharedStore.readSnapshot()?.healthMindful == true else { return }
+            Task { await MindfulHealth.save(interval) }
+            return
+        }
         guard Self.receive(userInfo) else { return }
         WidgetCenter.shared.reloadAllTimelines()
         sendCurrent()

@@ -34,6 +34,7 @@ enum SharedBridge {
 
         snapshot.rhythmCount = contents.rhythms.count
         snapshot.rhythmIDs = contents.rhythms.map(\.id)
+        snapshot.healthMindful = contents.settings.healthMindful ? true : nil
         snapshot.rhythmDay = today
         let ids = Set(contents.rhythms.map(\.id))
         snapshot.rhythmsDone = contents.rhythmsDone(on: today).filter { ids.contains($0) }.sorted()

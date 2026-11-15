@@ -72,6 +72,22 @@ struct WatchLinkTests {
         #expect(Inbox.waiting(in: folder).isEmpty)
     }
 
+    @Test func breathingSendsOnlyItsTimes() {
+        let interval = DateInterval(start: Date(timeIntervalSince1970: 1_800_000_000), duration: 180)
+        let info = WatchPayload.mindful(interval)
+        #expect(WatchPayload.mindful(in: info) == interval)
+        #expect(WatchPayload.box(in: info) == nil)
+        #expect(WatchPayload.mindful(in: [WatchPayload.mindfulStartKey: 10.0, WatchPayload.mindfulEndKey: 5.0]) == nil)
+    }
+
+    @MainActor
+    @Test func healthFlagFollowsTheSetting() {
+        var contents = VaultContents(createdAt: .now, settings: VaultSettings())
+        #expect(SharedBridge.snapshot(from: contents).healthMindful == nil)
+        contents.settings.healthMindful = true
+        #expect(SharedBridge.snapshot(from: contents).healthMindful == true)
+    }
+
     @Test func emptyLineIsIgnored() {
         #expect(ReminderActions.lineEntry("   \n") == nil)
     }

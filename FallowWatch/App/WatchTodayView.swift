@@ -57,6 +57,26 @@ private struct TodayContent: View {
             .background(WatchPalette.card, in: RoundedRectangle(cornerRadius: 10))
             .overlay(RoundedRectangle(cornerRadius: 10).strokeBorder(WatchPalette.cardBorder))
 
+            HStack(spacing: 8) {
+                NavigationLink {
+                    WatchNoteView()
+                } label: {
+                    Label("Note", systemImage: "mic")
+                        .labelStyle(.iconOnly)
+                        .frame(maxWidth: .infinity)
+                }
+                .accessibilityLabel(Text("Quick note"))
+                NavigationLink {
+                    BreatheView()
+                } label: {
+                    Label("Breathe", systemImage: "wind")
+                        .labelStyle(.iconOnly)
+                        .frame(maxWidth: .infinity)
+                }
+                .accessibilityLabel(Text("Breathe"))
+            }
+            .tint(WatchPalette.mossDeep)
+
             rhythms
         }
     }
