@@ -33,6 +33,7 @@ enum SharedBridge {
         }
 
         snapshot.rhythmCount = contents.rhythms.count
+        snapshot.rhythmIDs = contents.rhythms.map(\.id)
         snapshot.rhythmDay = today
         let ids = Set(contents.rhythms.map(\.id))
         snapshot.rhythmsDone = contents.rhythmsDone(on: today).filter { ids.contains($0) }.sorted()
@@ -54,9 +55,11 @@ enum SharedBridge {
         let next = snapshot(from: contents)
         var previous = SharedStore.readSnapshot()
         previous?.writtenAt = next.writtenAt
-        guard previous != next else { return }
-        SharedStore.write(next)
-        WidgetCenter.shared.reloadAllTimelines()
+        if previous != next {
+            SharedStore.write(next)
+            WidgetCenter.shared.reloadAllTimelines()
+        }
+        WatchBridge.shared.sendCurrent()
     }
 
     /// After Face ID: makes the inbox key if there is none yet, then opens every sealed entry,

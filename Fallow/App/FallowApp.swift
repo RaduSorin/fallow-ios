@@ -33,6 +33,8 @@ struct FallowApp: App {
             guard !testing else { return }
             CoachClient.live().signOut()
             WidgetCenter.shared.reloadAllTimelines()
+            // The watch forgets its copy too (the App Group is already empty).
+            WatchBridge.shared.sendCurrent()
             Task.detached { await ReminderScheduler.removeAll() }
         }
         _vault = State(initialValue: vault)

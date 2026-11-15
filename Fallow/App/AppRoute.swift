@@ -56,6 +56,8 @@ final class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCent
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]? = nil
     ) -> Bool {
         UNUserNotificationCenter.current().delegate = self
+        UNUserNotificationCenter.current().setNotificationCategories(ReminderActions.categories())
+        WatchBridge.shared.start()
         return true
     }
 
@@ -63,6 +65,21 @@ final class AppDelegate: NSObject, UIApplicationDelegate, UNUserNotificationCent
         _ center: UNUserNotificationCenter,
         didReceive response: UNNotificationResponse
     ) async {
+        // The buttons work without opening Fallow: a line goes sealed into the inbox,
+        // "later" shows the reminder once more.
+        switch response.actionIdentifier {
+        case ReminderActions.line:
+            if let text = (response as? UNTextInputNotificationResponse)?.userText,
+               let entry = ReminderActions.lineEntry(text) {
+                try? Inbox.post(entry)
+            }
+            return
+        case ReminderActions.later:
+            await ReminderActions.snooze(response.notification.request.content)
+            return
+        default:
+            break
+        }
         let route = AppRoute(userInfo: response.notification.request.content.userInfo) ?? .today
         await MainActor.run { Router.shared.pending = route }
     }

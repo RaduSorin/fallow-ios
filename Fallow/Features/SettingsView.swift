@@ -112,9 +112,9 @@ struct SettingsView: View {
                 Toggle(isOn: settingBinding(\.widgetIntention)) { Text("Show the month's intention") }
                 Toggle(isOn: settingBinding(\.widgetRhythms)) { Text("Show and tick rhythms") }
             } header: {
-                Text("Widgets")
+                Text("Widgets and Apple Watch")
             } footer: {
-                Text("By default widgets show only dates and counts. What you turn on here is kept unencrypted outside the vault, so it can show on the Home Screen and the Lock Screen.")
+                Text("By default widgets and the Apple Watch show only dates and counts. What you turn on here is kept unencrypted outside the vault, so it can show on the Home Screen, the Lock Screen and the watch face.")
             }
 
             Section {

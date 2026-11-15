@@ -15,6 +15,7 @@ on:
       - "Fallow/**"
       - "FallowTests/**"
       - "FallowWidgets/**"
+      - "FallowWatch/**"
       - "Shared/**"
       - "project.yml"
       - "scripts/**"
@@ -24,6 +25,7 @@ on:
       - "Fallow/**"
       - "FallowTests/**"
       - "FallowWidgets/**"
+      - "FallowWatch/**"
       - "Shared/**"
       - "project.yml"
       - "scripts/**"
@@ -76,7 +78,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: build/DerivedData
-          key: dd-${{ runner.os }}-${{ hashFiles('Fallow/**', 'FallowTests/**', 'FallowWidgets/**', 'Shared/**', 'project.yml', '.github/workflows/ci.yml') }}
+          key: dd-${{ runner.os }}-${{ hashFiles('Fallow/**', 'FallowTests/**', 'FallowWidgets/**', 'FallowWatch/**', 'Shared/**', 'project.yml', '.github/workflows/ci.yml') }}
           restore-keys: dd-${{ runner.os }}-
 
       # XcodeGen's prebuilt release instead of Homebrew: brew took 7 to 70 seconds, the download
@@ -181,7 +183,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: build/DerivedData
-          key: dd-device-${{ runner.os }}-${{ hashFiles('Fallow/**', 'FallowTests/**', 'FallowWidgets/**', 'Shared/**', 'project.yml', '.github/workflows/ci.yml') }}
+          key: dd-device-${{ runner.os }}-${{ hashFiles('Fallow/**', 'FallowTests/**', 'FallowWidgets/**', 'FallowWatch/**', 'Shared/**', 'project.yml', '.github/workflows/ci.yml') }}
           restore-keys: dd-device-${{ runner.os }}-
 
       # XcodeGen's prebuilt release instead of Homebrew: brew took 7 to 70 seconds, the download

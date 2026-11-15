@@ -1,0 +1,279 @@
+{
+  "sourceLanguage": "en",
+  "version": "1.0",
+  "strings": {
+    "%lld of %lld": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$lld din %2$lld"
+          }
+        }
+      }
+    },
+    "%lld of %lld rhythms": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "%1$lld din %2$lld ritmuri"
+          }
+        }
+      }
+    },
+    "A free Friday": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "O vineri liberă"
+          }
+        }
+      }
+    },
+    "A line is enough": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Un rând e de ajuns"
+          }
+        }
+      }
+    },
+    "A quiet day": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "O zi liniștită"
+          }
+        }
+      }
+    },
+    "Done": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Făcut"
+          }
+        }
+      }
+    },
+    "Fallow": {
+      "shouldTranslate": false
+    },
+    "Friday exercise": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Exercițiul de vineri"
+          }
+        }
+      }
+    },
+    "In 15 minutes": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Peste 15 minute"
+          }
+        }
+      }
+    },
+    "In an hour": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Peste o oră"
+          }
+        }
+      }
+    },
+    "Look back on last month": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Privește înapoi la luna trecută"
+          }
+        }
+      }
+    },
+    "Monday": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Luni"
+          }
+        }
+      }
+    },
+    "New month": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Lună nouă"
+          }
+        }
+      }
+    },
+    "Next Friday": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Vinerea următoare"
+          }
+        }
+      }
+    },
+    "Not done": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Nefăcut"
+          }
+        }
+      }
+    },
+    "Open Fallow on your iPhone": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Deschide Fallow pe iPhone"
+          }
+        }
+      }
+    },
+    "Open Fallow on your iPhone once to fill this.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Deschide o dată Fallow pe iPhone ca să se umple."
+          }
+        }
+      }
+    },
+    "Open Fallow on your iPhone once, then try again.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Deschide o dată Fallow pe iPhone, apoi încearcă din nou."
+          }
+        }
+      }
+    },
+    "Open Fallow on your iPhone once, then you can tick here.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Deschide o dată Fallow pe iPhone, apoi poți bifa aici."
+          }
+        }
+      }
+    },
+    "Rhythm %lld": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ritmul %lld"
+          }
+        }
+      }
+    },
+    "Rhythms": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ritmuri"
+          }
+        }
+      }
+    },
+    "Save": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Salvează"
+          }
+        }
+      }
+    },
+    "Sort the week's worries": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sortează grijile săptămânii"
+          }
+        }
+      }
+    },
+    "This month": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Luna aceasta"
+          }
+        }
+      }
+    },
+    "Today in Fallow": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Azi în Fallow"
+          }
+        }
+      }
+    },
+    "Tonight": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Diseară"
+          }
+        }
+      }
+    },
+    "Write a line": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Scrie un rând"
+          }
+        }
+      }
+    },
+    "Your rhythms and what the day holds, without anything you wrote.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Ritmurile tale și ce aduce ziua, fără nimic din ce ai scris."
+          }
+        }
+      }
+    }
+  }
+}

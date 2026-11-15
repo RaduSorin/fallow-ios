@@ -37,6 +37,7 @@ struct WidgetBridgeTests {
         #expect(snapshot.fridays.contains("2026-11-13"))
         #expect(snapshot.fridaysWithExercise == ["2026-11-13"])
         #expect(snapshot.rhythmCount == 2)
+        #expect(snapshot.rhythmIDs == ["r1", "r2"])
         #expect(snapshot.done(on: "2026-11-13") == ["r1"])
         #expect(snapshot.done(on: "2026-11-14").isEmpty)
         // Not a word of the intention, the rhythms or the exercise in the file.
