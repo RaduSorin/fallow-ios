@@ -25,6 +25,7 @@ struct WatchNoteView: View {
                             .frame(maxWidth: .infinity)
                     }
                     .tint(WatchPalette.mossDeep)
+                    .handGestureShortcut(.primaryAction)
                     .disabled(text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty)
                     if failed {
                         Text("Open Fallow on your iPhone once, then try again.")
@@ -69,6 +70,7 @@ private struct SealedNote: View {
                 .foregroundStyle(WatchPalette.inkMuted)
                 .multilineTextAlignment(.center)
             Button("Another note", action: another)
+                .handGestureShortcut(.primaryAction)
         }
         .frame(maxWidth: .infinity)
     }

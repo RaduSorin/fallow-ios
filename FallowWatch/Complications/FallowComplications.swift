@@ -14,9 +14,42 @@ struct FallowComplicationsBundle: WidgetBundle {
 struct ComplicationEntry: TimelineEntry {
     let date: Date
     let snapshot: WidgetSnapshot?
+    var relevance: TimelineEntryRelevance? {
+        snapshot.map { TimelineEntryRelevance(score: SmartStack.score($0, at: date)) }
+    }
 }
 
-/// One entry now and one at each of the next two midnights, like the iPhone widget.
+/// When the Smart Stack should lift Fallow up: Friday evening with an exercise, Monday morning
+/// with the worry list, the first week's reflection, and evenings with rhythms still open.
+enum SmartStack {
+    static func score(_ snapshot: WidgetSnapshot, at date: Date, calendar: Calendar = .current) -> Float {
+        let hour = calendar.component(.hour, from: date)
+        let evening = (18..<22).contains(hour)
+        switch snapshot.focus(on: date, calendar: calendar) {
+        case .fridayExercise where evening: return 80
+        case .worryList where (8..<12).contains(hour): return 60
+        case .reflection where evening: return 50
+        default: break
+        }
+        let open = snapshot.rhythmCount - snapshot.done(on: DayKey.string(date, calendar: calendar)).count
+        return evening && open > 0 ? 30 : 1
+    }
+
+    /// The hours the score can change at, from now until two days on.
+    static func turns(from now: Date, calendar: Calendar = .current) -> [Date] {
+        let today = calendar.startOfDay(for: now)
+        var out: [Date] = []
+        for day in 0...2 {
+            guard let start = calendar.date(byAdding: .day, value: day, to: today) else { continue }
+            for hour in [0, 8, 12, 18, 22] {
+                if let turn = calendar.date(byAdding: .hour, value: hour, to: start), turn > now { out.append(turn) }
+            }
+        }
+        return out
+    }
+}
+
+/// One entry now and one at each turn of the Smart Stack score (midnight included) for two days.
 struct ComplicationProvider: TimelineProvider {
     func placeholder(in context: Context) -> ComplicationEntry {
         ComplicationEntry(date: .now, snapshot: .complicationPreview)
@@ -28,14 +61,9 @@ struct ComplicationProvider: TimelineProvider {
 
     func getTimeline(in context: Context, completion: @escaping (Timeline<ComplicationEntry>) -> Void) {
         let snapshot = SharedStore.readSnapshot()
-        let calendar = Calendar.current
-        let today = calendar.startOfDay(for: .now)
-        var entries = [ComplicationEntry(date: .now, snapshot: snapshot)]
-        for offset in 1...2 {
-            if let day = calendar.date(byAdding: .day, value: offset, to: today) {
-                entries.append(ComplicationEntry(date: day, snapshot: snapshot))
-            }
-        }
+        let now = Date.now
+        let entries = [ComplicationEntry(date: now, snapshot: snapshot)]
+            + SmartStack.turns(from: now).map { ComplicationEntry(date: $0, snapshot: snapshot) }
         completion(Timeline(entries: entries, policy: .atEnd))
     }
 }

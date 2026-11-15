@@ -11,11 +11,7 @@ struct BreatheView: View {
                 Text("How long?")
                     .font(.system(.headline, design: .serif))
                 ForEach([1, 3, 5], id: \.self) { length in
-                    Button {
-                        minutes = length
-                    } label: {
-                        Text("\(length) min").frame(maxWidth: .infinity)
-                    }
+                    LengthButton(length: length) { minutes = length }
                 }
                 BreathingTotals()
             }
@@ -26,6 +22,23 @@ struct BreatheView: View {
             set: { minutes = $0?.minutes }
         )) { length in
             BreatheSessionView(minutes: length.minutes)
+        }
+    }
+}
+
+/// Double tap starts the middle length, three minutes.
+private struct LengthButton: View {
+    let length: Int
+    let pick: () -> Void
+
+    var body: some View {
+        let button = Button(action: pick) {
+            Text("\(length) min").frame(maxWidth: .infinity)
+        }
+        if length == 3 {
+            button.handGestureShortcut(.primaryAction)
+        } else {
+            button
         }
     }
 }
@@ -173,6 +186,7 @@ private struct BreatheDone: View {
                     .multilineTextAlignment(.center)
             }
             Button("Done", action: close)
+                .handGestureShortcut(.primaryAction)
         }
     }
 }

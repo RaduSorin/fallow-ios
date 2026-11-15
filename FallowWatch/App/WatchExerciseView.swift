@@ -155,6 +155,7 @@ private struct FeelingScale: View {
                 Button("Skip", action: skip)
                 Button("Save") { save(Int(value)) }
                     .tint(WatchPalette.mossDeep)
+                    .handGestureShortcut(.primaryAction)
             }
         }
     }
