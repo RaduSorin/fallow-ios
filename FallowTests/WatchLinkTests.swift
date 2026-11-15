@@ -102,3 +102,53 @@ struct WatchLinkTests {
         #expect(!ReminderActions.snoozePrefix.hasPrefix(ReminderScheduler.prefix))
     }
 }
+
+@MainActor
+struct WatchExerciseTests {
+    @Test func theWatchSeesTimingButNoTextByDefault() {
+        let run = ExerciseRun()
+        var sent: [WatchExercise?] = []
+        run.onWatchChange = { sent.append($0) }
+        let now = Date(timeIntervalSince1970: 1_800_000_000)
+        run.start(Exercise(title: "Secret title", minutes: 5, steps: "Private step\n\nAnother"))
+        let first = run.watchState(at: now)
+        #expect(first?.stepCount == 2)
+        #expect(first?.stepText == nil)
+        #expect(first?.started == false)
+        #expect(first?.remaining == 300)
+
+        run.startClock(now: now)
+        let running = run.watchState(at: now.addingTimeInterval(60))
+        #expect(running?.endsAt == now.addingTimeInterval(300))
+        #expect(running?.remaining(at: now.addingTimeInterval(60)) == 240)
+        run.pause(now: now.addingTimeInterval(60))
+        #expect(run.watchState(at: now.addingTimeInterval(90))?.isPaused == true)
+        run.close()
+        #expect(sent.last == .some(nil))
+        #expect(sent.count >= 4)
+    }
+
+    @Test func stepsGoToTheWatchOnlyWhenAllowed() {
+        let run = ExerciseRun()
+        run.showStepsOnWatch = true
+        run.start(Exercise(title: "Breathing", minutes: nil, steps: "In\n\nOut"))
+        #expect(run.watchState()?.stepText == "In")
+        run.show(step: 1)
+        #expect(run.watchState()?.stepText == "Out")
+    }
+
+    @Test func aFeelingFromTheWatchLandsOnItsOwnRun() {
+        let run = ExerciseRun()
+        run.start(Exercise(title: "Breathing", minutes: 5, steps: "In"))
+        let id = run.watchState()!.session
+        run.rate(session: "another run", before: 7, after: nil)
+        #expect(run.session?.before == nil)
+        run.rate(session: id, before: 7, after: nil)
+        run.rate(session: id, before: nil, after: 3)
+        #expect(run.session?.before == 7)
+        #expect(run.session?.after == 3)
+
+        let info = WatchPayload.feeling(.init(session: id, before: 14, after: nil))
+        #expect(WatchPayload.feeling(in: info) == .init(session: id, before: 10, after: nil))
+    }
+}

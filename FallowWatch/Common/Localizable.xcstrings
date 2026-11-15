@@ -42,6 +42,16 @@
         }
       }
     },
+    "0 is calm, 10 is as strong as it gets.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "0 e liniște, 10 e cel mai puternic."
+          }
+        }
+      }
+    },
     "A free Friday": {
       "localizations": {
         "ro": {
@@ -122,8 +132,48 @@
         }
       }
     },
+    "Exercise": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Exercițiu"
+          }
+        }
+      }
+    },
+    "Exercise in progress": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Exercițiu în desfășurare"
+          }
+        }
+      }
+    },
     "Fallow": {
       "shouldTranslate": false
+    },
+    "Feeling, 0 to 10": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Trăirea, de la 0 la 10"
+          }
+        }
+      }
+    },
+    "Follow the steps on your iPhone.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Urmează pașii pe iPhone."
+          }
+        }
+      }
     },
     "Friday exercise": {
       "localizations": {
@@ -141,6 +191,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "Cât timp?"
+          }
+        }
+      }
+    },
+    "How strong is the feeling now?": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Cât de puternică e trăirea acum?"
           }
         }
       }
@@ -275,6 +335,16 @@
         }
       }
     },
+    "Paused": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pe pauză"
+          }
+        }
+      }
+    },
     "Quick note": {
       "localizations": {
         "ro": {
@@ -355,12 +425,52 @@
         }
       }
     },
+    "Skip": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Sari peste"
+          }
+        }
+      }
+    },
     "Sort the week's worries": {
       "localizations": {
         "ro": {
           "stringUnit": {
             "state": "translated",
             "value": "Sortează grijile săptămânii"
+          }
+        }
+      }
+    },
+    "Start it on your iPhone": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pornește-l pe iPhone"
+          }
+        }
+      }
+    },
+    "Step %lld of %lld": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Pasul %1$lld din %2$lld"
+          }
+        }
+      }
+    },
+    "The exercise has ended on your iPhone.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Exercițiul s-a încheiat pe iPhone."
           }
         }
       }
@@ -391,6 +501,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "Săptămâna asta"
+          }
+        }
+      }
+    },
+    "Time is up. How strong is the feeling now?": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Timpul s-a terminat. Cât de puternică e trăirea acum?"
           }
         }
       }
@@ -441,6 +561,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "Scrie un rând"
+          }
+        }
+      }
+    },
+    "Write how it went on your iPhone when you are ready.": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Scrie cum a fost pe iPhone, când ești gata."
           }
         }
       }

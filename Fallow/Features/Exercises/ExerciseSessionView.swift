@@ -262,13 +262,17 @@ struct ExerciseSessionView: View {
     private func writeNote() {
         guard let exercise else { return }
         let today = Date.now
-        writing = Note(
+        var note = Note(
             date: DayKey.string(today),
             month: MonthID(today),
             kind: .friday,
             exerciseId: exercise.id,
             title: exercise.title
         )
+        // Rated on the Apple Watch during the exercise, if it was.
+        note.before = session?.before
+        note.after = session?.after
+        writing = note
     }
 }
 

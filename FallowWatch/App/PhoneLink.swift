@@ -38,7 +38,17 @@ final class PhoneLink: NSObject, WCSessionDelegate, @unchecked Sendable {
             if let snapshot = WatchPayload.snapshot(in: context) { SharedStore.write(snapshot) }
         }
         WidgetCenter.shared.reloadAllTimelines()
-        Task { @MainActor in WatchModel.shared.reload() }
+        // The running exercise stays in memory only.
+        let exercise = WatchPayload.exercise(in: context)
+        Task { @MainActor in
+            WatchModel.shared.reload()
+            WatchModel.shared.updateExercise(exercise)
+        }
+    }
+
+    /// The feeling rated on the watch, for the exercise running on the iPhone.
+    func sendFeeling(_ feeling: WatchPayload.Feeling) {
+        WCSession.default.transferUserInfo(WatchPayload.feeling(feeling))
     }
 
     // MARK: WCSessionDelegate

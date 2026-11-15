@@ -10,6 +10,25 @@ import WidgetKit
 final class WatchBridge: NSObject, WCSessionDelegate, @unchecked Sendable {
     static let shared = WatchBridge()
 
+    private let lock = NSLock()
+    private var exercise: WatchExercise?
+    private var feelingHandler: (@Sendable (WatchPayload.Feeling) -> Void)?
+
+    /// Where a feeling rated on the watch goes (the running exercise). Set once at launch.
+    var onFeeling: (@Sendable (WatchPayload.Feeling) -> Void)? {
+        get { lock.withLock { feelingHandler } }
+        set { lock.withLock { feelingHandler = newValue } }
+    }
+
+    /// The running exercise as the watch may mirror it; nil when none runs.
+    func setExercise(_ state: WatchExercise?) {
+        let changed = lock.withLock {
+            defer { exercise = state }
+            return exercise != state
+        }
+        if changed { sendCurrent() }
+    }
+
     func start() {
         guard WCSession.isSupported() else { return }
         WCSession.default.delegate = self
@@ -22,7 +41,8 @@ final class WatchBridge: NSObject, WCSessionDelegate, @unchecked Sendable {
         guard WCSession.isSupported() else { return }
         let session = WCSession.default
         guard session.activationState == .activated, session.isPaired, session.isWatchAppInstalled else { return }
-        let context = WatchPayload.context(snapshot: SharedStore.readSnapshot(), publicKey: SharedStore.readPublicKey())
+        let running = lock.withLock { exercise }
+        let context = WatchPayload.context(snapshot: SharedStore.readSnapshot(), publicKey: SharedStore.readPublicKey(), exercise: running)
         try? session.updateApplicationContext(context)
     }
 
@@ -61,6 +81,10 @@ final class WatchBridge: NSObject, WCSessionDelegate, @unchecked Sendable {
     }
 
     func session(_ session: WCSession, didReceiveUserInfo userInfo: [String: Any] = [:]) {
+        if let feeling = WatchPayload.feeling(in: userInfo) {
+            onFeeling?(feeling)
+            return
+        }
         if let interval = WatchPayload.mindful(in: userInfo) {
             // Breathing on the watch: saved only while the person keeps mindful minutes on.
             guard SharedStore.readSnapshot()?.healthMindful == true else { return }

@@ -13,6 +13,33 @@ final class WatchModel {
     private(set) var canWrite = SharedStore.readPublicKey() != nil
     /// Shown under the rhythms when a tick could not be sealed.
     var problem: LocalizedStringResource?
+    /// The exercise running on the iPhone, mirrored. In memory only.
+    private(set) var exercise: WatchExercise?
+    /// Set when a new exercise starts, so the watch opens it on its own.
+    var showExercise = false
+
+    func updateExercise(_ next: WatchExercise?) {
+        let isNew = next != nil && next?.session != exercise?.session
+        var merged = next
+        // A rating made here and not yet echoed back by the iPhone stays.
+        if let current = exercise, current.session == next?.session {
+            merged?.before = next?.before ?? current.before
+            merged?.after = next?.after ?? current.after
+        }
+        exercise = merged
+        if isNew { showExercise = true }
+        if next == nil { showExercise = false }
+    }
+
+    /// Rates the feeling before or after, 0 to 10, and sends it to the iPhone.
+    func rate(before: Int? = nil, after: Int? = nil) {
+        guard var current = exercise else { return }
+        if let before { current.before = before }
+        if let after { current.after = after }
+        exercise = current
+        PhoneLink.shared.sendFeeling(.init(session: current.session, before: before, after: after))
+        WKInterfaceDevice.current().play(.success)
+    }
 
     func reload() {
         snapshot = SharedStore.readSnapshot()

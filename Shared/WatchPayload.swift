@@ -29,11 +29,12 @@ enum WatchPayload {
 
     /// The application context. With neither a snapshot nor a key (after "Erase everything")
     /// it tells the watch to forget what it holds.
-    static func context(snapshot: WidgetSnapshot?, publicKey: Data?) -> [String: Any] {
+    static func context(snapshot: WidgetSnapshot?, publicKey: Data?, exercise: WatchExercise? = nil) -> [String: Any] {
         var out: [String: Any] = [:]
         if let snapshot, let data = try? JSONEncoder.shared.encode(snapshot) { out[snapshotKey] = data }
         if let publicKey { out[publicKeyKey] = publicKey }
-        if out.isEmpty { out[erasedKey] = true }
+        if out.isEmpty { return [erasedKey: true] }
+        if let exercise, let data = try? JSONEncoder.shared.encode(exercise) { out[exerciseKey] = data }
         return out
     }
 

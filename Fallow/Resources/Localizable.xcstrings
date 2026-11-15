@@ -2692,6 +2692,16 @@
         }
       }
     },
+    "Show exercise steps on the watch": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Arată pașii exercițiului pe ceas"
+          }
+        }
+      }
+    },
     "Show the month's intention": {
       "localizations": {
         "ro": {

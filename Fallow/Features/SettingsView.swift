@@ -111,6 +111,7 @@ struct SettingsView: View {
             Section {
                 Toggle(isOn: settingBinding(\.widgetIntention)) { Text("Show the month's intention") }
                 Toggle(isOn: settingBinding(\.widgetRhythms)) { Text("Show and tick rhythms") }
+                Toggle(isOn: settingBinding(\.watchExerciseSteps)) { Text("Show exercise steps on the watch") }
             } header: {
                 Text("Widgets and Apple Watch")
             } footer: {

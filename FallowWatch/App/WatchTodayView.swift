@@ -5,6 +5,7 @@ struct WatchTodayView: View {
     @Environment(WatchModel.self) private var model
 
     var body: some View {
+        @Bindable var model = model
         NavigationStack {
             ScrollView {
                 VStack(alignment: .leading, spacing: 10) {
@@ -22,6 +23,9 @@ struct WatchTodayView: View {
                 .frame(maxWidth: .infinity, alignment: .leading)
             }
             .navigationTitle(Text(verbatim: "Fallow"))
+            .navigationDestination(isPresented: $model.showExercise) {
+                WatchExerciseView()
+            }
         }
     }
 }
@@ -56,6 +60,15 @@ private struct TodayContent: View {
             .frame(maxWidth: .infinity, alignment: .leading)
             .background(WatchPalette.card, in: RoundedRectangle(cornerRadius: 10))
             .overlay(RoundedRectangle(cornerRadius: 10).strokeBorder(WatchPalette.cardBorder))
+
+            if model.exercise != nil {
+                NavigationLink {
+                    WatchExerciseView()
+                } label: {
+                    Label("Exercise in progress", systemImage: "timer")
+                }
+                .tint(WatchPalette.mossDeep)
+            }
 
             HStack(spacing: 8) {
                 NavigationLink {
