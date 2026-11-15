@@ -31,7 +31,8 @@ struct WatchLinkTests {
     @Test func aTickFromTheWatchReachesTheInboxAndTheSnapshot() throws {
         let folder = try tempFolder()
         let vaultKey = Curve25519.KeyAgreement.PrivateKey()
-        let entry = InboxEntry.rhythm("r2", done: true, day: "2026-11-20")
+        // Whole seconds: the sealed JSON keeps dates to the second.
+        let entry = InboxEntry.rhythm("r2", done: true, day: "2026-11-20", at: Date(timeIntervalSince1970: 1_800_000_000))
         let box = try Inbox.seal(entry, to: vaultKey.publicKey.rawRepresentation)
         let info = WatchPayload.outgoing(entry, box: box)
 
