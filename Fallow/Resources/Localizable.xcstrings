@@ -252,6 +252,16 @@
         }
       }
     },
+    "A line is enough": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Un rând e de ajuns"
+          }
+        }
+      }
+    },
     "A new month": {
       "localizations": {
         "ro": {
@@ -582,12 +592,12 @@
         }
       }
     },
-    "By default widgets show only dates and counts. What you turn on here is kept unencrypted outside the vault, so it can show on the Home Screen and the Lock Screen.": {
+    "By default widgets and the Apple Watch show only dates and counts. What you turn on here is kept unencrypted outside the vault, so it can show on the Home Screen, the Lock Screen and the watch face.": {
       "localizations": {
         "ro": {
           "stringUnit": {
             "state": "translated",
-            "value": "Implicit, widgeturile arată doar date și numere. Ce pornești aici e păstrat necriptat în afara seifului, ca să poată apărea pe ecranul principal și pe cel blocat."
+            "value": "Implicit, widgeturile și Apple Watch arată doar date și numere. Ce pornești aici e păstrat necriptat în afara seifului, ca să poată apărea pe ecranul principal, pe cel blocat și pe cadranul ceasului."
           }
         }
       }
@@ -1398,6 +1408,26 @@
           "stringUnit": {
             "state": "translated",
             "value": "Am importat %1$@: %2$lld exerciții noi."
+          }
+        }
+      }
+    },
+    "In 15 minutes": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Peste 15 minute"
+          }
+        }
+      }
+    },
+    "In an hour": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Peste o oră"
           }
         }
       }
@@ -2662,6 +2692,16 @@
         }
       }
     },
+    "Show exercise steps on the watch": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Arată pașii exercițiului pe ceas"
+          }
+        }
+      }
+    },
     "Show the month's intention": {
       "localizations": {
         "ro": {
@@ -3732,12 +3772,12 @@
         }
       }
     },
-    "Widgets": {
+    "Widgets and Apple Watch": {
       "localizations": {
         "ro": {
           "stringUnit": {
             "state": "translated",
-            "value": "Widgeturi"
+            "value": "Widgeturi și Apple Watch"
           }
         }
       }
@@ -3748,6 +3788,16 @@
           "stringUnit": {
             "state": "translated",
             "value": "Lista de griji"
+          }
+        }
+      }
+    },
+    "Write a line": {
+      "localizations": {
+        "ro": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Scrie un rând"
           }
         }
       }

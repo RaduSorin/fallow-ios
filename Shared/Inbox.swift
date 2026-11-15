@@ -78,8 +78,12 @@ enum Inbox {
     /// published its key yet (Fallow was never opened since this feature came).
     static func post(_ entry: InboxEntry, folder: URL = SharedStore.inboxFolder, publicKey: Data? = SharedStore.readPublicKey()) throws {
         guard let publicKey else { throw InboxError.noKey }
-        let box = try seal(entry, to: publicKey)
-        let name = "\(Int(entry.createdAt.timeIntervalSince1970 * 1000))-\(UUID().uuidString).box"
+        try store(seal(entry, to: publicKey), createdAt: entry.createdAt, folder: folder)
+    }
+
+    /// Puts an already sealed box in the inbox folder (one sealed on the Apple Watch).
+    static func store(_ box: Data, createdAt: Date = .now, folder: URL = SharedStore.inboxFolder) throws {
+        let name = "\(Int(createdAt.timeIntervalSince1970 * 1000))-\(UUID().uuidString).box"
         try box.write(to: folder.appending(path: name), options: SharedStore.writeOptions)
     }
 

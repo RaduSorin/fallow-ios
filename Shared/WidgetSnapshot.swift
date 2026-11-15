@@ -25,6 +25,12 @@ struct WidgetSnapshot: Codable, Equatable, Sendable {
     /// Only when the person turned these on in Settings.
     var intention: String?
     var rhythms: [SharedRhythm]?
+    /// The rhythms' ids in order, without titles, so the Apple Watch can offer "Rhythm 1, 2, 3"
+    /// to tick even when the titles stay in the vault. Optional: older snapshots have none.
+    var rhythmIDs: [String]?
+    /// True when the person chose to save mindful minutes to Apple Health, so breathing on the
+    /// watch is saved too. Nil when off.
+    var healthMindful: Bool?
 
     /// The rhythms kept on a day, as far as the widget knows.
     func done(on day: String) -> [String] {

@@ -6,7 +6,7 @@ import WidgetKit
 struct FallowApp: App {
     @State private var vault: Vault
     @State private var backup: Backup
-    @State private var run = ExerciseRun()
+    @State private var run: ExerciseRun
     @UIApplicationDelegateAdaptor(AppDelegate.self) private var appDelegate
     @Environment(\.scenePhase) private var scenePhase
 
@@ -16,10 +16,17 @@ struct FallowApp: App {
         let testing = UITesting.isOn
         let vault = testing ? UITesting.vault() : Vault.live()
         let backup = testing ? UITesting.backup() : Backup.live()
+        let run = ExerciseRun()
+        // The Apple Watch mirrors the running exercise and can rate the feeling before and after.
+        run.onWatchChange = { WatchBridge.shared.setExercise($0) }
+        WatchBridge.shared.onFeeling = { feeling in
+            Task { @MainActor in run.rate(session: feeling.session, before: feeling.before, after: feeling.after) }
+        }
         vault.onChange = { contents in
             Task { @MainActor in
                 backup.schedule(contents)
                 SharedBridge.publish(contents)
+                run.showStepsOnWatch = contents.settings.watchExerciseSteps
             }
             guard !testing else { return }
             Task.detached {
@@ -33,10 +40,13 @@ struct FallowApp: App {
             guard !testing else { return }
             CoachClient.live().signOut()
             WidgetCenter.shared.reloadAllTimelines()
+            // The watch forgets its copy too (the App Group is already empty).
+            WatchBridge.shared.sendCurrent()
             Task.detached { await ReminderScheduler.removeAll() }
         }
         _vault = State(initialValue: vault)
         _backup = State(initialValue: backup)
+        _run = State(initialValue: run)
     }
 
     var body: some Scene {

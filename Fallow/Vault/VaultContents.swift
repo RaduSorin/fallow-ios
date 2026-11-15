@@ -93,6 +93,8 @@ struct VaultSettings: Codable, Equatable, Sendable {
     var widgetRhythms = false
     /// Save each guided exercise's length to Apple Health as mindful minutes. Off by default.
     var healthMindful = false
+    /// Send the exercise's step text to the Apple Watch while it runs. Off by default.
+    var watchExerciseSteps = false
 
     init() {}
 
@@ -107,6 +109,7 @@ struct VaultSettings: Codable, Equatable, Sendable {
         widgetIntention = try c.decodeIfPresent(Bool.self, forKey: .widgetIntention) ?? false
         widgetRhythms = try c.decodeIfPresent(Bool.self, forKey: .widgetRhythms) ?? false
         healthMindful = try c.decodeIfPresent(Bool.self, forKey: .healthMindful) ?? false
+        watchExerciseSteps = try c.decodeIfPresent(Bool.self, forKey: .watchExerciseSteps) ?? false
     }
 
     static func minutes(from date: Date, calendar: Calendar = .current) -> Int {

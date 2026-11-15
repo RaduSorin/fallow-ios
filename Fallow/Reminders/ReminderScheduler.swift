@@ -24,6 +24,7 @@ enum ReminderScheduler {
             content.body = String(localized: body(for: reminder.kind))
             content.sound = .default
             content.threadIdentifier = "fallow"
+            if let category = category(for: reminder.kind) { content.categoryIdentifier = category.rawValue }
             content.userInfo = [AppRoute.key: AppRoute(reminder: reminder.kind).rawValue]
             let trigger = UNCalendarNotificationTrigger(dateMatching: reminder.components, repeats: reminder.repeats)
             let request = UNNotificationRequest(identifier: prefix + reminder.id, content: content, trigger: trigger)
@@ -36,9 +37,21 @@ enum ReminderScheduler {
         let center = UNUserNotificationCenter.current()
         let pending = await center.pendingNotificationRequests().map(\.identifier)
         let shown = await center.deliveredNotifications().map(\.request.identifier)
-        let ours = (pending + shown).filter { $0.hasPrefix(prefix) || $0 == ExerciseBell.identifier }
+        let ours = (pending + shown).filter {
+            $0.hasPrefix(prefix) || $0.hasPrefix(ReminderActions.snoozePrefix) || $0 == ExerciseBell.identifier
+        }
         center.removePendingNotificationRequests(withIdentifiers: ours)
         center.removeDeliveredNotifications(withIdentifiers: ours)
+    }
+
+    /// The buttons a reminder shows, on the iPhone and the Apple Watch. A free Friday needs none.
+    static func category(for kind: PlannedReminder.Kind) -> ReminderActions.Category? {
+        switch kind {
+        case .evening: .line
+        case .morning, .worry, .reflection: .later
+        case .friday: .friday
+        case .freeFriday: nil
+        }
     }
 
     static func title(for kind: PlannedReminder.Kind) -> LocalizedStringResource {
